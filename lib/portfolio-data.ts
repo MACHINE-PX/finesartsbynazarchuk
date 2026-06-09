@@ -17,148 +17,201 @@ export interface Discipline {
 }
 
 export const siteConfig = {
-  name: "Fine Arts by Nazarchuk",
-  shortName: "Nazarchuk",
-  eyebrow: "Artistic Portfolio",
-  email: "hello@finesartsbynazarchuk.com",
+  name: "Oleksandr Nazarchuk",
+  shortName: "Fine Arts by Nazarchuk",
+  eyebrow: "Portfolio",
+  email: "Fineartsbynazarchuk@gmail.com",
+  phone: "+971 544 429 950",
   instagramHandle: "@finesartsbynazarchuk",
   instagramUrl: "https://instagram.com/finesartsbynazarchuk",
-  disciplines: ["Theater", "Costume", "Sculpture", "Painting"],
+  disciplines: ["Murals", "Painting", "Events", "Plein Air"],
   quote:
-    "Each work is a dialogue between the visible and what has not yet found its form.",
+    "My work centers on capturing fleeting moments through light, color, and atmosphere.",
 };
+
+export const aboutText =
+  "I am a fine artist from Ukraine, where I received a degree in fine arts with a specialization as a muralist educator. My work centers on capturing fleeting moments through light, color, and atmosphere. As an impressionist painter, I focus on immediate visual impressions rather than detailed representation, building my paintings with free, bold, and spontaneous brushstrokes that allow colors to merge optically and convey a sense of movement and luminosity. Often working en plein air, I respond directly to changing natural conditions, delicately recording the interaction of sunlight, shadow, water, and landscape. My work evokes quiet emotion and serenity, celebrating the beauty of everyday scenes and inviting the viewer to experience the poetry of a moment suspended in time.";
 
 export const disciplines: Discipline[] = [
   {
-    id: "theater",
+    id: "about",
     index: "01",
-    discipline: "Theater",
-    tagline: "The stage as territory of being.",
-    description:
-      "Theatrical productions that push the limits between body, space, and language. Each staging builds its own universe where text, movement, and light converge into an irreproducible experience.",
+    discipline: "Who Am I?",
+    tagline: "Light, color, atmosphere, and the poetry of a suspended moment.",
+    description: aboutText,
     works: [
       {
-        title: "Threshold",
-        year: "2024",
+        title: "Oleksandr Nazarchuk",
+        year: "Ukraine / UAE",
         description:
-          "Physical theater work on states of transit between identities. Three actors, one empty space.",
-        image:
-          "https://images.unsplash.com/photo-1503095396549-807759245b35?w=800&h=1067&fit=crop&auto=format",
-        alt: "Silhouettes of three performers on a dramatic stage",
-      },
-      {
-        title: "The Broken Mask",
-        year: "2023",
-        description:
-          "Expanded monologue. Exploration of the fragmented self through overlapping masks and texts.",
-        image:
-          "https://images.unsplash.com/photo-1579539760267-b2e78d9d735e?w=800&h=1000&fit=crop&auto=format",
-        alt: "Performer on stage under dramatic lighting",
-      },
-      {
-        title: "Ash",
-        year: "2022",
-        description:
-          "Stage direction for a collective work on memory and forgetting as political acts.",
-        image:
-          "https://images.unsplash.com/photo-1576724196706-3f23f51ea351?w=800&h=1000&fit=crop&auto=format",
-        alt: "Theater audience watching a dramatic stage performance",
+          "Fine artist, impressionist painter, muralist, and educator working across canvas, murals, live painting, and plein air practice.",
+        image: "/images/who%20i%20am.png",
+        alt: "Oleksandr Nazarchuk fine artist portrait",
       },
     ],
   },
   {
-    id: "costume",
+    id: "murals",
     index: "02",
-    discipline: "Costume",
-    tagline: "The body as the first stage.",
+    discipline: "Murals",
+    tagline: "Large-scale worlds built through color, rhythm, and imagination.",
     description:
-      "Costume design for theater, opera, and artistic fashion projects. Each piece is conceived as a wearable sculpture - materials, volumes, and textures that amplify the performer's presence.",
+      "Mural works spanning fantasy environments, decorative Art Nouveau language, and immersive painted surfaces shaped by narrative and atmosphere.",
     works: [
       {
-        title: "Shadow of Silk",
-        year: "2024",
+        title: "Fantasy World",
+        year: "Murals",
         description:
-          "Costume collection for contemporary opera. Black silk, artisanal lace, and hand embroidery.",
-        image:
-          "https://images.unsplash.com/photo-1603189343302-e603f7add05a?w=800&h=1067&fit=crop&auto=format",
-        alt: "Dramatic editorial fashion costume in black",
+          "A fantasy mural series that opens architectural space into a painterly world of movement, color, and storytelling.",
+        image: "/images/mural1.png",
+        alt: "Fantasy world mural by Oleksandr Nazarchuk",
       },
       {
-        title: "Metamorphosis",
-        year: "2023",
+        title: "Fantasy World Details",
+        year: "Murals",
         description:
-          "Costumes for contemporary dance performance. Transformation as ritual process.",
-        image:
-          "https://images.unsplash.com/photo-1773592619356-6de35433bd09?w=800&h=1067&fit=crop&auto=format",
-        alt: "Woman with dramatic artistic styling",
+          "Expanded fantasy mural details with layered color, illustrative forms, and immersive scenic composition.",
+        image: "/images/mural2.png",
+        alt: "Detailed fantasy mural artwork",
+      },
+      {
+        title: "Art Nouveau",
+        year: "Murals",
+        description:
+          "Decorative mural work inspired by Art Nouveau line, ornament, and theatrical elegance.",
+        image: "/images/MURALS-ART%20NUVOU1.png",
+        alt: "Art Nouveau mural by Oleksandr Nazarchuk",
       },
     ],
-    reverse: true,
   },
   {
-    id: "sculpture",
+    id: "contest",
     index: "03",
-    discipline: "Sculpture",
-    tagline: "Matter that thinks.",
+    discipline: "Painting Contest",
+    tagline: "Historical memory translated through gesture and stillness.",
     description:
-      "Sculptural works that dialogue with architectural space and the perception of time. Stone, bronze, and mixed media generate forms that condense open meanings for the observer's interpretation.",
+      "Aswar Art Center Sharjah painting contest. The work Merchants Weighing Pearl received 3rd place and reflects on pearl diving as a foundation of the cultural memory of the Arabian Gulf.",
     works: [
       {
-        title: "Figure in Silence",
-        year: "2024",
+        title: "Merchants Weighing Pearl",
+        year: "2026",
         description:
-          "Bust in black marble. Exploration of contained expression and stillness as a form of power.",
-        image:
-          "https://images.unsplash.com/photo-1729008712499-5e6b58420789?w=800&h=1067&fit=crop&auto=format",
-        alt: "Black and white photo of a sculptural bust",
+          "90 x 90 cm. Inspired by an early twentieth-century historical photograph, the work explores knowledge, trust, manual labor, and Sharjah's profound connection to the sea and time. Awarded 3rd place.",
+        image: "/images/paintingcontest1.png",
+        alt: "Merchants Weighing Pearl painting contest artwork",
       },
       {
-        title: "Interior",
-        year: "2023",
+        title: "Aswar Art Center Sharjah",
+        year: "3rd Place",
         description:
-          "Sculptural installation in museum hall. Figures in dialogue about the empty space between them.",
-        image:
-          "https://images.unsplash.com/photo-1576254232140-70c274d668c4?w=800&h=1000&fit=crop&auto=format",
-        alt: "Museum interior with sculptural installation",
+          "Contest documentation for Merchants Weighing Pearl, a painting centered on coastal memory and intergenerational transmission of knowledge.",
+        image: "/images/paintingcontest2.png",
+        alt: "Painting contest documentation at Aswar Art Center Sharjah",
       },
       {
-        title: "Black Relief",
-        year: "2022",
+        title: "Historical Reflection",
+        year: "90 x 90 cm",
         description:
-          "Direct carving in basaltic stone. The emerging face as a metaphor for origin and belonging.",
-        image:
-          "https://images.unsplash.com/photo-1620745899139-041867b2a477?w=800&h=1000&fit=crop&auto=format",
-        alt: "Carved face on black stone surface",
+          "The quiet interaction between the two figures symbolizes respect for the natural rhythm that shaped Sharjah's coastal communities before modern times.",
+        image: "/images/paintingcontest3.png",
+        alt: "Detail of Merchants Weighing Pearl artwork",
+      },
+    ],
+    reverse: true,
+  },
+  {
+    id: "helmet",
+    index: "04",
+    discipline: "Helmet Competition",
+    tagline: "Painting beyond the canvas.",
+    description:
+      "Second place helmet competition work, transforming a functional object into a painted surface with character, motion, and visual presence.",
+    works: [
+      {
+        title: "Second Place",
+        year: "Helmet Competition",
+        description:
+          "Awarded second place for a custom-painted helmet project that carries the artist's painterly language into object design.",
+        image: "/images/SECONDPLACEHELMETCOMPETITION1.png",
+        alt: "Second place helmet competition artwork",
+      },
+      {
+        title: "Painted Object",
+        year: "Competition",
+        description:
+          "A detailed view of the painted helmet surface and its bold, expressive visual treatment.",
+        image: "/images/SECONDPLACEHELMETCOMPETITION2.png",
+        alt: "Painted helmet detail",
       },
     ],
   },
   {
-    id: "painting",
-    index: "04",
-    discipline: "Painting",
-    tagline: "Color that inhabits time.",
+    id: "events",
+    index: "05",
+    discipline: "Events",
+    tagline: "Live painting, workshops, exhibitions, and stage design.",
     description:
-      "Pictorial series oscillating between abstraction and figure. Oil, acrylic, and mixed techniques on canvas and panel explore the tension between control and chance, between what is shown and what is concealed.",
+      "Public-facing art practice including the AOM Show 2025 exhibition and live painting masterclass, Bikers Cafe live painting workshop, and World Stage Design 2025 with canvases for the main characters of La Perle.",
     works: [
       {
-        title: "Nature on Pause",
-        year: "2024",
+        title: "AOM Show",
+        year: "2025",
         description:
-          "Oil on canvas. Series reinterpreting classical still life from a contemporary gaze.",
-        image:
-          "https://images.unsplash.com/photo-1775308493866-652f10ad6806?w=800&h=965&fit=crop&auto=format",
-        alt: "Abstract still life painting",
+          "Exhibition and live painting masterclass, sharing process, brushwork, and atmosphere with an audience in real time.",
+        image: "/images/eventsAOMShow1.png",
+        alt: "AOM Show 2025 exhibition and live painting masterclass",
       },
       {
-        title: "Deep Blue",
-        year: "2023",
+        title: "Bikers Cafe",
+        year: "Workshop",
         description:
-          "Mixed media on panel. Abstract series investigating color as emotional state.",
-        image:
-          "https://images.unsplash.com/photo-1758192178254-f4e4dbc1d754?w=800&h=1000&fit=crop&auto=format",
-        alt: "Abstract paintings with blue and black hues",
+          "Live painting workshop connecting fine art process with a public, energetic event setting.",
+        image: "/images/eventsBikersCafe1.png",
+        alt: "Bikers Cafe live painting workshop",
+      },
+      {
+        title: "World Stage Design",
+        year: "2025",
+        description:
+          "Canvases created for the main characters of La Perle as part of World Stage Design 2025.",
+        image: "/images/eventsWorldStageDesign.png",
+        alt: "World Stage Design 2025 canvas work for La Perle",
       },
     ],
     reverse: true,
+  },
+  {
+    id: "plein-air",
+    index: "06",
+    discipline: "Plein Air",
+    tagline: "Painting directly with changing light.",
+    description:
+      "Plein air works created in direct response to natural conditions, recording sunlight, shadow, water, and landscape through spontaneous brushwork and luminous color.",
+    works: [
+      {
+        title: "Landscape Study",
+        year: "Plein Air",
+        description:
+          "A direct outdoor study focused on natural light, atmosphere, and the immediacy of the painted moment.",
+        image: "/images/PLEINAIR1.png",
+        alt: "Plein air landscape painting by Oleksandr Nazarchuk",
+      },
+      {
+        title: "Water and Light",
+        year: "Plein Air",
+        description:
+          "An impressionist plein air scene capturing the interaction of water, reflection, and shifting daylight.",
+        image: "/images/PLEINAIR2.png",
+        alt: "Plein air painting of water and light",
+      },
+      {
+        title: "Open Air Color",
+        year: "Plein Air",
+        description:
+          "Outdoor painting built with free, bold brushstrokes and optical color relationships.",
+        image: "/images/PLEINAIR3.png",
+        alt: "Colorful plein air painting",
+      },
+    ],
   },
 ];

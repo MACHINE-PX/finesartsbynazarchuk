@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Fine Arts by Nazarchuk",
+  title: "Oleksandr Nazarchuk | Fine Arts by Nazarchuk",
   description:
-    "A fine arts portfolio spanning theater, costume, sculpture, and painting.",
+    "Portfolio of Ukrainian fine artist Oleksandr Nazarchuk: impressionist painting, murals, plein air work, live events, and competitions.",
 };
 
 export default function RootLayout({

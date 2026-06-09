@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Instagram, Mail } from "lucide-react";
+import { ArrowUpRight, Instagram, Mail, Phone } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/lib/portfolio-data";
 
@@ -94,6 +94,23 @@ export function Contact() {
               </a>
 
               <a
+                href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+                className="group flex items-center gap-3 text-muted-foreground transition-colors duration-300 hover:text-foreground"
+                style={{
+                  fontFamily: "'Space Mono', monospace",
+                  fontSize: "11px",
+                  letterSpacing: "0.12em",
+                }}
+              >
+                <Phone size={13} />
+                {siteConfig.phone}
+                <ArrowUpRight
+                  size={12}
+                  className="opacity-0 transition-opacity group-hover:opacity-100"
+                />
+              </a>
+
+              <a
                 href={siteConfig.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -123,9 +140,9 @@ export function Contact() {
                 color: "rgba(240,236,228,0.4)",
               }}
             >
-              Available for theater productions, costume direction, sculptural
-              installations, and painting commissions. National and
-              international projects welcome.
+              Available for murals, plein air painting, fine art commissions,
+              live painting workshops, exhibitions, and collaborative cultural
+              projects.
             </p>
 
             <a
@@ -139,7 +156,7 @@ export function Contact() {
                 color: "rgba(240,236,228,0.8)",
               }}
             >
-              START A PROJECT
+              GET IN TOUCH
               <ArrowUpRight
                 size={13}
                 className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -170,7 +187,7 @@ export function Contact() {
               color: "rgba(240,236,228,0.18)",
             }}
           >
-            2024 - THEATER / COSTUME / SCULPTURE / PAINTING
+            PORTFOLIO - MURALS / PAINTING / EVENTS / PLEIN AIR
           </span>
         </div>
       </div>
