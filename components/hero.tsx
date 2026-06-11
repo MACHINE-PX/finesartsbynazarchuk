@@ -18,10 +18,11 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex h-screen w-full items-center justify-center overflow-hidden"
+      className="relative flex h-screen w-full items-end justify-center overflow-hidden"
     >
       <video
         className="absolute inset-0 h-full w-full object-cover"
+        style={{ filter: "brightness(1.22) saturate(1.08)" }}
         src="/sash-short.mp4"
         autoPlay
         muted
@@ -29,12 +30,12 @@ export function Hero() {
         playsInline
         preload="metadata"
       />
-      <div className="absolute inset-0 bg-background/55" />
+      <div className="absolute inset-0 bg-background/35" />
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(8,8,8,0.08) 0%, rgba(8,8,8,0.82) 100%)",
+            "radial-gradient(ellipse at center, rgba(8,8,8,0.02) 0%, rgba(8,8,8,0.62) 100%)",
         }}
       />
       <div
@@ -42,58 +43,45 @@ export function Hero() {
         style={{ background: "linear-gradient(to top, #080808, transparent)" }}
       />
 
+      <p
+        className="absolute left-1/2 top-[24vh] z-10 -translate-x-1/2 uppercase text-accent sm:top-[23vh] lg:top-[22vh]"
+        style={{
+          fontFamily: "'Space Mono', monospace",
+          fontSize: "8px",
+          letterSpacing: "0.5em",
+        }}
+      >
+        {siteConfig.eyebrow}
+      </p>
+
       <div
-        className="relative z-10 px-6 text-center transition-all duration-1000"
+        className="relative z-10 px-6 pb-[3vh] text-center transition-all duration-1000 sm:pb-[6vh] lg:pb-[5vh]"
         style={{
           opacity: loaded ? 1 : 0,
           transform: loaded ? "translateY(0)" : "translateY(20px)",
         }}
       >
-        <p
-          className="mb-6 uppercase text-accent"
-          style={{
-            fontFamily: "'Space Mono', monospace",
-            fontSize: "10px",
-            letterSpacing: "0.45em",
-          }}
-        >
-          {siteConfig.eyebrow}
-        </p>
-
         <h1
           className="mx-auto max-w-6xl uppercase text-foreground"
           style={{
             fontFamily: "'Cormorant Infant', serif",
-            fontSize: "clamp(4rem, 11vw, 10rem)",
+            fontSize: "clamp(1.4rem, 4.0vw, 3.8rem)",
             fontWeight: 300,
-            lineHeight: 0.92,
+            lineHeight: 0.9,
             letterSpacing: "0.04em",
           }}
         >
           {siteConfig.name}
         </h1>
 
-        <p
-          className="mx-auto mt-7 max-w-2xl text-foreground/70"
-          style={{
-            fontFamily: "'Cormorant Infant', serif",
-            fontSize: "clamp(1.25rem, 2.7vw, 2rem)",
-            fontStyle: "italic",
-            fontWeight: 300,
-            lineHeight: 1.35,
-          }}
-        >
-          {siteConfig.quote}
-        </p>
-
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 opacity-60">
+        <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 opacity-60">
           {siteConfig.disciplines.map((discipline, index) => (
             <span
               key={discipline}
               className="flex items-center gap-6 text-foreground"
               style={{
                 fontFamily: "'Space Mono', monospace",
-                fontSize: "9px",
+                fontSize: "7px",
                 letterSpacing: "0.22em",
               }}
             >
@@ -102,27 +90,23 @@ export function Hero() {
             </span>
           ))}
         </div>
-      </div>
 
-      <button
-        onClick={scrollDown}
-        className="absolute bottom-10 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-muted-foreground transition-colors duration-300 hover:text-foreground"
-        style={{
-          opacity: loaded ? 1 : 0,
-          transition: "opacity 1.2s ease 0.9s, color 0.3s ease",
-        }}
-      >
-        <span
-          style={{
-            fontFamily: "'Space Mono', monospace",
-            fontSize: "9px",
-            letterSpacing: "0.3em",
-          }}
+        <button
+          onClick={scrollDown}
+          className="mt-4 inline-flex flex-col items-center gap-2 text-muted-foreground transition-colors duration-300 hover:text-foreground"
         >
-          EXPLORE
-        </span>
-        <ChevronDown size={14} className="animate-bounce" />
-      </button>
+          <span
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: "7px",
+              letterSpacing: "0.3em",
+            }}
+          >
+            EXPLORE
+          </span>
+          <ChevronDown size={14} className="animate-bounce" />
+        </button>
+      </div>
     </section>
   );
 }
