@@ -27,7 +27,7 @@ export function Contact() {
   const { ref, inView } = useInView();
 
   return (
-    <section id="contact" className="px-6 py-40 md:px-8" ref={ref}>
+    <section id="contact" className="px-4 py-24 sm:px-6 md:px-8 md:py-40" ref={ref}>
       <div
         className="mx-auto max-w-7xl transition-all duration-700"
         style={{
@@ -35,7 +35,7 @@ export function Contact() {
           transform: inView ? "translateY(0)" : "translateY(24px)",
         }}
       >
-        <div className="mb-20 border-b border-border pb-6">
+        <div className="mb-14 border-b border-border pb-6 md:mb-20">
           <span
             className="mb-3 block text-accent"
             style={{
@@ -59,7 +59,7 @@ export function Contact() {
           </h2>
         </div>
 
-        <div className="grid items-end gap-16 md:grid-cols-2">
+        <div className="grid items-end gap-12 md:grid-cols-2 md:gap-16">
           <div>
             <p
               className="mb-12"
@@ -78,7 +78,7 @@ export function Contact() {
             <div className="flex flex-col gap-5">
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="group flex items-center gap-3 text-muted-foreground transition-colors duration-300 hover:text-foreground"
+                className="group flex min-w-0 items-center gap-3 break-all text-muted-foreground transition-colors duration-300 hover:text-foreground"
                 style={{
                   fontFamily: "'Space Mono', monospace",
                   fontSize: "11px",
@@ -95,7 +95,7 @@ export function Contact() {
 
               <a
                 href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
-                className="group flex items-center gap-3 text-muted-foreground transition-colors duration-300 hover:text-foreground"
+                className="group flex min-w-0 items-center gap-3 text-muted-foreground transition-colors duration-300 hover:text-foreground"
                 style={{
                   fontFamily: "'Space Mono', monospace",
                   fontSize: "11px",
@@ -114,7 +114,7 @@ export function Contact() {
                 href={siteConfig.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-3 text-muted-foreground transition-colors duration-300 hover:text-foreground"
+                className="group flex min-w-0 items-center gap-3 break-all text-muted-foreground transition-colors duration-300 hover:text-foreground"
                 style={{
                   fontFamily: "'Space Mono', monospace",
                   fontSize: "11px",
@@ -147,7 +147,7 @@ export function Contact() {
 
             <a
               href={`mailto:${siteConfig.email}`}
-              className="group inline-flex self-start items-center gap-3 px-8 py-4 transition-all duration-300 hover:bg-foreground hover:text-background"
+              className="group inline-flex self-start items-center gap-3 px-6 py-4 transition-all duration-300 hover:bg-foreground hover:text-background sm:px-8"
               style={{
                 border: "1px solid rgba(240,236,228,0.2)",
                 fontFamily: "'Space Mono', monospace",
@@ -165,7 +165,7 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="mt-28 flex flex-col items-center justify-between gap-4 border-t border-border/70 pt-6 md:flex-row">
+        <div className="mt-20 flex flex-col items-center justify-between gap-4 border-t border-border/70 pt-6 md:mt-28 md:flex-row">
           <span
             className="uppercase"
             style={{

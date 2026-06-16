@@ -128,7 +128,7 @@ export function DisciplineSection({
   return (
     <section id={id} className="mx-auto max-w-7xl px-6 py-32 md:px-8" ref={ref}>
       <div
-        className="mb-20 border-b border-border pb-6 transition-all duration-700"
+        className="mb-16 border-b border-border pb-6 transition-all duration-700"
         style={{
           opacity: inView ? 1 : 0,
           transform: inView ? "translateY(0)" : "translateY(22px)",
@@ -194,7 +194,7 @@ export function DisciplineSection({
         </p>
       </div>
 
-      <div className={`grid gap-5 ${columns}`}>
+      <div className={`grid gap-px bg-foreground/10 ${columns}`}>
         {works.map((work, index) => (
           <WorkCard
             key={work.title}
