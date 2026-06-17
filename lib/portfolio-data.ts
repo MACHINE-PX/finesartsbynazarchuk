@@ -30,7 +30,10 @@ export const siteConfig = {
 };
 
 export const aboutText =
-  "I am a fine artist from Ukraine, where I received a degree in fine arts with a specialization as a muralist educator. My work centers on capturing fleeting moments through light, color, and atmosphere. As an impressionist painter, I focus on immediate visual impressions rather than detailed representation, building my paintings with free, bold, and spontaneous brushstrokes that allow colors to merge optically and convey a sense of movement and luminosity. Often working en plein air, I respond directly to changing natural conditions, delicately recording the interaction of sunlight, shadow, water, and landscape. My work evokes quiet emotion and serenity, celebrating the beauty of everyday scenes and inviting the viewer to experience the poetry of a moment suspended in time.";
+  "With a solid background as a certified muralist educator from Ukraine, I bring 7 years of specialized expertise in theatrical prop making and scenic design. My work combines traditional sculpting, molding, and mosaic techniques with advanced surface decorating, such as faux finishes, historical aging, and patinas. I view every prop and set element as an extension of fine art, built to withstand the technical demands of the stage while maintaining the optical depth, luminosity, and visual storytelling of a master painting.";
+
+export const aboutSubtitle =
+  "Scenic Artist, Prop Craftsman & Fine Arts Educator.";
 
 export const disciplines: Discipline[] = [
   {

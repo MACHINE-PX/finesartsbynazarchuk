@@ -33,16 +33,6 @@ export default function Home() {
         />
 
         <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-5xl flex-col items-center justify-end px-4 pb-[7vh] pt-28 text-center sm:px-6 sm:pb-[8vh]">
-          <p
-            className="mb-4 uppercase text-accent sm:mb-6"
-            style={{
-              fontFamily: "'Space Mono', monospace",
-              fontSize: "8px",
-              letterSpacing: "0.42em",
-            }}
-          >
-            Portfolio
-          </p>
           <h1
             className="uppercase"
             style={{
@@ -66,13 +56,12 @@ export default function Home() {
             Fine Artist & Scenic Maker
           </p>
           <p
-            className="mt-4 max-w-[34rem] text-foreground/62 sm:mt-5"
+            className="mt-4 max-w-[42rem] uppercase text-foreground/62 sm:mt-5"
             style={{
-              fontFamily: "'Cormorant Infant', serif",
-              fontSize: "clamp(0.98rem, 4.6vw, 1.35rem)",
-              fontStyle: "italic",
-              fontWeight: 300,
-              lineHeight: 1.35,
+              fontFamily: "'Space Mono', monospace",
+              fontSize: "clamp(0.52rem, 2.2vw, 0.68rem)",
+              letterSpacing: "0.16em",
+              lineHeight: 1.85,
             }}
           >
             Specialized in Plein Air Painting, Murals, Sculpting, and Custom
@@ -105,19 +94,7 @@ export default function Home() {
           label="Explore"
           title="Fine Art"
           align="left"
-        />
-        <HomeTile
-          href="/props"
-          image="/images/SECONDPLACEHELMETCOMPETITION1.png"
-          label="View"
-          title="Props & Scenic"
-          align="center"
-        />
-      </section>
-
-      <section className="mx-auto grid max-w-[1600px] gap-px bg-foreground/10 p-px md:grid-cols-2">
-        <HomeLinkPanel
-          image="/images/Who%20i%20am2.png"
+          imagePosition="center 34%"
           links={[
             { label: "Paintings", href: "/fine-art/paintings" },
             { label: "Plein Air", href: "/fine-art/plein-air" },
@@ -126,8 +103,13 @@ export default function Home() {
             { label: "Show all", href: "/fine-art" },
           ]}
         />
-        <HomeLinkPanel
-          image="/images/SECONDPLACEHELMETCOMPETITION1.png"
+        <HomeTile
+          href="/props"
+          image="/images/IMG_3546.png"
+          label="View"
+          title="Props & Scenic"
+          align="center"
+          imagePosition="center 42%"
           links={[
             { label: "Scenic Art & Faux Finishes", href: "/props/scenic-art" },
             { label: "Sculptures", href: "/props/sculptures" },
@@ -148,27 +130,29 @@ function HomeTile({
   label,
   title,
   align,
+  imagePosition,
+  links,
 }: {
   href: string;
   image: string;
   label: string;
   title: string;
   align: "left" | "center";
+  imagePosition: string;
+  links: { label: string; href: string }[];
 }) {
   return (
-    <Link
-      href={href}
-      className="group relative flex min-h-[44svh] items-end overflow-hidden bg-secondary sm:min-h-[42vh]"
-    >
+    <div className="group relative flex min-h-[62svh] items-end overflow-hidden bg-secondary sm:min-h-[58vh] lg:min-h-[68vh]">
       <img
         src={image}
         alt=""
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        className="absolute inset-0 h-full w-full object-cover transition-all duration-700 group-hover:scale-[1.025] group-hover:opacity-55 group-focus-within:scale-[1.025] group-focus-within:opacity-55"
+        style={{ objectPosition: imagePosition }}
       />
-      <div className="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/18" />
+      <div className="absolute inset-0 bg-black/36 transition-colors duration-500 group-hover:bg-black/68 group-focus-within:bg-black/68" />
       <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/78 to-transparent" />
       <div
-        className={`relative z-10 w-full p-5 text-white sm:p-8 ${
+        className={`relative z-10 w-full p-5 text-white sm:p-8 md:p-10 ${
           align === "center" ? "text-center" : "text-left"
         }`}
       >
@@ -182,7 +166,8 @@ function HomeTile({
         >
           {label}
         </span>
-        <span
+        <Link
+          href={href}
           className="mt-2 block uppercase leading-none text-white"
           style={{
             fontFamily: "'Cormorant Infant', serif",
@@ -192,46 +177,30 @@ function HomeTile({
           }}
         >
           {title}
-        </span>
+        </Link>
         <span className="mt-5 block h-px w-14 bg-accent transition-all duration-300 group-hover:w-28" />
-      </div>
-    </Link>
-  );
-}
 
-function HomeLinkPanel({
-  image,
-  links,
-}: {
-  image: string;
-  links: { label: string; href: string }[];
-}) {
-  return (
-    <div className="group relative flex min-h-[42svh] items-center justify-center overflow-hidden bg-secondary sm:min-h-[38vh]">
-      <img
-        src={image}
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-      />
-      <div className="absolute inset-0 bg-black/72 transition-colors group-hover:bg-black/60" />
-      <div className="absolute inset-3 border border-foreground/10 opacity-70 transition-colors duration-300 group-hover:border-accent/35 sm:inset-5" />
-      <div
-        className="relative z-10 flex max-w-[88%] flex-col items-center gap-2 text-center uppercase leading-tight text-white"
-        style={{
-          fontFamily: "'Space Mono', monospace",
-          fontSize: "clamp(0.62rem, 1.4vw, 0.78rem)",
-          letterSpacing: "0.02em",
-        }}
-      >
-        {links.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="rounded-full border border-foreground/15 px-3 py-1.5 text-foreground/82 transition-all duration-300 hover:border-accent/60 hover:bg-foreground/10 hover:text-foreground"
-          >
-            {item.label}
-          </Link>
-        ))}
+        <nav
+          className={`mt-6 grid w-full max-w-[26rem] grid-cols-2 gap-2 uppercase leading-tight text-white transition-all duration-500 md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus-within:translate-y-0 md:group-focus-within:opacity-100 ${
+            align === "center" ? "mx-auto" : ""
+          }`}
+          style={{
+            fontFamily: "'Space Mono', monospace",
+            fontSize: "clamp(0.62rem, 1.4vw, 0.78rem)",
+            letterSpacing: "0.02em",
+          }}
+          aria-label={`${title} categories`}
+        >
+          {links.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="flex min-h-10 items-center justify-center rounded-full border border-white/28 bg-black/20 px-3 py-2 text-center text-white/86 backdrop-blur-sm transition-all duration-300 hover:border-accent/70 hover:bg-white/12 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
       </div>
     </div>
   );

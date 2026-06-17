@@ -1,5 +1,5 @@
 import { SiteHeader } from "@/components/site-header";
-import { aboutText, siteConfig } from "@/lib/portfolio-data";
+import { aboutSubtitle, aboutText, siteConfig } from "@/lib/portfolio-data";
 
 export default function AboutPage() {
   return (
@@ -9,7 +9,7 @@ export default function AboutPage() {
       <section className="mx-auto grid max-w-7xl gap-12 px-6 py-24 md:grid-cols-[0.9fr_1.1fr] md:px-8 md:py-32">
         <div className="relative min-h-[58vh] overflow-hidden bg-secondary">
           <img
-            src="/images/Who%20i%20am2.png"
+            src="/images/aboutme.png"
             alt="Oleksandr Nazarchuk working as a fine artist"
             className="h-full w-full object-cover grayscale"
           />
@@ -38,7 +38,18 @@ export default function AboutPage() {
             {siteConfig.name}
           </h1>
           <p
-            className="mt-8 max-w-2xl"
+            className="mt-6 uppercase text-foreground/72"
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: "clamp(0.62rem, 1.6vw, 0.78rem)",
+              letterSpacing: "0.16em",
+              lineHeight: 1.7,
+            }}
+          >
+            {aboutSubtitle}
+          </p>
+          <p
+            className="mt-7 max-w-2xl"
             style={{
               fontFamily: "'Inter', sans-serif",
               color: "rgba(240,236,228,0.62)",
