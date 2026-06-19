@@ -94,7 +94,9 @@ export function Contact() {
               </a>
 
               <a
-                href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+                href={siteConfig.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex min-w-0 items-center gap-3 text-muted-foreground transition-colors duration-300 hover:text-foreground"
                 style={{
                   fontFamily: "'Space Mono', monospace",

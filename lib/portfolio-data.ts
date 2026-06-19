@@ -22,8 +22,9 @@ export const siteConfig = {
   eyebrow: "Portfolio",
   email: "Fineartsbynazarchuk@gmail.com",
   phone: "+971 544 429 950",
-  instagramHandle: "@finesartsbynazarchuk",
-  instagramUrl: "https://instagram.com/finesartsbynazarchuk",
+  whatsappUrl: "https://wa.me/971544429950",
+  instagramHandle: "@nazarchuk_art",
+  instagramUrl: "https://www.instagram.com/nazarchuk_art/",
   disciplines: ["Murals", "Painting", "Events", "Plein Air"],
   quote:
     "My work centers on capturing fleeting moments through light, color, and atmosphere.",
