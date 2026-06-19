@@ -1,10 +1,21 @@
 import { CategoryPage } from "@/components/category-page";
-import { disciplines } from "@/lib/portfolio-data";
+import {
+  eventsGallery,
+  muralsGallery,
+  paintingsGallery,
+  pleinAirGallery,
+} from "@/lib/portfolio-data";
 
 export default function FineArtPage() {
-  const fineArt = disciplines.filter((discipline) =>
-    ["contest", "plein-air", "murals", "events"].includes(discipline.id),
-  );
+  const fineArt = [
+    paintingsGallery,
+    pleinAirGallery,
+    muralsGallery,
+    ...eventsGallery,
+  ].map((discipline, index) => ({
+    ...discipline,
+    index: String(index + 1).padStart(2, "0"),
+  }));
 
   return (
     <CategoryPage

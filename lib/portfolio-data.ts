@@ -218,3 +218,320 @@ export const disciplines: Discipline[] = [
     ],
   },
 ];
+
+function imagePath(...parts: string[]) {
+  return `/images/${parts.map(encodeURIComponent).join("/")}`;
+}
+
+function galleryWorks(
+  files: string[],
+  {
+    folder,
+    title,
+    year,
+    description,
+  }: {
+    folder: string[];
+    title: string;
+    year: string;
+    description: string;
+  },
+): Work[] {
+  return files.map((file, index) => ({
+    title: `${title} ${String(index + 1).padStart(2, "0")}`,
+    year,
+    description,
+    image: imagePath(...folder, file),
+    alt: `${title} ${index + 1} by Oleksandr Nazarchuk`,
+  }));
+}
+
+const paintingFiles = [
+  "FullSizeRender 2.jpg",
+  "FullSizeRender.JPG",
+  "IMG_0426.jpg",
+  "IMG_0622.jpg",
+  "IMG_1101.JPG",
+  "IMG_1345.JPG",
+  "IMG_1397.jpg",
+  "IMG_1406.jpg",
+  "IMG_2018.JPG",
+  "IMG_4195.jpg",
+  "IMG_4196.jpg",
+  "IMG_4197.jpg",
+  "IMG_4198.jpg",
+  "IMG_4199.jpg",
+  "IMG_4206.jpg",
+  "IMG_4210.jpg",
+  "IMG_4211.jpg",
+  "Untitled_Artwork 6.jpg",
+];
+
+const pleinAirFiles = [
+  "IMG_4197.PNG",
+  "IMG_4198.PNG",
+  "IMG_4200.PNG",
+  "IMG_4206.PNG",
+  "IMG_4400.png",
+  "IMG_4401.jpg.png",
+  "IMG_4402.jpg.png",
+  "IMG_4403.jpg.png",
+  "IMG_4404.jpg.png",
+  "IMG_4405.JPG.png",
+  "IMG_4406.jpg.png",
+  "IMG_4407.jpg.png",
+  "IMG_4408.jpg.png",
+  "IMG_4409.jpg.png",
+  "IMG_4410.jpg.png",
+  "IMG_4411.jpg.png",
+  "IMG_4412.jpg.png",
+  "IMG_4413.jpg.png",
+  "IMG_4414.jpg.png",
+  "IMG_4415.png",
+  "IMG_4416.jpg.png",
+  "IMG_4417.jpg.png",
+  "IMG_4418.jpg.png",
+  "IMG_4419.jpg.png",
+  "IMG_4420.jpg.png",
+  "IMG_4421.jpg.png",
+  "IMG_4423.jpg.png",
+  "IMG_4424.jpg.png",
+  "IMG_4425.jpg.png",
+  "IMG_4426.jpg.png",
+];
+
+const scenicFiles = [
+  "IMG_3672.JPG",
+  "IMG_3675.JPG",
+  "IMG_3676.JPG",
+  "IMG_3684.JPG",
+  "IMG_3685.JPG",
+  "IMG_3687.JPG",
+  "IMG_3689.JPG",
+  "IMG_3690.JPG",
+  "IMG_3691.JPG",
+  "IMG_3692.JPG",
+  "IMG_3693.JPG",
+  "IMG_3695.JPG",
+  "IMG_3696.JPG",
+  "IMG_3697.JPG",
+  "IMG_3698.JPG",
+  "IMG_3699.JPG",
+  "IMG_3700.JPG",
+  "IMG_3701.JPG",
+  "IMG_3702.JPG",
+  "IMG_3703.JPG",
+  "IMG_3704.JPG",
+  "IMG_3705.JPG",
+  "IMG_3706.JPG",
+  "IMG_3707.JPG",
+];
+
+export const paintingsGallery: Discipline = {
+  id: "paintings-gallery",
+  index: "01",
+  discipline: "Selected Paintings",
+  tagline: "Color, observation, memory, and atmosphere on canvas.",
+  description:
+    "A broader selection of studio paintings and canvas works from the Paintings archive.",
+  works: galleryWorks(paintingFiles, {
+    folder: ["fineart", "Paintings"],
+    title: "Painting",
+    year: "Fine Art",
+    description:
+      "Selected painting from Oleksandr Nazarchuk's studio practice.",
+  }),
+};
+
+export const muralsGallery: Discipline = {
+  id: "murals-gallery",
+  index: "01",
+  discipline: "Murals",
+  tagline: "Painted environments built at architectural scale.",
+  description:
+    "Murals, decorative walls, and immersive painted surfaces from the mural archive.",
+  works: [
+    ...galleryWorks(
+      [
+        "mural1.png",
+        "mural2.png",
+        "mural3.png",
+        "mural4.png",
+        "MURALS-ART NUVOU1.png",
+        "MURALS-ART NUVOU2.png",
+      ],
+      {
+        folder: [],
+        title: "Mural",
+        year: "Fine Art",
+        description:
+          "Large-scale mural work shaped through color, detail, and narrative atmosphere.",
+      },
+    ),
+    ...galleryWorks(["IMG_3278.jpg"], {
+      folder: ["fineart", "Murals"],
+      title: "Mural Archive",
+      year: "Fine Art",
+      description:
+        "Documentation from Oleksandr Nazarchuk's mural practice.",
+    }),
+  ],
+};
+
+export const pleinAirGallery: Discipline = {
+  id: "plein-air-gallery",
+  index: "01",
+  discipline: "Plein Air",
+  tagline: "Direct painting in changing natural light.",
+  description:
+    "Outdoor studies and finished works painted in response to landscape, water, architecture, and atmosphere.",
+  works: galleryWorks(pleinAirFiles, {
+    folder: ["PLEINAIR"],
+    title: "Plein Air",
+    year: "Outdoor Study",
+    description:
+      "A plein air work capturing immediate light, color, and atmosphere.",
+  }),
+};
+
+const eventGroups: Discipline[] = [
+  {
+    id: "spirit-of-sharjah",
+    index: "01",
+    discipline: "The Spirit of Sharjah",
+    tagline: "Competition work rooted in place and cultural memory.",
+    description:
+      "Documentation from The Spirit of Sharjah art competition.",
+    works: galleryWorks(["IMG_2436.jpg", "IMG_2537 2.jpg"], {
+      folder: ["fineart", "EVENTS", "Art Competition  - The Spirit of Sharjah"],
+      title: "Spirit of Sharjah",
+      year: "Competition",
+      description: "Art competition documentation from Sharjah.",
+    }),
+  },
+  {
+    id: "art-of-motorcycle",
+    index: "02",
+    discipline: "Art of Motorcycle",
+    tagline: "Fine art meeting motorcycle culture and live events.",
+    description:
+      "Selected photographs from the Art of Motorcycle event and exhibition.",
+    works: galleryWorks(
+      [
+        "253465D3-AA21-4EC0-880B-CD2125732B2C 2.JPG",
+        "IMG_9198.jpg",
+        "IMG_9280.jpg",
+      ],
+      {
+        folder: ["fineart", "EVENTS", "ART OF MOTOCYCLE (AOM) - EVENT"],
+        title: "Art of Motorcycle",
+        year: "Event",
+        description: "Exhibition and live-event documentation.",
+      },
+    ),
+    reverse: true,
+  },
+  {
+    id: "exhibitions",
+    index: "03",
+    discipline: "Exhibitions",
+    tagline: "Paintings encountered in public space.",
+    description:
+      "Selected exhibition views, installations, and moments with the audience.",
+    works: galleryWorks(
+      ["IMG_2912.JPG", "IMG_2913.JPG", "IMG_4358.JPG", "IMG_4378.JPG"],
+      {
+        folder: ["fineart", "EVENTS", "Exhibitions"],
+        title: "Exhibition",
+        year: "Fine Art",
+        description: "Exhibition documentation and installed artwork.",
+      },
+    ),
+  },
+  {
+    id: "helmet-competition-gallery",
+    index: "04",
+    discipline: "Helmet Competition",
+    tagline: "Painting carried onto a sculptural, wearable surface.",
+    description:
+      "Competition documentation for Oleksandr's custom-painted helmet.",
+    works: galleryWorks(
+      ["ea3cf8d3-7d31-4bb9-9337-dccb17b81b31 3.JPG"],
+      {
+        folder: ["fineart", "EVENTS", "Helmet Copetition"],
+        title: "Helmet Competition",
+        year: "Second Place",
+        description: "Award-winning painted helmet competition work.",
+      },
+    ),
+    reverse: true,
+  },
+  {
+    id: "world-stage-design-gallery",
+    index: "05",
+    discipline: "World Stage Design",
+    tagline: "Painterly storytelling created for the stage.",
+    description:
+      "Canvases and event documentation connected to World Stage Design and La Perle.",
+    works: galleryWorks(
+      [
+        "01e37ca4-1c05-4293-83b7-487ec7520e66.JPG",
+        "06D9AD8B-2C1E-49F5-979B-DB0C871CE255.JPG",
+        "44D81F9A-5C3A-426B-9A09-282A64D488C1.JPG",
+        "91058fbf-2ede-4bff-ae6a-ec7620d59897.JPG",
+      ],
+      {
+        folder: ["fineart", "EVENTS", "World Stage Design"],
+        title: "World Stage Design",
+        year: "Stage Art",
+        description: "Stage-design artwork and event documentation.",
+      },
+    ),
+  },
+];
+
+export const eventsGallery = eventGroups;
+
+export const scenicGallery: Discipline = {
+  id: "scenic-gallery",
+  index: "01",
+  discipline: "Scenic Art & Faux Finishes",
+  tagline: "Surfaces transformed through texture, color, aging, and illusion.",
+  description:
+    "A process-rich archive of scenic painting and faux-finishing work for theatrical and spatial environments.",
+  works: galleryWorks(scenicFiles, {
+    folder: [
+      "Props & Scenic -20260619T114546Z-3-001",
+      "Props & Scenic",
+      "Scenic Art & Faux finishes",
+    ],
+    title: "Scenic Finish",
+    year: "Props & Scenic",
+    description:
+      "Scenic painting and faux-finish detail from the production archive.",
+  }),
+};
+
+export const sculpturesGallery: Discipline = {
+  id: "sculptures-gallery",
+  index: "01",
+  discipline: "Sculptures & Object Work",
+  tagline: "Dimensional forms shaped, surfaced, and painted by hand.",
+  description:
+    "Selected sculptural and painted-object work. Additional archive material is currently stored as HEIC and video.",
+  works: galleryWorks(
+    [
+      "IMG_3546.png",
+      "SECONDPLACEHELMETCOMPETITION1.png",
+      "SECONDPLACEHELMETCOMPETITION2.png",
+      "SECONDPLACEHELMETCOMPETITION3.png",
+    ],
+    {
+      folder: [],
+      title: "Sculptural Work",
+      year: "Props & Scenic",
+      description:
+        "Hand-built and painted dimensional work from the props archive.",
+    },
+  ),
+};

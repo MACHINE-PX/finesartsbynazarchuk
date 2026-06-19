@@ -79,10 +79,20 @@ export default function Home() {
             }}
           >
             EXPLORE MORE
-            <span className="relative h-4 w-8 transition-transform duration-300 group-hover:translate-y-1">
-              <span className="absolute left-1 top-1 h-px w-5 origin-right rotate-45 bg-foreground/60 transition-colors duration-300 group-hover:bg-accent" />
-              <span className="absolute right-1 top-1 h-px w-5 origin-left -rotate-45 bg-foreground/60 transition-colors duration-300 group-hover:bg-accent" />
-            </span>
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 12"
+              className="h-3 w-6 transition-transform duration-300 group-hover:translate-y-1"
+              fill="none"
+            >
+              <path
+                d="M2 2l10 8L22 2"
+                className="stroke-foreground/60 transition-colors duration-300 group-hover:stroke-accent"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </a>
         </div>
       </section>

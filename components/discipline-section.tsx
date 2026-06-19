@@ -53,6 +53,8 @@ function WorkCard({
         <img
           src={work.image}
           alt={work.alt}
+          loading="lazy"
+          decoding="async"
           className="h-full w-full object-cover transition-transform duration-700"
           style={{ transform: hovered ? "scale(1.06)" : "scale(1.01)" }}
         />
@@ -123,7 +125,12 @@ export function DisciplineSection({
   reverse,
 }: Discipline) {
   const { ref, inView } = useInView();
-  const columns = works.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2";
+  const columns =
+    works.length === 1
+      ? "md:grid-cols-1"
+      : works.length === 2
+        ? "md:grid-cols-2"
+        : "md:grid-cols-2 lg:grid-cols-3";
 
   return (
     <section id={id} className="mx-auto max-w-7xl px-6 py-32 md:px-8" ref={ref}>
@@ -199,9 +206,9 @@ export function DisciplineSection({
           <WorkCard
             key={work.title}
             work={work}
-            delay={index * 120}
+            delay={Math.min(index, 5) * 90}
             inView={inView}
-            tall={index === 0 && works.length === 3}
+            tall={works.length === 3 && index === 0}
           />
         ))}
       </div>

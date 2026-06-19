@@ -1,9 +1,15 @@
 import { CategoryPage } from "@/components/category-page";
-import { disciplines } from "@/lib/portfolio-data";
+import {
+  scenicGallery,
+  sculpturesGallery,
+} from "@/lib/portfolio-data";
 
 export default function PropsPage() {
-  const props = disciplines.filter((discipline) =>
-    ["helmet", "murals", "events"].includes(discipline.id),
+  const props = [scenicGallery, sculpturesGallery].map(
+    (discipline, index) => ({
+      ...discipline,
+      index: String(index + 1).padStart(2, "0"),
+    }),
   );
 
   return (
