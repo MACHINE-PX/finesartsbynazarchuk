@@ -49,7 +49,7 @@ export const disciplines: Discipline[] = [
         year: "Ukraine / UAE",
         description:
           "Fine artist, impressionist painter, muralist, and educator working across canvas, murals, live painting, and plein air practice.",
-        image: "/images/who%20i%20am.png",
+        image: "/images/who-i-am-portrait-web.jpg",
         alt: "Oleksandr Nazarchuk fine artist portrait",
       },
     ],
@@ -522,7 +522,7 @@ export const sculpturesGallery: Discipline = {
     "Selected sculptural and painted-object work. Additional archive material is currently stored as HEIC and video.",
   works: galleryWorks(
     [
-      "IMG_3546.png",
+      "img-3546-web.jpg",
       "SECONDPLACEHELMETCOMPETITION1.png",
       "SECONDPLACEHELMETCOMPETITION2.png",
       "SECONDPLACEHELMETCOMPETITION3.png",

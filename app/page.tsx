@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Contact } from "@/components/contact";
 import { SiteHeader } from "@/components/site-header";
 import { siteConfig } from "@/lib/portfolio-data";
@@ -100,7 +101,7 @@ export default function Home() {
       <section id="explore" className="mx-auto grid max-w-[1600px] gap-px bg-foreground/10 md:grid-cols-2">
         <HomeTile
           href="/fine-art"
-          image="/images/Who%20i%20am2.png"
+          image="/images/who-i-am-home-web.jpg"
           label="Explore"
           title="Fine Art"
           align="left"
@@ -115,7 +116,7 @@ export default function Home() {
         />
         <HomeTile
           href="/props"
-          image="/images/IMG_3546.png"
+          image="/images/img-3546-web.jpg"
           label="View"
           title="Props & Scenic"
           align="center"
@@ -153,9 +154,12 @@ function HomeTile({
 }) {
   return (
     <div className="group relative flex min-h-[62svh] items-end overflow-hidden bg-secondary sm:min-h-[58vh] lg:min-h-[68vh]">
-      <img
+      <Image
         src={image}
         alt=""
+        fill
+        sizes="(max-width: 767px) 100vw, 50vw"
+        quality={75}
         className="absolute inset-0 h-full w-full object-cover transition-all duration-700 group-hover:scale-[1.025] group-hover:opacity-55 group-focus-within:scale-[1.025] group-focus-within:opacity-55"
         style={{ objectPosition: imagePosition }}
       />

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import type { Discipline, Work } from "@/lib/portfolio-data";
 
@@ -33,38 +34,33 @@ function WorkCard({
   inView: boolean;
   tall: boolean;
 }) {
-  const [hovered, setHovered] = useState(false);
-
   return (
     <article
-      className="relative cursor-pointer overflow-hidden"
+      className="group relative cursor-pointer overflow-hidden"
       style={{
         transition: `opacity 0.7s ease ${delay}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
         opacity: inView ? 1 : 0,
         transform: inView ? "translateY(0)" : "translateY(36px)",
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       <div
         className="w-full overflow-hidden bg-secondary"
         style={{ aspectRatio: tall ? "2/3" : "4/5" }}
       >
-        <img
+        <Image
           src={work.image}
           alt={work.alt}
-          loading="lazy"
-          decoding="async"
-          className="h-full w-full object-cover transition-transform duration-700"
-          style={{ transform: hovered ? "scale(1.06)" : "scale(1.01)" }}
+          fill
+          sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+          quality={75}
+          className="h-full w-full scale-[1.01] object-cover transition-transform duration-700 group-hover:scale-[1.06]"
         />
 
         <div
-          className="absolute inset-0 transition-opacity duration-500"
+          className="absolute inset-0 opacity-65 transition-opacity duration-500 group-hover:opacity-100"
           style={{
             background:
               "linear-gradient(to top, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.15) 55%, transparent 100%)",
-            opacity: hovered ? 1 : 0.65,
           }}
         />
       </div>
@@ -96,16 +92,12 @@ function WorkCard({
         </div>
 
         <p
+          className="mt-0 max-h-0 overflow-hidden opacity-0 transition-all duration-500 group-hover:mt-2.5 group-hover:max-h-[72px] group-hover:opacity-100"
           style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: "0.78rem",
             lineHeight: 1.7,
             color: "rgba(240,236,228,0.65)",
-            maxHeight: hovered ? "72px" : "0",
-            overflow: "hidden",
-            opacity: hovered ? 1 : 0,
-            transition: "max-height 0.45s ease, opacity 0.4s ease",
-            marginTop: hovered ? "0.6rem" : 0,
           }}
         >
           {work.description}
@@ -133,7 +125,11 @@ export function DisciplineSection({
         : "md:grid-cols-2 lg:grid-cols-3";
 
   return (
-    <section id={id} className="mx-auto max-w-7xl px-6 py-32 md:px-8" ref={ref}>
+    <section
+      id={id}
+      className="portfolio-section mx-auto max-w-7xl px-6 py-32 md:px-8"
+      ref={ref}
+    >
       <div
         className="mb-16 border-b border-border pb-6 transition-all duration-700"
         style={{
