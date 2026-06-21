@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Contact } from "@/components/contact";
 import { SiteHeader } from "@/components/site-header";
 import { siteConfig } from "@/lib/portfolio-data";
 
@@ -129,8 +128,6 @@ export default function Home() {
           ]}
         />
       </section>
-
-      <Contact />
     </main>
   );
 }

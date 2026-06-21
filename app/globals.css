@@ -113,3 +113,11 @@
     transform: translateX(0);
   }
 }
+
+.event-display {
+  font-family: "Cormorant Infant", serif;
+  font-size: clamp(3.5rem, 8vw, 7.5rem);
+  font-weight: 300;
+  line-height: 0.82;
+  letter-spacing: -0.035em;
+}
