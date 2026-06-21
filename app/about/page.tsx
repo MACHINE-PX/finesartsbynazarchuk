@@ -25,7 +25,7 @@ export default function AboutPage() {
               letterSpacing: "0.32em",
             }}
           >
-            About me
+            About
           </p>
           <h1
             style={{

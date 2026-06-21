@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/portfolio-data";
 const links = [
   { label: "Fine Art", href: "/fine-art" },
   { label: "Props", href: "/props" },
-  { label: "About me", href: "/about" },
+  { label: "About", href: "/about" },
 ];
 
 export function SiteHeader({ overlay = false }: { overlay?: boolean }) {

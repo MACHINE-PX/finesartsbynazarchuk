@@ -30,8 +30,11 @@ export const siteConfig = {
     "My work centers on capturing fleeting moments through light, color, and atmosphere.",
 };
 
-export const aboutText =
-  "With a solid background as a certified muralist educator from Ukraine, I bring 7 years of specialized expertise in theatrical prop making and scenic design. My work combines traditional sculpting, molding, and mosaic techniques with advanced surface decorating, such as faux finishes, historical aging, and patinas. I view every prop and set element as an extension of fine art, built to withstand the technical demands of the stage while maintaining the optical depth, luminosity, and visual storytelling of a master painting.";
+export const aboutText = `With a solid background as a certified muralist educator in Ukraine, the artist has seven years of specialized experience in the creation of theatrical props, stage design, and the development of visual elements for the stage. His work stems from a deep connection with the fine arts and from the belief that each scenic piece should not be seen merely as a functional object, but as a work capable of conveying emotion, character, and history.
+
+Through traditional techniques of sculpture, molding, and mosaic, combined with advanced processes in surface decoration, decorative finishes, historical aging, and patinas, the artist transforms materials into pieces with their own identity. His approach seeks to create visual elements that not only accompany a stage production, but also strengthen its atmosphere, narrative, and the audience's experience.
+
+For him, each element of props and scenography represents an extension of his artistic vision: a union of technique, sensitivity, and visual expression. His creations are designed to withstand the technical demands of the stage while maintaining optical depth, luminosity, and an aesthetic presence capable of turning every detail into an essential part of a masterpiece.`;
 
 export const aboutSubtitle =
   "Scenic Artist, Prop Craftsman & Fine Arts Educator.";
