@@ -32,7 +32,7 @@ export default function Home() {
           style={{ background: "linear-gradient(to top, #080808, transparent)" }}
         />
 
-        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-5xl flex-col items-center justify-end px-4 pb-[7vh] pt-28 text-center sm:px-6 sm:pb-[8vh]">
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-5xl flex-col items-center justify-end px-4 pb-[14vh] pt-28 text-center sm:px-6 sm:pb-[8vh]">
           <h1
             className="uppercase"
             style={{

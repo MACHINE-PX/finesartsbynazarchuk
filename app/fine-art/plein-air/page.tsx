@@ -1,13 +1,19 @@
-import { CategoryPage } from "@/components/category-page";
+import type { Metadata } from "next";
+import { PleinAirWheel } from "@/components/plein-air-wheel";
+import { SiteHeader } from "@/components/site-header";
 import { pleinAirGallery } from "@/lib/portfolio-data";
+
+export const metadata: Metadata = {
+  title: "Plein Air | Oleksandr Nazarchuk",
+  description:
+    "Outdoor paintings made directly in changing natural light by Oleksandr Nazarchuk.",
+};
 
 export default function PleinAirPage() {
   return (
-    <CategoryPage
-      eyebrow="Fine Art"
-      title="Plein Air"
-      intro="Outdoor paintings made directly in changing light, focused on color, air, water, landscape, and the immediacy of the moment."
-      disciplines={[pleinAirGallery]}
-    />
+    <main className="bg-[#d9d0bd]">
+      <SiteHeader />
+      <PleinAirWheel works={pleinAirGallery.works} />
+    </main>
   );
 }
