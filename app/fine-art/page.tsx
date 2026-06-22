@@ -1,14 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { DisciplineSection } from "@/components/discipline-section";
 import { SiteHeader } from "@/components/site-header";
-import {
-  pleinAirGallery,
-} from "@/lib/portfolio-data";
 
 export default function FineArtPage() {
-  const pleinAir = { ...pleinAirGallery, index: "02" };
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
       <SiteHeader />
@@ -152,7 +147,110 @@ export default function FineArtPage() {
         </div>
       </section>
 
-      <DisciplineSection {...pleinAir} />
+      <section
+        id="plein-air"
+        className="portfolio-section relative my-20 overflow-hidden border-y border-black/15 bg-[#d9d0bd] text-[#17140f]"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.13]"
+          style={{
+            backgroundImage:
+              "radial-gradient(rgba(23,20,15,.65) .55px, transparent .55px)",
+            backgroundSize: "7px 7px",
+          }}
+        />
+
+        <div className="relative mx-auto grid min-h-[92svh] max-w-[1500px] gap-12 px-6 py-16 md:grid-cols-[0.68fr_1.32fr] md:px-8 md:py-20">
+          <div className="flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between border-b border-black/15 pb-5 font-mono text-[9px] uppercase tracking-[0.28em]">
+                <span className="text-[#806522]">02 · Plein Air</span>
+                <span className="text-black/35">Painted outside</span>
+              </div>
+              <h2
+                className="mt-12 uppercase"
+                style={{
+                  fontFamily: "'Cormorant Infant', serif",
+                  fontSize: "clamp(4.5rem, 10vw, 8.5rem)",
+                  fontWeight: 300,
+                  lineHeight: 0.67,
+                  letterSpacing: "-0.045em",
+                }}
+              >
+                Plein
+                <br />
+                Air
+              </h2>
+              <p className="mt-8 max-w-md border-l border-[#806522]/45 pl-5 text-sm leading-7 text-black/48">
+                Light changes, weather moves, and the painting has to answer
+                in the moment. Outdoor studies made directly before the
+                landscape.
+              </p>
+              <Link
+                href="/fine-art/plein-air"
+                className="group mt-9 inline-flex items-center gap-3 rounded-full border border-black/20 px-6 py-4 font-mono text-[9px] uppercase tracking-[0.22em] transition-all hover:border-[#806522] hover:bg-[#806522] hover:text-[#f3ecdc]"
+              >
+                Open the plein air wheel
+                <ArrowUpRight
+                  size={13}
+                  className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </Link>
+            </div>
+
+            <div className="mt-14 hidden md:block">
+              <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-black/32">
+                30 outdoor studies · changing light
+              </p>
+              <div className="mt-4 h-px bg-black/15">
+                <div className="h-px w-2/3 bg-[#806522]" />
+              </div>
+            </div>
+          </div>
+
+          <div className="relative min-h-[570px] overflow-hidden">
+            <div className="absolute left-1/2 top-1/2 h-[72%] w-[76%] -translate-x-1/2 -translate-y-1/2 border border-[#806522]/30" />
+            <div className="absolute left-[4%] top-[24%] aspect-square w-[42%] -rotate-6 bg-[#eee7d8] p-3 opacity-45 shadow-2xl">
+              <div className="relative h-full overflow-hidden">
+                <Image
+                  src="/images/PLEINAIR/img-4418-web.jpg"
+                  alt=""
+                  fill
+                  sizes="32vw"
+                  className="object-contain"
+                />
+              </div>
+            </div>
+            <div className="absolute right-[4%] top-[26%] aspect-square w-[42%] rotate-6 bg-[#eee7d8] p-3 opacity-45 shadow-2xl">
+              <div className="relative h-full overflow-hidden">
+                <Image
+                  src="/images/PLEINAIR/img-4424-web.jpg"
+                  alt=""
+                  fill
+                  sizes="32vw"
+                  className="object-contain"
+                />
+              </div>
+            </div>
+            <div className="absolute left-1/2 top-1/2 aspect-square w-[64%] -translate-x-1/2 -translate-y-1/2 bg-[#eee7d8] p-3 shadow-[0_35px_90px_rgba(45,35,20,0.28)] sm:p-5">
+              <div className="relative h-full overflow-hidden bg-[#bdb39f]">
+                <Image
+                  src="/images/PLEINAIR/img-4206-web.jpg"
+                  alt="Plein air landscape painting by Oleksandr Nazarchuk"
+                  fill
+                  sizes="(max-width: 767px) 70vw, 48vw"
+                  className="object-contain"
+                />
+              </div>
+            </div>
+            <div className="absolute bottom-7 left-1/2 flex -translate-x-1/2 items-center gap-4 font-mono text-[8px] uppercase tracking-[0.2em] text-black/38">
+              <span>Outdoor study</span>
+              <span className="h-px w-12 bg-[#806522]" />
+              <span>01 / 30</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section
         id="murals"

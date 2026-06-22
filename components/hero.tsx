@@ -23,13 +23,20 @@ export function Hero() {
       <video
         className="absolute inset-0 h-full w-full object-cover"
         style={{ filter: "brightness(1.22) saturate(1.08)" }}
-        src="/sash-short.mp4"
+        poster="/sash-short-poster.jpg"
         autoPlay
         muted
         loop
         playsInline
         preload="metadata"
-      />
+      >
+        <source
+          src="/sash-short-mobile.mp4"
+          type="video/mp4"
+          media="(max-width: 640px)"
+        />
+        <source src="/sash-short-web.mp4" type="video/mp4" />
+      </video>
       <div className="absolute inset-0 bg-background/35" />
       <div
         className="pointer-events-none absolute inset-0"

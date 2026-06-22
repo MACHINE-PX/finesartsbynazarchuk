@@ -94,6 +94,11 @@
     content-visibility: auto;
     contain-intrinsic-size: auto 1100px;
   }
+
+  main > section:not(:first-child) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
 }
 
 @keyframes marquee-forward {
@@ -120,4 +125,15 @@
   font-weight: 300;
   line-height: 0.82;
   letter-spacing: -0.035em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
