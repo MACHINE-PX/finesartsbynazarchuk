@@ -47,7 +47,7 @@ export default function EventsPage() {
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.9)_0%,rgba(8,8,8,0.18)_62%,rgba(8,8,8,0.72)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-[#080808] to-transparent" />
 
-        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1600px] flex-col justify-between px-5 pb-10 pt-28 sm:px-8 lg:px-12">
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1500px] flex-col justify-between px-5 pb-10 pt-28 sm:px-8 lg:px-12">
           <div className="flex items-center justify-between border-b border-white/25 pb-4 font-mono text-[8px] uppercase tracking-[0.28em] text-white/60">
             <span>Fine Art / Public Programme</span>
             <span className="text-[#ff5538]">Archive 01—05</span>

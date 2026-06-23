@@ -1,51 +1,44 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 
+const paintingsImages = [
+  "/images/fineart/Paintings/FullSizeRender%202.jpg",
+  "/images/fineart/Paintings/img-1213-web.jpg",
+  "/images/fineart/Paintings/img-2858-web.jpg",
+];
+
+const muralsImages = [
+  "/images/fineart/Murals/img-8115-web.jpg",
+  "/images/fineart/Murals/img-8630-web.jpg",
+  "/images/fineart/Murals/photo-output-web.jpg",
+];
+
+const eventsImages = [
+  "/images/fineart/EVENTS/ART%20OF%20MOTOCYCLE%20(AOM)%20-%20EVENT/img-9198-web.jpg",
+  "/images/fineart/EVENTS/Helmet%20Copetition/img-5086-web.jpg",
+  "/images/fineart/EVENTS/World%20Stage%20Design/img-3260-web.jpg",
+];
+
 export default function FineArtPage() {
   return (
-    <main className="min-h-screen overflow-hidden bg-background text-foreground">
+    <main className="overflow-hidden bg-background text-foreground">
       <SiteHeader />
 
-      <section className="mx-auto grid max-w-7xl gap-12 px-6 pb-20 pt-24 md:grid-cols-[0.55fr_1fr] md:px-8 md:pt-32">
-        <div className="flex flex-col">
-          <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-accent">
-            Fine Art
-          </p>
-          <div className="mt-10 grid max-w-sm grid-cols-[1fr_0.72fr] items-start gap-3">
-            <div className="relative aspect-square overflow-hidden bg-secondary">
-              <Image
-                src="/images/fineart/Paintings/FullSizeRender%202.jpg"
-                alt="Expressive portrait painting by Oleksandr Nazarchuk"
-                fill
-                sizes="(max-width: 767px) 55vw, 220px"
-                className="object-cover"
-              />
-            </div>
-            <div className="pb-1">
-              <div className="relative aspect-[3/4] overflow-hidden bg-secondary">
-                <Image
-                  src="/images/fineart/Paintings/img-1216-web.jpg"
-                  alt="Atmospheric architectural painting"
-                  fill
-                  sizes="(max-width: 767px) 35vw, 150px"
-                  className="object-cover"
-                />
-              </div>
-              <p className="mt-3 font-mono text-[7px] uppercase leading-5 tracking-[0.2em] text-foreground/35">
-                Selected works
-                <br />
-                01—04
-              </p>
-            </div>
-          </div>
-        </div>
+      <section className="mx-auto grid min-h-[88svh] max-w-[1500px] gap-14 px-5 py-24 sm:px-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
         <div>
-          <h1 className="max-w-4xl font-serif text-[clamp(3rem,8vw,7rem)] font-light leading-[0.9]">
-            Paintings, murals, plein air, and events
+          <p className="font-mono text-[9px] uppercase tracking-[0.34em] text-accent">
+            Fine Art · Paintings · Murals · Plein Air · Events
+          </p>
+          <h1 className="mt-7 font-serif text-[clamp(4.6rem,11vw,9.5rem)] font-light leading-[0.69] tracking-[-0.05em]">
+            Paintings,
+            <br />
+            murals,
+            <br />
+            plein air.
           </h1>
-          <p className="mt-8 max-w-2xl border-l border-accent/45 pl-6 text-[0.95rem] leading-[1.8] text-foreground/60">
+          <p className="mt-9 max-w-lg border-l border-accent/45 pl-6 text-[0.95rem] leading-[1.8] text-foreground/60">
             A curated view of Oleksandr&apos;s fine art practice, from direct
             observation and studio painting to architectural murals,
             exhibitions, and live events.
@@ -57,318 +50,160 @@ export default function FineArtPage() {
             <span>Events</span>
           </div>
         </div>
-      </section>
 
-      <section
-        id="paintings"
-        className="portfolio-section relative my-20 min-h-[90svh] overflow-hidden border-y border-foreground/10"
-      >
-        <Image
-          src="/images/fineart/Paintings/IMG_4210.jpg"
-          alt="Atmospheric landscape painting by Oleksandr Nazarchuk"
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/38" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.94)_0%,rgba(8,8,8,0.58)_43%,rgba(8,8,8,0.08)_78%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background/90 to-transparent" />
-
-        <div className="relative z-10 mx-auto flex min-h-[90svh] max-w-7xl flex-col justify-between px-6 py-12 md:px-8 md:py-16">
-          <div className="flex items-center justify-between border-b border-white/20 pb-5 font-mono text-[9px] uppercase tracking-[0.28em]">
-            <span className="text-accent">01 · Paintings</span>
-            <span className="hidden text-white/45 sm:block">
-              Light · Memory · Gesture
-            </span>
-          </div>
-
-          <div className="max-w-3xl py-24">
-            <p className="font-mono text-[9px] uppercase tracking-[0.34em] text-white/55">
-              Observation becomes emotion
-            </p>
-            <h2 className="mt-6 font-serif text-[clamp(4.5rem,13vw,10rem)] font-light leading-[0.72] tracking-[-0.035em]">
-              Color holds the memory of light.
-            </h2>
-            <p className="mt-9 max-w-xl text-[0.9rem] leading-8 text-white/65">
-              Portraits, atmospheric landscapes, city studies, and imagined
-              worlds connected by luminous color and expressive gesture.
-            </p>
-            <Link
-              href="/fine-art/paintings"
-              className="group mt-9 inline-flex items-center gap-3 rounded-full border border-white/30 px-6 py-4 font-mono text-[9px] uppercase tracking-[0.22em] text-white transition-all hover:border-accent hover:bg-accent hover:text-background"
-            >
-              Enter the painting salon
-              <ArrowUpRight
-                size={13}
-                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+        <div className="relative min-h-[620px]">
+          <div className="absolute left-[3%] top-[4%] aspect-[4/3] w-[67%] -rotate-2 bg-secondary p-2 shadow-2xl">
+            <div className="relative h-full overflow-hidden">
+              <Image
+                src="/images/fineart/Paintings/FullSizeRender%202.jpg"
+                alt="Atmospheric painting by Oleksandr Nazarchuk"
+                fill
+                sizes="48vw"
+                className="object-cover"
               />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-3 items-end gap-3 border-t border-white/20 pt-5 sm:max-w-lg">
-            {[
-              "/images/fineart/Paintings/FullSizeRender%202.jpg",
-              "/images/fineart/Paintings/img-1213-web.jpg",
-              "/images/fineart/Paintings/img-2858-web.jpg",
-            ].map((image, index) => (
-              <div
-                key={image}
-                className={`relative overflow-hidden bg-white/10 ${
-                  index === 1 ? "aspect-[3/4]" : "aspect-square"
-                }`}
-              >
-                <Image
-                  src={image}
-                  alt=""
-                  fill
-                  sizes="180px"
-                  className="object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="plein-air"
-        className="portfolio-section relative my-20 overflow-hidden border-y border-black/15 bg-[#d9d0bd] text-[#17140f]"
-      >
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.13]"
-          style={{
-            backgroundImage:
-              "radial-gradient(rgba(23,20,15,.65) .55px, transparent .55px)",
-            backgroundSize: "7px 7px",
-          }}
-        />
-
-        <div className="relative mx-auto grid min-h-[92svh] max-w-[1500px] gap-12 px-6 py-16 md:grid-cols-[0.68fr_1.32fr] md:px-8 md:py-20">
-          <div className="flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between border-b border-black/15 pb-5 font-mono text-[9px] uppercase tracking-[0.28em]">
-                <span className="text-[#806522]">02 · Plein Air</span>
-                <span className="text-black/35">Painted outside</span>
-              </div>
-              <h2 className="mt-12 uppercase font-serif text-[clamp(4.5rem,10vw,8.5rem)] font-light leading-[0.67] tracking-[-0.045em]">
-                Plein Air
-              </h2>
-              <p className="mt-8 max-w-md border-l border-[#806522]/45 pl-5 text-[0.9rem] leading-7 text-black/48">
-                Light changes, weather moves, and the painting has to answer
-                in the moment. Outdoor studies made directly before the
-                landscape.
-              </p>
-              <Link
-                href="/fine-art/plein-air"
-                className="group mt-9 inline-flex items-center gap-3 rounded-full border border-black/20 px-6 py-4 font-mono text-[9px] uppercase tracking-[0.22em] transition-all hover:border-[#806522] hover:bg-[#806522] hover:text-[#f3ecdc]"
-              >
-                Open the plein air wheel
-                <ArrowUpRight
-                  size={13}
-                  className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                />
-              </Link>
-            </div>
-
-            <div className="mt-14 hidden md:block">
-              <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-black/32">
-                30 outdoor studies · changing light
-              </p>
-              <div className="mt-4 h-px bg-black/15">
-                <div className="h-px w-2/3 bg-[#806522]" />
-              </div>
             </div>
           </div>
-
-          <div className="relative min-h-[570px] overflow-hidden">
-            <div className="absolute left-1/2 top-1/2 h-[72%] w-[76%] -translate-x-1/2 -translate-y-1/2 border border-[#806522]/30" />
-            <div className="absolute left-[4%] top-[24%] aspect-square w-[42%] -rotate-6 bg-[#eee7d8] p-3 opacity-45 shadow-2xl">
-              <div className="relative h-full overflow-hidden">
-                <Image
-                  src="/images/PLEINAIR/img-4418-web.jpg"
-                  alt=""
-                  fill
-                  sizes="32vw"
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="absolute right-[4%] top-[26%] aspect-square w-[42%] rotate-6 bg-[#eee7d8] p-3 opacity-45 shadow-2xl">
-              <div className="relative h-full overflow-hidden">
-                <Image
-                  src="/images/PLEINAIR/img-4424-web.jpg"
-                  alt=""
-                  fill
-                  sizes="32vw"
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="absolute left-1/2 top-1/2 aspect-square w-[64%] -translate-x-1/2 -translate-y-1/2 bg-[#eee7d8] p-3 shadow-[0_35px_90px_rgba(45,35,20,0.28)] sm:p-5">
-              <div className="relative h-full overflow-hidden bg-[#bdb39f]">
-                <Image
-                  src="/images/PLEINAIR/img-4206-web.jpg"
-                  alt="Plein air landscape painting by Oleksandr Nazarchuk"
-                  fill
-                  sizes="(max-width: 767px) 70vw, 48vw"
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="absolute bottom-7 left-1/2 flex -translate-x-1/2 items-center gap-4 font-mono text-[8px] uppercase tracking-[0.2em] text-black/38">
-              <span>Outdoor study</span>
-              <span className="h-px w-12 bg-[#806522]" />
-              <span>01 / 30</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="murals"
-        className="portfolio-section relative my-20 min-h-[90svh] overflow-hidden border-y border-foreground/10"
-      >
-        <Image
-          src="/images/fineart/Murals/img-3843-web.jpg"
-          alt="Narrative fantasy mural by Oleksandr Nazarchuk"
-          fill
-          sizes="100vw"
-          className="object-cover"
-          style={{ objectPosition: "center 47%" }}
-        />
-        <div className="absolute inset-0 bg-black/42" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.92)_0%,rgba(8,8,8,0.55)_42%,rgba(8,8,8,0.08)_78%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-background/90 to-transparent" />
-
-        <div className="relative z-10 mx-auto flex min-h-[90svh] max-w-7xl flex-col justify-between px-6 py-12 md:px-8 md:py-16">
-          <div className="flex items-center justify-between border-b border-white/20 pb-5 font-mono text-[9px] uppercase tracking-[0.28em]">
-            <span className="text-accent">03 · Murals</span>
-            <span className="hidden text-white/45 sm:block">
-              Painted environments
-            </span>
-          </div>
-
-          <div className="max-w-3xl py-24">
-            <p className="font-mono text-[9px] uppercase tracking-[0.34em] text-white/55">
-              A wall is never just a wall
-            </p>
-            <h2 className="mt-6 font-serif text-[clamp(4.5rem,13vw,10rem)] font-light leading-[0.72] tracking-[-0.035em]">
-              Stories at architectural scale.
-            </h2>
-            <p className="mt-9 max-w-xl text-[0.9rem] leading-8 text-white/65">
-              Immersive scenes, expressive figures, and ornamental surfaces
-              designed as part of the spaces they inhabit.
-            </p>
-            <Link
-              href="/fine-art/murals"
-              className="group mt-9 inline-flex items-center gap-3 rounded-full border border-white/30 px-6 py-4 font-mono text-[9px] uppercase tracking-[0.22em] text-white transition-all hover:border-accent hover:bg-accent hover:text-background"
-            >
-              Enter the mural archive
-              <ArrowUpRight
-                size={13}
-                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+          <div className="absolute bottom-[3%] right-[3%] aspect-[3/4] w-[43%] rotate-3 bg-secondary p-2 shadow-2xl">
+            <div className="relative h-full overflow-hidden">
+              <Image
+                src="/images/fineart/Paintings/img-1216-web.jpg"
+                alt="Expressive portrait painting by Oleksandr Nazarchuk"
+                fill
+                sizes="34vw"
+                className="object-cover"
               />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-3 items-end gap-3 border-t border-white/20 pt-5 sm:max-w-lg">
-            {[
-              "/images/fineart/Murals/img-8115-web.jpg",
-              "/images/fineart/Murals/img-8630-web.jpg",
-              "/images/fineart/Murals/photo-output-web.jpg",
-            ].map((image, index) => (
-              <div
-                key={image}
-                className={`relative overflow-hidden bg-white/10 ${
-                  index === 1 ? "aspect-square" : "aspect-[3/4]"
-                }`}
-              >
-                <Image
-                  src={image}
-                  alt=""
-                  fill
-                  sizes="180px"
-                  className="object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="events"
-        className="portfolio-section relative my-20 min-h-[94svh] overflow-hidden border-y border-[#ff5538]/30"
-      >
-        <Image
-          src="/images/fineart/EVENTS/Exhibitions/img-4378-web.jpg"
-          alt="Public art event and exhibition recognition"
-          fill
-          sizes="100vw"
-          className="object-cover"
-          style={{ objectPosition: "center 38%" }}
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.94)_0%,rgba(8,8,8,0.55)_48%,rgba(8,8,8,0.12)_82%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-background/95 to-transparent" />
-
-        <div className="relative z-10 mx-auto flex min-h-[94svh] max-w-7xl flex-col justify-between px-6 py-12 md:px-8 md:py-16">
-          <div className="flex items-center justify-between border-b border-white/25 pb-5 font-mono text-[9px] uppercase tracking-[0.28em]">
-            <span className="text-[#ff5538]">04 · Events</span>
-            <span className="hidden text-white/45 sm:block">
-              Live / Archive · 01—05
-            </span>
-          </div>
-
-          <div className="max-w-4xl py-20">
-            <div className="flex items-center gap-3 font-mono text-[9px] uppercase tracking-[0.34em] text-white/55">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-[#ff5538]" />
-              The public life of art
             </div>
-            <h2 className="mt-7 font-serif text-[clamp(4.5rem,13vw,10rem)] font-light leading-[0.72] tracking-[-0.035em]">
-              Art becomes an encounter.
-            </h2>
-            <p className="mt-9 max-w-xl text-[0.9rem] leading-8 text-white/65">
-              Competitions, live painting, exhibitions, object art, and stage
-              design—five ways the work leaves the studio and meets an
-              audience.
-            </p>
-            <Link
-              href="/fine-art/events"
-              className="group mt-9 inline-flex items-center gap-3 rounded-full border border-white/30 px-6 py-4 font-mono text-[9px] uppercase tracking-[0.22em] text-white transition-all hover:border-[#ff5538] hover:bg-[#ff5538] hover:text-black"
-            >
-              Open the live archive
-              <ArrowUpRight
-                size={13}
-                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-              />
-            </Link>
           </div>
-
-          <div className="grid grid-cols-3 items-end gap-3 border-t border-white/25 pt-5 sm:max-w-lg">
-            {[
-              "/images/fineart/EVENTS/ART%20OF%20MOTOCYCLE%20(AOM)%20-%20EVENT/img-9198-web.jpg",
-              "/images/fineart/EVENTS/Helmet%20Copetition/img-5086-web.jpg",
-              "/images/fineart/EVENTS/World%20Stage%20Design/img-3260-web.jpg",
-            ].map((image, index) => (
-              <div
-                key={image}
-                className={`relative overflow-hidden bg-white/10 ${
-                  index === 1 ? "aspect-square" : "aspect-[3/4]"
-                }`}
-              >
-                <Image
-                  src={image}
-                  alt=""
-                  fill
-                  sizes="180px"
-                  className="object-cover"
-                />
-              </div>
-            ))}
+          <div className="absolute bottom-[13%] left-[5%] font-mono text-[8px] uppercase leading-6 tracking-[0.2em] text-foreground/30">
+            Selected works
+            <br />
+            Paintings · Murals · Events
           </div>
         </div>
       </section>
+
+      <FineArtSection
+        number="01"
+        accent="accent"
+        title="Color holds the memory of light."
+        subtitle="Light · Memory · Gesture"
+        description="Portraits, atmospheric landscapes, city studies, and imagined worlds connected by luminous color and expressive gesture."
+        href="/fine-art/paintings"
+        images={paintingsImages}
+        bgImage="/images/fineart/Paintings/IMG_4210.jpg"
+      />
+
+      <FineArtSection
+        number="02"
+        accent="[#806522]"
+        title="Plein air paintings answer to changing light."
+        subtitle="Painted outside"
+        description="Light changes, weather moves, and the painting has to answer in the moment. Outdoor studies made directly before the landscape."
+        href="/fine-art/plein-air"
+        images={[]}
+        tone="paper"
+        reverse
+      />
+
+      <FineArtSection
+        number="03"
+        accent="accent"
+        title="Stories at architectural scale."
+        subtitle="Painted environments"
+        description="Immersive scenes, expressive figures, and ornamental surfaces designed as part of the spaces they inhabit."
+        href="/fine-art/murals"
+        images={muralsImages}
+        bgImage="/images/fineart/Murals/img-3843-web.jpg"
+      />
+
+      <FineArtSection
+        number="04"
+        accent="[#ff5538]"
+        title="Art becomes an encounter."
+        subtitle="Live / Archive · 01—05"
+        description="Competitions, live painting, exhibitions, object art, and stage design—five ways the work leaves the studio and meets an audience."
+        href="/fine-art/events"
+        images={eventsImages}
+        bgImage="/images/fineart/EVENTS/Exhibitions/img-4378-web.jpg"
+      />
     </main>
+  );
+}
+
+function FineArtSection({
+  number,
+  accent,
+  title,
+  subtitle,
+  description,
+  href,
+  images,
+  bgImage,
+  tone = "dark",
+  reverse = false,
+}: {
+  number: string;
+  accent: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  href: string;
+  images: string[];
+  bgImage?: string;
+  tone?: "dark" | "paper";
+  reverse?: boolean;
+}) {
+  const paper = tone === "paper";
+  return (
+    <section className={`relative overflow-hidden border-y ${paper ? "bg-[#d9d0bd] text-[#17140f]" : "bg-background text-foreground"}`}>
+      {bgImage ? (
+        <>
+          <Image
+            src={bgImage}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className={`absolute inset-0 ${paper ? "bg-black/12" : "bg-black/42"}`} />
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background/95 to-transparent" />
+        </>
+      ) : null}
+      <div className="relative z-10 mx-auto grid max-w-[1500px] gap-12 px-6 py-24 sm:px-8 lg:grid-cols-[0.68fr_1.32fr] lg:items-center">
+        <div className={reverse ? "lg:order-2" : ""}>
+          <div className="flex items-center gap-4 font-mono text-[9px] uppercase tracking-[0.28em]">
+            <span className={paper ? "text-[#806522]" : "text-accent"}>{number}</span>
+            <span className={paper ? "text-black/35" : "text-white/45"}>{subtitle}</span>
+          </div>
+          <h2 className="mt-6 font-serif text-[clamp(4.5rem,13vw,10rem)] font-light leading-[0.72] tracking-[-0.035em]">
+            {title}
+          </h2>
+          <p className={`mt-9 max-w-xl text-[0.9rem] leading-8 ${paper ? "text-black/48" : "text-white/65"}`}>
+            {description}
+          </p>
+          <Link
+            href={href}
+            className={`group mt-9 inline-flex items-center gap-3 rounded-full border border-white/30 px-6 py-4 font-mono text-[9px] uppercase tracking-[0.22em] transition-all ${paper ? "text-black hover:border-[#806522] hover:bg-[#806522] hover:text-[#f3ecdc]" : "text-white hover:border-accent hover:bg-accent hover:text-background"}`}
+          >
+            Enter the archive
+            <ArrowUpRight
+              size={13}
+              className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            />
+          </Link>
+        </div>
+
+        <div className={`grid grid-cols-3 items-end gap-3 border-t border-white/20 pt-5 sm:max-w-lg ${reverse ? "lg:order-1" : ""}`}>
+          {images.map((image, index) => (
+            <div
+              key={image}
+              className={`relative overflow-hidden bg-white/10 ${index === 1 ? "aspect-square" : "aspect-[3/4]"}`}
+            >
+              <Image src={image} alt="" fill sizes="180px" className="object-cover" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

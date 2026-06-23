@@ -57,7 +57,7 @@ export default function PaintingsPage() {
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,9,8,0.92)_0%,rgba(10,9,8,0.42)_46%,rgba(10,9,8,0.12)_76%)]" />
         <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-[#0a0908] to-transparent" />
 
-        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1600px] flex-col justify-end px-5 pb-12 pt-28 sm:px-8 lg:px-12">
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1500px] flex-col justify-end px-5 pb-12 pt-28 sm:px-8 lg:px-12">
           <p className="font-mono text-[9px] uppercase tracking-[0.38em] text-accent">
             Fine Art · Selected Paintings
           </p>

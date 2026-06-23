@@ -74,7 +74,7 @@ export default function MuralsPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_64%_38%,transparent_0%,rgba(8,8,8,0.22)_42%,rgba(8,8,8,0.9)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-background via-background/55 to-transparent" />
 
-        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1600px] flex-col justify-end px-5 pb-12 pt-28 sm:px-8 md:pb-16 lg:px-12">
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1500px] flex-col justify-end px-5 pb-12 pt-28 sm:px-8 md:pb-16 lg:px-12">
           <p className="mb-5 font-mono text-[9px] uppercase tracking-[0.38em] text-accent">
             Fine Art · Painted Environments
           </p>
