@@ -12,32 +12,14 @@ export function SiteFooter() {
           <span className="block font-mono text-[9px] tracking-[0.32em] text-accent">
             05
           </span>
-          <h2
-            className="mt-5"
-            style={{
-              fontFamily: "'Cormorant Infant', serif",
-              fontSize: "clamp(4.5rem, 8vw, 7.5rem)",
-              fontWeight: 300,
-              lineHeight: 0.78,
-              letterSpacing: "-0.025em",
-            }}
-          >
+          <h2 className="mt-5 font-serif text-[clamp(3.8rem,10vw,7.2rem)] font-light leading-[0.72] tracking-[-0.025em]">
             Contact
           </h2>
         </header>
 
         <div className="grid gap-16 py-20 md:grid-cols-[1.08fr_0.92fr] md:items-end md:gap-24 md:py-24">
           <div>
-            <blockquote
-              className="max-w-3xl text-foreground/82"
-              style={{
-                fontFamily: "'Cormorant Infant', serif",
-                fontSize: "clamp(1.7rem, 3vw, 2.65rem)",
-                fontStyle: "italic",
-                fontWeight: 300,
-                lineHeight: 1.45,
-              }}
-            >
+            <blockquote className="max-w-3xl text-foreground/82 font-serif text-[clamp(1.4rem,2.5vw,2rem)] italic font-light leading-[1.45]">
               &ldquo;{siteConfig.quote}&rdquo;
             </blockquote>
 
@@ -63,7 +45,7 @@ export function SiteFooter() {
           </div>
 
           <div className="md:pb-1">
-            <p className="max-w-xl text-sm leading-7 text-foreground/45 md:leading-8">
+            <p className="max-w-xl text-[0.9rem] leading-7 text-foreground/45 md:leading-8">
               Available for murals, plein air painting, fine art commissions,
               live painting workshops, exhibitions, and collaborative cultural
               projects.
@@ -83,14 +65,7 @@ export function SiteFooter() {
         </div>
 
         <div className="flex flex-col justify-between gap-5 border-t border-foreground/15 pt-7 sm:flex-row sm:items-center">
-          <span
-            className="uppercase text-foreground/22"
-            style={{
-              fontFamily: "'Cormorant Infant', serif",
-              fontSize: "1.1rem",
-              letterSpacing: "0.2em",
-            }}
-          >
+          <span className="uppercase font-serif text-[1.1rem] tracking-[0.2em] text-foreground/22">
             {siteConfig.shortName}
           </span>
           <span className="font-mono text-[7px] uppercase tracking-[0.2em] text-foreground/20">

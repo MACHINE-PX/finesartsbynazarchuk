@@ -36,54 +36,20 @@ export function Contact() {
         }}
       >
         <div className="mb-14 border-b border-border pb-6 md:mb-20">
-          <span
-            className="mb-3 block text-accent"
-            style={{
-              fontFamily: "'Space Mono', monospace",
-              fontSize: "10px",
-              letterSpacing: "0.3em",
-            }}
-          >
+          <span className="mb-3 block font-mono text-[9px] uppercase tracking-[0.34em] text-accent">
             05
           </span>
-          <h2
-            style={{
-              fontFamily: "'Cormorant Infant', serif",
-              fontSize: "clamp(3rem, 7vw, 6rem)",
-              fontWeight: 300,
-              lineHeight: 0.92,
-              color: "#f0ece4",
-            }}
-          >
+          <h2 className="mt-5 font-serif text-[clamp(3.8rem,10vw,7.2rem)] font-light leading-[0.72] text-[#f0ece4]">
             Contact
           </h2>
         </div>
 
         <div className="grid items-end gap-12 md:grid-cols-2 md:gap-16">
           <div>
-            <p
-              className="mb-12"
-              style={{
-                fontFamily: "'Cormorant Infant', serif",
-                fontSize: "clamp(1.4rem, 3vw, 2.2rem)",
-                fontStyle: "italic",
-                fontWeight: 300,
-                lineHeight: 1.45,
-                color: "rgba(240,236,228,0.75)",
-              }}
-            >
-              &quot;{siteConfig.quote}&quot;
-            </p>
-
-            <div className="flex flex-col gap-5">
+            <p className="mb-12 font-serif text-[clamp(1.3rem,2.5vw,1.9rem)] italic font-light leading-[1.45] text-white/75">
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="group flex min-w-0 items-center gap-3 break-all text-muted-foreground transition-colors duration-300 hover:text-foreground"
-                style={{
-                  fontFamily: "'Space Mono', monospace",
-                  fontSize: "11px",
-                  letterSpacing: "0.12em",
-                }}
+                className="group flex min-w-0 items-center gap-3 break-all text-muted-foreground transition-colors duration-300 hover:text-foreground font-mono text-[11px] tracking-[0.12em]"
               >
                 <Mail size={13} />
                 {siteConfig.email}
@@ -97,12 +63,7 @@ export function Contact() {
                 href={siteConfig.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex min-w-0 items-center gap-3 text-muted-foreground transition-colors duration-300 hover:text-foreground"
-                style={{
-                  fontFamily: "'Space Mono', monospace",
-                  fontSize: "11px",
-                  letterSpacing: "0.12em",
-                }}
+                className="group flex min-w-0 items-center gap-3 text-muted-foreground transition-colors duration-300 hover:text-foreground font-mono text-[11px] tracking-[0.12em]"
               >
                 <Phone size={13} />
                 {siteConfig.phone}
@@ -116,12 +77,7 @@ export function Contact() {
                 href={siteConfig.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex min-w-0 items-center gap-3 break-all text-muted-foreground transition-colors duration-300 hover:text-foreground"
-                style={{
-                  fontFamily: "'Space Mono', monospace",
-                  fontSize: "11px",
-                  letterSpacing: "0.12em",
-                }}
+                className="group flex min-w-0 items-center gap-3 break-all text-muted-foreground transition-colors duration-300 hover:text-foreground font-mono text-[11px] tracking-[0.12em]"
               >
                 <Instagram size={13} />
                 {siteConfig.instagramHandle}
@@ -134,14 +90,7 @@ export function Contact() {
           </div>
 
           <div className="flex flex-col gap-6">
-            <p
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "0.85rem",
-                lineHeight: 1.85,
-                color: "rgba(240,236,228,0.4)",
-              }}
-            >
+            <p className="max-w-xl text-[0.9rem] leading-8 text-white/40">
               Available for murals, plein air painting, fine art commissions,
               live painting workshops, exhibitions, and collaborative cultural
               projects.
@@ -149,14 +98,7 @@ export function Contact() {
 
             <a
               href={`mailto:${siteConfig.email}`}
-              className="group inline-flex self-start items-center gap-3 px-6 py-4 transition-all duration-300 hover:bg-foreground hover:text-background sm:px-8"
-              style={{
-                border: "1px solid rgba(240,236,228,0.2)",
-                fontFamily: "'Space Mono', monospace",
-                fontSize: "10px",
-                letterSpacing: "0.22em",
-                color: "rgba(240,236,228,0.8)",
-              }}
+              className="group inline-flex self-start items-center gap-3 px-6 py-4 transition-all duration-300 hover:bg-foreground hover:text-background sm:px-8 border border-white/20 font-mono text-[9px] uppercase tracking-[0.22em] text-foreground/80"
             >
               GET IN TOUCH
               <ArrowUpRight
@@ -168,27 +110,10 @@ export function Contact() {
         </div>
 
         <div className="mt-20 flex flex-col items-center justify-between gap-4 border-t border-border/70 pt-6 md:mt-28 md:flex-row">
-          <span
-            className="uppercase"
-            style={{
-              fontFamily: "'Cormorant Infant', serif",
-              fontSize: "1.1rem",
-              fontWeight: 400,
-              letterSpacing: "0.18em",
-              color: "rgba(240,236,228,0.25)",
-            }}
-          >
+          <span className="uppercase font-serif text-[1.1rem] tracking-[0.18em] text-foreground/25">
             {siteConfig.shortName}
           </span>
-          <span
-            className="text-center"
-            style={{
-              fontFamily: "'Space Mono', monospace",
-              fontSize: "9px",
-              letterSpacing: "0.15em",
-              color: "rgba(240,236,228,0.18)",
-            }}
-          >
+          <span className="text-center font-mono text-[9px] tracking-[0.15em] text-foreground/18">
             PORTFOLIO - MURALS / PAINTING / EVENTS / PLEIN AIR
           </span>
         </div>
