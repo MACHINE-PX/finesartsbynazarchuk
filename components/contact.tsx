@@ -47,6 +47,10 @@ export function Contact() {
         <div className="grid items-end gap-12 md:grid-cols-2 md:gap-16">
           <div>
             <p className="mb-12 font-serif text-[clamp(1.3rem,2.5vw,1.9rem)] italic font-light leading-[1.45] text-white/75">
+              &quot;{siteConfig.quote}&quot;
+            </p>
+
+            <div className="flex flex-col gap-5">
               <a
                 href={`mailto:${siteConfig.email}`}
                 className="group flex min-w-0 items-center gap-3 break-all text-muted-foreground transition-colors duration-300 hover:text-foreground font-mono text-[11px] tracking-[0.12em]"

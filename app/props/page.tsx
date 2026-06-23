@@ -31,7 +31,7 @@ export default function PropsPage() {
             <br />
             <span className="italic">illusion.</span>
           </h1>
-          <p className="mt-9 max-w-lg border-l border-[#c39165]/45 pl-6 text-sm leading-8 text-white/45">
+          <p className="mt-9 max-w-lg border-l border-[#c39165]/45 pl-6 text-[0.9rem] leading-8 text-white/45">
             Sculpted form, scenic surface, and wearable scale meet in a
             practice built around transformation.
           </p>
@@ -91,7 +91,7 @@ export default function PropsPage() {
               <br />
               <span className="italic">Props</span>
             </h2>
-            <p className="mt-8 max-w-xl text-sm leading-8 text-white/42">
+            <p className="mt-8 max-w-xl text-[0.9rem] leading-8 text-white/42">
               A future archive for masks, costume objects, and forms designed
               around the moving body. The source folder is currently empty.
             </p>
@@ -138,7 +138,7 @@ function Discipline({
             <br />
             <span className="italic">{italic}</span>
           </h2>
-          <p className={`mt-8 max-w-lg text-sm leading-8 ${paper ? "text-black/52" : "text-white/42"}`}>{description}</p>
+          <p className={`mt-8 max-w-lg text-[0.9rem] leading-8 ${paper ? "text-black/52" : "text-white/42"}`}>{description}</p>
           <Link href={href} className={`group mt-9 inline-flex items-center gap-3 border px-7 py-4 font-mono text-[9px] uppercase tracking-[0.22em] ${paper ? "border-black/20 hover:bg-[#297c6b] hover:text-white" : "border-white/20 hover:bg-[#c39165] hover:text-black"}`}>
             Enter the archive <ArrowUpRight size={13} />
           </Link>

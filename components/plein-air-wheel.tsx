@@ -113,21 +113,10 @@ export function PleinAirWheel({ works }: { works: Work[] }) {
             <p className="font-mono text-[9px] uppercase tracking-[0.36em] text-[#806522]">
               Fine Art · Painted outside
             </p>
-            <h1
-              className="mt-5 uppercase"
-              style={{
-                fontFamily: "'Cormorant Infant', serif",
-                fontSize: "clamp(4.6rem, 10vw, 9rem)",
-                fontWeight: 300,
-                lineHeight: 0.68,
-                letterSpacing: "-0.045em",
-              }}
-            >
-              Plein
-              <br />
-              Air
+            <h1 className="mt-5 uppercase font-serif text-[clamp(4.6rem,10vw,9rem)] font-light leading-[0.68] tracking-[-0.045em]">
+              Plein Air
             </h1>
-            <p className="mt-8 max-w-md border-l border-[#806522]/45 pl-5 text-sm leading-7 text-black/48">
+            <p className="mt-8 max-w-md border-l border-[#806522]/45 pl-5 text-[0.9rem] leading-7 text-black/48">
               Light changes, weather moves, and the painting has to answer in
               the moment. Move through the outdoor studies like a horizontal
               reel.
@@ -215,15 +204,7 @@ export function PleinAirWheel({ works }: { works: Work[] }) {
             <p className="font-mono text-[8px] uppercase tracking-[0.25em] text-black/38">
               Outdoor study
             </p>
-            <p
-              className="mt-1"
-              style={{
-                fontFamily: "'Cormorant Infant', serif",
-                fontSize: "1.5rem",
-              }}
-            >
-              {activeWork.title}
-            </p>
+            <p className="mt-1 font-serif text-[1.5rem]">{activeWork.title}</p>
           </div>
 
           <div className="absolute bottom-6 right-6 z-20 flex items-center gap-2 sm:bottom-9 sm:right-10">

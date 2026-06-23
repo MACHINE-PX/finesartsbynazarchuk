@@ -31,11 +31,9 @@ export default function ScenicArtPage() {
             Props & Scenic · Material archive
           </p>
           <h1 className="mt-7 font-serif text-[clamp(4.2rem,10vw,9rem)] font-light leading-[0.7] tracking-[-0.045em]">
-            Scenic Art
-            <br />
-            <span className="italic text-[#c99762]">& Faux Finishes</span>
+            Scenic Art <span className="italic text-[#c99762]">& Faux Finishes</span>
           </h1>
-          <p className="mt-9 max-w-lg border-l border-[#7ec5b2]/45 pl-6 text-sm leading-8 text-white/48">
+          <p className="mt-9 max-w-lg border-l border-[#7ec5b2]/45 pl-6 text-[0.9rem] leading-8 text-white/48">
             Wood becomes aged timber. Paint becomes oxidized metal. New
             objects acquire memory through layered color, abrasion, patina,
             ornament, and illusion.

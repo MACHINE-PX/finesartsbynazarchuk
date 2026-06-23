@@ -74,7 +74,7 @@ export default function PaintingsPage() {
             Paintings
           </h1>
           <div className="mt-10 flex flex-col justify-between gap-6 border-t border-white/20 pt-5 sm:flex-row sm:items-end">
-            <p className="max-w-xl text-sm leading-7 text-white/68">
+            <p className="max-w-xl text-[0.9rem] leading-7 text-white/68">
               Light remembered through color. Faces, places, and inner worlds
               held for a moment in paint.
             </p>
@@ -110,14 +110,10 @@ export default function PaintingsPage() {
             </div>
             <div className="mt-4 flex items-start justify-between border-t border-white/15 pt-3 font-mono text-[7px] uppercase leading-5 tracking-[0.18em] text-white/30">
               <span>
-                Curatorial note
-                <br />
-                No. 01
+                Curatorial note No. 01
               </span>
               <span className="text-right">
-                Color / atmosphere
-                <br />
-                Selected paintings
+                Color / atmosphere Selected paintings
               </span>
             </div>
           </div>
@@ -134,7 +130,7 @@ export default function PaintingsPage() {
           >
             Paint is where observation becomes emotion.
           </h2>
-          <p className="mt-9 max-w-2xl border-l border-accent/55 pl-6 text-sm leading-8 text-white/48">
+          <p className="mt-9 max-w-2xl border-l border-accent/55 pl-6 text-[0.9rem] leading-8 text-white/48">
             These works move between direct observation and imagination.
             Color does not simply describe the subject—it carries its
             temperature, rhythm, and memory.
@@ -175,7 +171,7 @@ export default function PaintingsPage() {
             >
               A face becomes a landscape.
             </h2>
-            <p className="mt-8 max-w-lg text-sm leading-8 text-white/48">
+            <p className="mt-8 max-w-lg text-[0.9rem] leading-8 text-white/48">
               Portraits emerge through complementary color and visible
               gesture. Their likeness matters, but their inner atmosphere
               matters more.
@@ -222,7 +218,7 @@ export default function PaintingsPage() {
               >
                 Cities made of light.
               </h2>
-              <p className="mt-7 max-w-xl text-sm leading-7 text-black/52">
+              <p className="mt-7 max-w-xl text-[0.9rem] leading-7 text-black/52">
                 Architecture dissolves into weather, reflection, and color.
                 The scene remains recognizable, but sensation takes the lead.
               </p>
@@ -280,7 +276,7 @@ export default function PaintingsPage() {
             >
               Beyond what the eye can see.
             </h2>
-            <p className="mt-8 max-w-md text-sm leading-8 text-white/48">
+            <p className="mt-8 max-w-md text-[0.9rem] leading-8 text-white/48">
               Symbol, movement, and cosmic scale open another register of the
               practice—one where reality becomes a point of departure.
             </p>

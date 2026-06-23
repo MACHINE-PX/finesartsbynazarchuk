@@ -22,7 +22,7 @@ export default function SculpturesPage() {
           <p className="font-mono text-[9px] uppercase tracking-[0.34em] text-[#bd815b]">Props & Scenic · Form study</p>
           <h1 className="mt-6 font-serif text-[clamp(5rem,16vw,13rem)] font-light leading-[0.65] tracking-[-0.055em]">Sculptures</h1>
           <div className="mt-10 flex flex-col justify-between gap-6 border-t border-white/20 pt-5 sm:flex-row">
-            <p className="max-w-xl text-sm leading-7 text-white/62">Volume shaped by hand, then activated through color, texture, shadow, and surface.</p>
+            <p className="max-w-xl text-[0.9rem] leading-7 text-white/62">Volume shaped by hand, then activated through color, texture, shadow, and surface.</p>
             <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-white/35">Object viewed in the round</span>
           </div>
         </div>
@@ -32,7 +32,7 @@ export default function SculpturesPage() {
         <div>
           <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#bd815b]">Shape · carve · paint</p>
           <h2 className="mt-6 font-serif text-[clamp(3.3rem,7vw,6.5rem)] font-light leading-[0.86]">A face built from material and light.</h2>
-          <p className="mt-8 max-w-md text-sm leading-8 text-white/43">The sculptural surface carries tool marks, painted aging, metallic warmth, and a character that changes as the viewer moves around it.</p>
+          <p className="mt-8 max-w-md text-[0.9rem] leading-8 text-white/43">The sculptural surface carries tool marks, painted aging, metallic warmth, and a character that changes as the viewer moves around it.</p>
         </div>
         <video className="aspect-[9/16] max-h-[82svh] w-full bg-[#151515] object-cover" src={asset("img-6599-web.mp4")} poster={asset("img-6599-poster.jpg")} autoPlay muted loop playsInline preload="metadata" />
       </section>
@@ -61,7 +61,7 @@ export default function SculpturesPage() {
         <div>
           <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#bd815b]">Detail in motion</p>
           <h2 className="mt-6 font-serif text-[clamp(3rem,6vw,5.5rem)] font-light leading-[0.88]">Sculpture asks the viewer to move.</h2>
-          <p className="mt-7 text-sm leading-8 text-white/42">No single image contains the whole object. Form reveals itself through changing angle, highlight, and shadow.</p>
+          <p className="mt-7 text-[0.9rem] leading-8 text-white/42">No single image contains the whole object. Form reveals itself through changing angle, highlight, and shadow.</p>
           <Link href="/contact" className="mt-9 inline-flex items-center gap-3 border border-white/20 px-7 py-4 font-mono text-[9px] uppercase tracking-[0.22em] hover:border-[#bd815b] hover:bg-[#bd815b] hover:text-black">Discuss an object <ArrowUpRight size={13} /></Link>
         </div>
       </section>

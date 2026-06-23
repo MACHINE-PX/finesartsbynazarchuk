@@ -13,7 +13,7 @@ export default function FineArtPage() {
           <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-accent">
             Fine Art
           </p>
-          <div className="mt-10 grid max-w-sm grid-cols-[1fr_0.72fr] items-end gap-3 md:mt-auto">
+          <div className="mt-10 grid max-w-sm grid-cols-[1fr_0.72fr] items-start gap-3">
             <div className="relative aspect-square overflow-hidden bg-secondary">
               <Image
                 src="/images/fineart/Paintings/FullSizeRender%202.jpg"
@@ -42,15 +42,7 @@ export default function FineArtPage() {
           </div>
         </div>
         <div>
-          <h1
-            className="max-w-4xl"
-            style={{
-              fontFamily: "'Cormorant Infant', serif",
-              fontSize: "clamp(3rem, 8vw, 7rem)",
-              fontWeight: 300,
-              lineHeight: 0.9,
-            }}
-          >
+          <h1 className="max-w-4xl font-serif text-[clamp(3rem,8vw,7rem)] font-light leading-[0.9]">
             Paintings, murals, plein air, and events
           </h1>
           <p className="mt-8 max-w-2xl border-l border-accent/45 pl-6 text-[0.95rem] leading-[1.8] text-foreground/60">
@@ -94,19 +86,10 @@ export default function FineArtPage() {
             <p className="font-mono text-[9px] uppercase tracking-[0.34em] text-white/55">
               Observation becomes emotion
             </p>
-            <h2
-              className="mt-6"
-              style={{
-                fontFamily: "'Cormorant Infant', serif",
-                fontSize: "clamp(4.5rem, 13vw, 10rem)",
-                fontWeight: 300,
-                lineHeight: 0.72,
-                letterSpacing: "-0.035em",
-              }}
-            >
+            <h2 className="mt-6 font-serif text-[clamp(4.5rem,13vw,10rem)] font-light leading-[0.72] tracking-[-0.035em]">
               Color holds the memory of light.
             </h2>
-            <p className="mt-9 max-w-xl text-sm leading-8 text-white/65">
+            <p className="mt-9 max-w-xl text-[0.9rem] leading-8 text-white/65">
               Portraits, atmospheric landscapes, city studies, and imagined
               worlds connected by luminous color and expressive gesture.
             </p>
@@ -167,21 +150,10 @@ export default function FineArtPage() {
                 <span className="text-[#806522]">02 · Plein Air</span>
                 <span className="text-black/35">Painted outside</span>
               </div>
-              <h2
-                className="mt-12 uppercase"
-                style={{
-                  fontFamily: "'Cormorant Infant', serif",
-                  fontSize: "clamp(4.5rem, 10vw, 8.5rem)",
-                  fontWeight: 300,
-                  lineHeight: 0.67,
-                  letterSpacing: "-0.045em",
-                }}
-              >
-                Plein
-                <br />
-                Air
+              <h2 className="mt-12 uppercase font-serif text-[clamp(4.5rem,10vw,8.5rem)] font-light leading-[0.67] tracking-[-0.045em]">
+                Plein Air
               </h2>
-              <p className="mt-8 max-w-md border-l border-[#806522]/45 pl-5 text-sm leading-7 text-black/48">
+              <p className="mt-8 max-w-md border-l border-[#806522]/45 pl-5 text-[0.9rem] leading-7 text-black/48">
                 Light changes, weather moves, and the painting has to answer
                 in the moment. Outdoor studies made directly before the
                 landscape.
@@ -280,19 +252,10 @@ export default function FineArtPage() {
             <p className="font-mono text-[9px] uppercase tracking-[0.34em] text-white/55">
               A wall is never just a wall
             </p>
-            <h2
-              className="mt-6"
-              style={{
-                fontFamily: "'Cormorant Infant', serif",
-                fontSize: "clamp(4.5rem, 13vw, 10rem)",
-                fontWeight: 300,
-                lineHeight: 0.72,
-                letterSpacing: "-0.035em",
-              }}
-            >
+            <h2 className="mt-6 font-serif text-[clamp(4.5rem,13vw,10rem)] font-light leading-[0.72] tracking-[-0.035em]">
               Stories at architectural scale.
             </h2>
-            <p className="mt-9 max-w-xl text-sm leading-8 text-white/65">
+            <p className="mt-9 max-w-xl text-[0.9rem] leading-8 text-white/65">
               Immersive scenes, expressive figures, and ornamental surfaces
               designed as part of the spaces they inhabit.
             </p>
@@ -362,19 +325,10 @@ export default function FineArtPage() {
               <span className="h-2 w-2 animate-pulse rounded-full bg-[#ff5538]" />
               The public life of art
             </div>
-            <h2
-              className="mt-7"
-              style={{
-                fontFamily: "'Cormorant Infant', serif",
-                fontSize: "clamp(4.5rem, 13vw, 10rem)",
-                fontWeight: 300,
-                lineHeight: 0.72,
-                letterSpacing: "-0.035em",
-              }}
-            >
+            <h2 className="mt-7 font-serif text-[clamp(4.5rem,13vw,10rem)] font-light leading-[0.72] tracking-[-0.035em]">
               Art becomes an encounter.
             </h2>
-            <p className="mt-9 max-w-xl text-sm leading-8 text-white/65">
+            <p className="mt-9 max-w-xl text-[0.9rem] leading-8 text-white/65">
               Competitions, live painting, exhibitions, object art, and stage
               design—five ways the work leaves the studio and meets an
               audience.

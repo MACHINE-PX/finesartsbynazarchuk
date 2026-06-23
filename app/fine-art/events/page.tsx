@@ -70,7 +70,7 @@ export default function EventsPage() {
             >
               Events
             </h1>
-            <p className="mt-10 max-w-xl text-sm leading-8 text-white/68">
+            <p className="mt-10 max-w-xl text-[0.9rem] leading-8 text-white/68">
               Art leaves the studio and becomes encounter—made live, shared in
               public, installed in space, and remembered through people.
             </p>
@@ -126,7 +126,7 @@ export default function EventsPage() {
           >
             The work changes when someone is there to witness it.
           </h2>
-          <p className="mt-9 max-w-2xl border-l border-[#ff5538]/65 pl-6 text-sm leading-8 text-white/48">
+          <p className="mt-9 max-w-2xl border-l border-[#ff5538]/65 pl-6 text-[0.9rem] leading-8 text-white/48">
             These moments trace a practice in motion: competing, demonstrating,
             exhibiting, collaborating, and building images for performance.
           </p>
@@ -169,13 +169,9 @@ export default function EventsPage() {
             <div className="lg:sticky lg:top-24 lg:self-start">
               <ActLabel number="02" label="Art of Motorcycle" />
               <h2 className="event-display mt-7">
-                Painting
-                <br />
-                happens
-                <br />
-                now.
+                Painting happens now.
               </h2>
-              <p className="mt-8 max-w-sm text-sm leading-8 text-white/48">
+              <p className="mt-8 max-w-sm text-[0.9rem] leading-8 text-white/48">
                 At AOM, the studio becomes public. Brushes, decisions, pauses,
                 and revisions unfold beside the machines that inspired the
                 image.
@@ -225,12 +221,10 @@ export default function EventsPage() {
             <div>
               <ActLabel number="03" label="Exhibitions" dark />
               <h2 className="event-display mt-7">
-                The room
-                <br />
-                becomes a frame.
+                The room becomes a frame.
               </h2>
             </div>
-            <p className="max-w-md text-sm leading-7 text-black/55">
+            <p className="max-w-md text-[0.9rem] leading-7 text-black/55">
               Installed together, individual paintings begin speaking across
               walls. Scale, sequence, and visitors complete the composition.
             </p>
@@ -305,7 +299,7 @@ export default function EventsPage() {
               <br />
               changes shape.
             </h2>
-            <p className="mt-8 max-w-md text-sm leading-8 text-white/48">
+            <p className="mt-8 max-w-md text-[0.9rem] leading-8 text-white/48">
               Image wraps around volume. A wearable object becomes sculpture,
               character, and painted surface at once.
             </p>
@@ -336,11 +330,9 @@ export default function EventsPage() {
           </div>
           <div className="max-w-5xl py-24">
             <h2 className="event-display">
-              Painting
-              <br />
-              enters the stage.
+              Painting enters the stage.
             </h2>
-            <p className="mt-9 max-w-xl text-sm leading-8 text-white/62">
+            <p className="mt-9 max-w-xl text-[0.9rem] leading-8 text-white/62">
               Artworks, scenic objects, and material experiments become part
               of a larger performance world—built to be encountered in space.
             </p>
@@ -428,7 +420,7 @@ function EventAct({
           <div>
             <ActLabel number={number} label={kicker} dark />
             <h2 className="event-display mt-7">{title}</h2>
-            <p className="mt-8 max-w-sm text-sm leading-8 text-black/55">
+            <p className="mt-8 max-w-sm text-[0.9rem] leading-8 text-black/55">
               {description}
             </p>
           </div>

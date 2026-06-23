@@ -40,13 +40,7 @@ export function Nav() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-8">
         <button
           onClick={() => go("#hero")}
-          className="max-w-[68vw] truncate text-left uppercase text-foreground transition-colors duration-300 hover:text-accent"
-          style={{
-            fontFamily: "'Cormorant Infant', serif",
-            fontSize: "clamp(1rem, 3vw, 1.35rem)",
-            fontWeight: 400,
-            letterSpacing: "0.18em",
-          }}
+          className="max-w-[68vw] truncate text-left uppercase text-foreground transition-colors duration-300 hover:text-accent font-serif text-[clamp(1rem,3vw,1.35rem)] tracking-[0.18em]"
         >
           {siteConfig.name}
         </button>
@@ -56,12 +50,7 @@ export function Nav() {
             <button
               key={link.href}
               onClick={() => go(link.href)}
-              className="group relative text-muted-foreground transition-colors duration-300 hover:text-foreground"
-              style={{
-                fontFamily: "'Space Mono', monospace",
-                fontSize: "10px",
-                letterSpacing: "0.2em",
-              }}
+              className="group relative text-muted-foreground transition-colors duration-300 hover:text-foreground font-mono text-[10px] tracking-[0.2em]"
             >
               {link.label.toUpperCase()}
               <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full" />
@@ -85,12 +74,7 @@ export function Nav() {
             <button
               key={link.href}
               onClick={() => go(link.href)}
-              className="text-left text-foreground"
-              style={{
-                fontFamily: "'Space Mono', monospace",
-                fontSize: "11px",
-                letterSpacing: "0.2em",
-              }}
+              className="text-left text-foreground font-mono text-[11px] tracking-[0.2em]"
             >
               {link.label.toUpperCase()}
             </button>

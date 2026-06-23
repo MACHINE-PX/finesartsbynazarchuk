@@ -21,45 +21,21 @@ export default function AboutPage() {
         </div>
 
         <div className="flex flex-col justify-end">
-          <p
-            className="mb-5 uppercase text-accent"
-            style={{
-              fontFamily: "'Space Mono', monospace",
-              fontSize: "10px",
-              letterSpacing: "0.32em",
-            }}
-          >
+          <p className="font-mono text-[9px] uppercase tracking-[0.34em] text-accent mb-5">
             About
           </p>
           <h1
-            style={{
-              fontFamily: "'Cormorant Infant', serif",
-              fontSize: "clamp(3rem, 8vw, 7rem)",
-              fontWeight: 300,
-              lineHeight: 0.9,
-            }}
+            className="font-serif text-[clamp(4.6rem,11vw,9.5rem)] font-light leading-[0.69]"
           >
             {siteConfig.name}
           </h1>
           <p
-            className="mt-6 uppercase text-foreground/72"
-            style={{
-              fontFamily: "'Space Mono', monospace",
-              fontSize: "clamp(0.62rem, 1.6vw, 0.78rem)",
-              letterSpacing: "0.16em",
-              lineHeight: 1.7,
-            }}
+            className="mt-6 uppercase font-mono text-[8px] tracking-[0.24em] text-foreground/72"
           >
             {aboutSubtitle}
           </p>
           <p
-            className="mt-7 max-w-2xl"
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              color: "rgba(240,236,228,0.62)",
-              fontSize: "0.95rem",
-              lineHeight: 1.9,
-            }}
+            className="mt-7 max-w-2xl text-[0.9rem] leading-8 text-foreground/72"
           >
             {aboutText}
           </p>

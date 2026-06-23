@@ -100,7 +100,7 @@ export default function MuralsPage() {
             </a>
           </div>
           <div className="mt-9 flex flex-col justify-between gap-6 border-t border-white/20 pt-5 sm:flex-row">
-            <p className="max-w-xl text-sm leading-7 text-white/68">
+            <p className="max-w-xl text-[0.9rem] leading-7 text-white/68">
               Walls become stages. Color becomes atmosphere. Every image is
               imagined as part of the space, not simply placed upon it.
             </p>
@@ -143,7 +143,7 @@ export default function MuralsPage() {
               >
                 Painting stories at the scale of architecture.
               </h2>
-              <p className="mt-9 max-w-2xl border-l border-[#806522]/55 pl-6 text-sm leading-8 text-black/52">
+                <p className="mt-9 max-w-2xl border-l border-[#806522]/55 pl-6 text-[0.9rem] leading-8 text-black/52">
                 Narrative scenes, expressive figures, ornament, and illusion
                 belong to one practice: transforming surfaces through color,
                 rhythm, and atmosphere.

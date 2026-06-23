@@ -28,14 +28,8 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 md:gap-8 md:px-8 md:py-5">
         <Link
           href="/"
-          className="group min-w-0 shrink uppercase text-foreground"
+          className="group min-w-0 shrink uppercase text-foreground font-serif text-[clamp(0.92rem,5vw,1.45rem)] tracking-[0.14em]"
           onClick={() => setOpen(false)}
-          style={{
-            fontFamily: "'Cormorant Infant', serif",
-            fontSize: "clamp(0.92rem, 5vw, 1.45rem)",
-            fontWeight: 400,
-            letterSpacing: "0.14em",
-          }}
         >
           <span className="block truncate">{siteConfig.name}</span>
           <span className="mt-1 block h-px w-0 bg-accent transition-all duration-300 group-hover:w-full" />
@@ -50,14 +44,8 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
               <Link
                 key={link.href}
                 href={link.href}
-                className="group relative rounded-full px-4 py-2 uppercase transition-all duration-300 hover:bg-foreground/10"
-                style={{
-                  color: active ? "#f0ece4" : "rgba(240,236,228,0.76)",
-                  fontFamily: "'Space Mono', monospace",
-                  fontSize: "clamp(0.58rem, 1.1vw, 0.68rem)",
-                  fontWeight: 400,
-                  letterSpacing: "0.12em",
-                }}
+                className={`group relative rounded-full px-4 py-2 uppercase transition-all duration-300 hover:bg-foreground/10 font-mono text-[clamp(0.58rem,1.1vw,0.68rem)] tracking-[0.12em]`}
+                style={{ color: active ? "#f0ece4" : "rgba(240,236,228,0.76)" }}
               >
                 {link.label}
                 {active && <span className="ml-2 text-accent">*</span>}
@@ -66,12 +54,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
           })}
           <Link
             href="/contact"
-            className="rounded-full bg-foreground px-4 py-2 uppercase text-background transition-all duration-300 hover:bg-accent"
-            style={{
-              fontFamily: "'Space Mono', monospace",
-              fontSize: "clamp(0.58rem, 1.1vw, 0.68rem)",
-              letterSpacing: "0.12em",
-            }}
+            className="rounded-full bg-foreground px-4 py-2 uppercase text-background transition-all duration-300 hover:bg-accent font-mono text-[clamp(0.58rem,1.1vw,0.68rem)] tracking-[0.12em]"
           >
             Contact
           </Link>
@@ -105,12 +88,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center justify-between rounded-xl px-4 py-4 uppercase text-foreground transition-colors hover:bg-foreground/8"
-                style={{
-                  fontFamily: "'Space Mono', monospace",
-                  fontSize: "0.72rem",
-                  letterSpacing: "0.14em",
-                }}
+                className="flex items-center justify-between rounded-xl px-4 py-4 uppercase text-foreground transition-colors hover:bg-foreground/8 font-mono text-[0.72rem] tracking-[0.14em]"
               >
                 {link.label}
                 {active && <span className="text-accent">*</span>}
