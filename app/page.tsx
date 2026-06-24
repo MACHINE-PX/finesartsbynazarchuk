@@ -53,10 +53,10 @@ export default function Home() {
             {siteConfig.name}
           </h1>
           <p
-            className="mt-4 uppercase text-foreground/70 sm:mt-5"
+            className="mt-4 uppercase text-accent sm:mt-5"
             style={{
               fontFamily: "'Space Mono', monospace",
-              fontSize: "clamp(0.5rem, 2.4vw, 0.56rem)",
+              fontSize: "clamp(0.66rem, 2.7vw, 0.82rem)",
               letterSpacing: "0.16em",
             }}
           >
