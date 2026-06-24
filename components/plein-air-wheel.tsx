@@ -14,6 +14,17 @@ import type { Work } from "@/lib/portfolio-data";
 
 const AUTO_PLAY_DELAY = 4500;
 const MANUAL_PAUSE_DELAY = 8000;
+const processPhotos = [
+  "/images/PLEINAIR1.png",
+  "/images/PLAINAIR1.2.jpg",
+  "/images/PLAINAIR1.3.JPG",
+  "/images/PLAINAIR1.4.jpg",
+  "/images/PLAINAIR1.5.jpg",
+  "/images/PLAINAIR1.6.JPG",
+  "/images/PLAINAIR1.7.JPG",
+  "/images/PLAINAIR1.8.jpg",
+  "/images/PLAINAIR1.9.jpg",
+];
 
 function circularOffset(index: number, current: number, total: number) {
   let offset = index - current;
@@ -92,6 +103,7 @@ export function PleinAirWheel({ works }: { works: Work[] }) {
   }
 
   const activeWork = works[current];
+  const activeProcessPhoto = current % processPhotos.length;
 
   return (
     <section
@@ -107,37 +119,23 @@ export function PleinAirWheel({ works }: { works: Work[] }) {
         }}
       />
 
-      <div className="relative mx-auto grid min-h-[880px] max-w-[1600px] lg:h-[calc(100svh-2rem)] lg:min-h-[720px] lg:grid-cols-[0.7fr_1.3fr]">
-        <div className="z-20 flex flex-col px-6 pb-10 pt-24 sm:px-10 lg:justify-between lg:px-12 lg:py-16 xl:px-16">
+      <div className="relative mx-auto max-w-[1600px] px-5 pb-10 pt-12 sm:px-8 sm:pt-16 lg:px-12 lg:pb-16 lg:pt-20">
+        <div className="flex items-end justify-between gap-8 pb-7">
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.36em] text-[#806522]">
-              Fine Art · Painted outside
+            <p className="font-mono text-[9px] uppercase tracking-[0.34em] text-[#806522]">
+              Painting outside
             </p>
-            <h1 className="mt-5 uppercase font-serif text-[clamp(4.6rem,10vw,9rem)] font-light leading-[0.68] tracking-[-0.045em]">
-              Plein Air
-            </h1>
-            <p className="mt-8 max-w-md border-l border-[#806522]/45 pl-5 text-[0.9rem] leading-7 text-black/48">
-              Light changes, weather moves, and the painting has to answer in
-              the moment. Move through the outdoor studies like a horizontal
-              reel.
+            <p className="mt-3 max-w-xl font-serif text-[clamp(1.45rem,2.7vw,2.35rem)] font-light leading-tight text-black/65">
+              From the landscape to the canvas.
             </p>
           </div>
-
-          <div className="mt-10 hidden lg:block">
-            <p className="max-w-xs font-mono text-[8px] uppercase leading-5 tracking-[0.22em] text-black/35">
-              Swipe sideways or use the arrows
-            </p>
-            <div className="mt-5 h-px w-full bg-black/15">
-              <div
-                className="h-px bg-[#806522] transition-[width] duration-700"
-                style={{ width: `${((current + 1) / works.length) * 100}%` }}
-              />
-            </div>
-          </div>
+          <p className="hidden font-mono text-[8px] uppercase tracking-[0.22em] text-black/35 sm:block">
+            Swipe sideways or use the arrows
+          </p>
         </div>
 
         <div
-          className="relative min-h-[610px] touch-pan-y select-none overflow-hidden outline-none lg:min-h-0"
+          className="relative grid touch-pan-y select-none gap-8 overflow-hidden border-t border-black/15 py-10 outline-none lg:min-h-[760px] lg:grid-cols-[0.38fr_0.62fr] lg:gap-5 lg:py-0"
           tabIndex={0}
           onWheel={handleWheel}
           onPointerDown={handlePointerDown}
@@ -157,57 +155,114 @@ export function PleinAirWheel({ works }: { works: Work[] }) {
             }
           }}
         >
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#d9d0bd] to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#d9d0bd] to-transparent" />
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[58%] w-[72%] -translate-x-1/2 -translate-y-1/2 border border-[#806522]/30 sm:w-[62%] lg:h-[64%]" />
+          <div className="relative flex min-h-[500px] items-center lg:min-h-0 lg:pr-5">
+            <div className="grid w-full gap-6 sm:grid-cols-[0.9fr_1.1fr] sm:items-center lg:grid-cols-1">
+              <div className="relative mx-auto h-[390px] w-full max-w-[330px] overflow-hidden border border-black/10 bg-[#bdb39f] shadow-[0_24px_60px_rgba(45,35,20,0.16)] sm:h-[430px] lg:h-[440px] lg:max-w-[320px]">
+                {processPhotos.map((photo, index) => {
+                  const offset = circularOffset(
+                    index,
+                    activeProcessPhoto,
+                    processPhotos.length,
+                  );
+                  const visible = Math.abs(offset) <= 1;
 
-          {works.map((work, index) => {
-            const offset = circularOffset(index, current, works.length);
-            const visible = Math.abs(offset) <= 2;
-            const active = offset === 0;
+                  if (!visible) return null;
 
-            if (!visible) return null;
-
-            return (
-              <article
-                key={work.image}
-                aria-hidden={!active}
-                className="absolute left-1/2 top-1/2 h-[48%] w-[72%] overflow-hidden bg-[#bdb39f] shadow-[0_30px_80px_rgba(45,35,20,0.2)] transition-[transform,opacity,filter] duration-700 ease-[cubic-bezier(.22,1,.36,1)] sm:w-[62%] lg:h-[60%]"
-                style={{
-                  opacity: active ? 1 : Math.abs(offset) === 1 ? 0.34 : 0,
-                  filter: active ? "none" : "saturate(.45) blur(1.5px)",
-                  transform: `translate(calc(-50% + ${offset * 88}%), -50%) scale(${
-                    active ? 1 : Math.abs(offset) === 1 ? 0.78 : 0.64
-                  })`,
-                  zIndex: 5 - Math.abs(offset),
-                  pointerEvents: active ? "auto" : "none",
-                }}
-              >
-                <div className="absolute inset-2.5 border border-black/10 bg-[#eee7d8] p-2.5 sm:inset-4 sm:p-3">
-                  <div className="relative h-full w-full overflow-hidden bg-[#a99f8b]">
+                  return (
                     <Image
-                      src={work.image}
-                      alt={work.alt}
+                      key={photo}
+                      src={photo}
+                      alt="Sash painting on location"
                       fill
-                      priority={index === 0}
-                      sizes="(max-width: 1023px) 75vw, 48vw"
-                      className="object-contain"
+                      sizes="(max-width: 639px) 90vw, (max-width: 1023px) 40vw, 24vw"
+                      className={`object-cover transition-[transform,opacity,filter] duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${
+                        photo === "/images/PLAINAIR1.4.jpg"
+                          ? "object-[78%_center]"
+                          : "object-center"
+                      }`}
+                      style={{
+                        opacity: offset === 0 ? 1 : 0,
+                        filter: offset === 0 ? "none" : "grayscale(1)",
+                        transform: `translateX(${offset * 24}%) scale(${
+                          offset === 0 ? 1 : 0.94
+                        })`,
+                      }}
                       draggable={false}
                     />
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+                  );
+                })}
+                <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/18" />
+                <span className="absolute bottom-4 right-4 font-mono text-[8px] tracking-[0.2em] text-white/75">
+                  {String(activeProcessPhoto + 1).padStart(2, "0")} /{" "}
+                  {String(processPhotos.length).padStart(2, "0")}
+                </span>
+              </div>
 
-          <div className="absolute bottom-6 left-6 z-20 sm:bottom-9 sm:left-10">
-            <p className="font-mono text-[8px] uppercase tracking-[0.25em] text-black/38">
-              Outdoor study
-            </p>
-            <p className="mt-1 font-serif text-[1.5rem]">{activeWork.title}</p>
+              <div className="mx-auto max-w-[310px] text-center lg:mt-2">
+                <p className="font-mono text-[8px] uppercase tracking-[0.28em] text-[#806522]">
+                  The process
+                </p>
+                <p className="mt-4 font-serif text-[clamp(1.45rem,2.4vw,2rem)] font-light leading-[1.05] text-black/62">
+                  Painting directly from life, surrounded by changing light and
+                  landscape.
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="absolute bottom-6 right-6 z-20 flex items-center gap-2 sm:bottom-9 sm:right-10">
+          <div className="relative min-h-[600px] overflow-hidden lg:min-h-0">
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[#d9d0bd] to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[#d9d0bd] to-transparent" />
+            <div className="pointer-events-none absolute left-1/2 top-1/2 h-[68%] w-[82%] -translate-x-1/2 -translate-y-1/2 border border-[#806522]/30" />
+
+            {works.map((work, index) => {
+              const offset = circularOffset(index, current, works.length);
+              const visible = Math.abs(offset) <= 2;
+              const active = offset === 0;
+
+              if (!visible) return null;
+
+              return (
+                <article
+                  key={work.image}
+                  aria-hidden={!active}
+                  className="absolute left-1/2 top-1/2 h-[58%] w-[82%] overflow-hidden bg-[#bdb39f] shadow-[0_30px_80px_rgba(45,35,20,0.2)] transition-[transform,opacity,filter] duration-700 ease-[cubic-bezier(.22,1,.36,1)] lg:h-[64%]"
+                  style={{
+                    opacity: active ? 1 : Math.abs(offset) === 1 ? 0.3 : 0,
+                    filter: active ? "none" : "saturate(.45) blur(1.5px)",
+                    transform: `translate(calc(-50% + ${offset * 88}%), -50%) scale(${
+                      active ? 1 : Math.abs(offset) === 1 ? 0.78 : 0.64
+                    })`,
+                    zIndex: 5 - Math.abs(offset),
+                    pointerEvents: active ? "auto" : "none",
+                  }}
+                >
+                  <div className="absolute inset-2.5 border border-black/10 bg-[#eee7d8] p-2.5 sm:inset-4 sm:p-3">
+                    <div className="relative h-full w-full overflow-hidden bg-[#a99f8b]">
+                      <Image
+                        src={work.image}
+                        alt={work.alt}
+                        fill
+                        priority={index === 0}
+                        sizes="(max-width: 1023px) 82vw, 50vw"
+                        className="object-contain"
+                        draggable={false}
+                      />
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+
+            <div className="absolute bottom-2 left-4 z-20 sm:left-8 lg:bottom-8">
+              <p className="font-mono text-[8px] uppercase tracking-[0.25em] text-black/38">
+                Outdoor study
+              </p>
+              <p className="mt-1 font-serif text-[1.5rem]">{activeWork.title}</p>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center gap-2 lg:absolute lg:bottom-8 lg:right-8 lg:z-20">
             <button
               type="button"
               onClick={(event) => {
@@ -249,6 +304,13 @@ export function PleinAirWheel({ works }: { works: Work[] }) {
               {String(works.length).padStart(2, "0")}
             </span>
           </div>
+        </div>
+
+        <div className="h-px w-full bg-black/15">
+          <div
+            className="h-px bg-[#806522] transition-[width] duration-700"
+            style={{ width: `${((current + 1) / works.length) * 100}%` }}
+          />
         </div>
       </div>
     </section>
