@@ -1,75 +1,152 @@
-import { ArrowUpRight, Instagram, Mail, Phone } from "lucide-react";
+"use client";
+
+import {
+  ArrowUpRight,
+  Instagram,
+  Mail,
+  MessageCircle,
+  Send,
+} from "lucide-react";
+import { useState, type FormEvent } from "react";
 import { siteConfig } from "@/lib/portfolio-data";
 
 export function SiteFooter() {
+  const [message, setMessage] = useState("");
+  const [email, setEmail] = useState("");
+
+  function openEmail(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const subject = "Portfolio inquiry";
+    const body = [
+      message.trim() || "Hello, I would like to discuss a project with you.",
+      "",
+      email.trim() ? `My email: ${email.trim()}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    window.location.href = `mailto:${siteConfig.email}?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
+  }
+
   return (
     <footer
       id="contact"
-      className="border-t border-foreground/10 bg-[#080808] px-5 text-foreground sm:px-8"
+      className="border-t border-white/8 bg-[#090a0c] px-4 py-5 text-[#f0ece4] sm:px-6 sm:py-8 lg:px-8"
     >
-      <div className="mx-auto max-w-[1450px] pb-8 pt-24 md:pt-32">
-        <header className="border-b border-foreground/15 pb-10 md:pb-12">
-          <span className="block font-mono text-[9px] tracking-[0.32em] text-accent">
-            05
-          </span>
-          <h2 className="mt-5 font-serif text-[clamp(3.8rem,10vw,7.2rem)] font-light leading-[0.72] tracking-[-0.025em]">
-            Contact
-          </h2>
-        </header>
+      <div className="mx-auto max-w-[1600px] rounded-[1.8rem] border border-white/75 bg-[#111318] px-5 py-7 shadow-[0_30px_100px_rgba(0,0,0,0.32)] sm:rounded-[2.4rem] sm:px-9 sm:py-10 lg:px-12">
+        <div className="grid gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20">
+          <div className="flex flex-col">
+            <p className="font-mono text-[8px] uppercase tracking-[0.34em] text-accent">
+              Contact · Commissions · Collaborations
+            </p>
+            <h2 className="mt-5 max-w-4xl font-serif text-[clamp(2.5rem,5vw,5.2rem)] font-light leading-[0.88] tracking-[-0.025em]">
+              If the work resonates,
+              <br />
+              <span className="italic text-white/62">let&apos;s begin a conversation.</span>
+            </h2>
 
-        <div className="grid gap-16 py-20 md:grid-cols-[1.08fr_0.92fr] md:items-end md:gap-24 md:py-24">
-          <div>
-            <blockquote className="max-w-3xl text-foreground/82 font-serif text-[clamp(1.4rem,2.5vw,2rem)] italic font-light leading-[1.45]">
-              &ldquo;{siteConfig.quote}&rdquo;
-            </blockquote>
+            <p className="mt-7 max-w-xl text-[0.86rem] leading-7 text-white/42">
+              Available for fine art commissions, murals, plein air painting,
+              scenic work, exhibitions, and creative collaborations.
+            </p>
 
-            <address className="mt-12 flex flex-col items-start gap-5 not-italic">
+            <address className="mt-10 grid gap-3 not-italic sm:grid-cols-2">
               <ContactLink
-                href={`mailto:${siteConfig.email}`}
-                icon={<Mail size={13} />}
-                label={siteConfig.email}
+                href={siteConfig.instagramUrl}
+                icon={<Instagram size={17} />}
+                eyebrow="Instagram"
+                label={siteConfig.instagramHandle}
+                external
               />
               <ContactLink
                 href={siteConfig.whatsappUrl}
-                icon={<Phone size={13} />}
+                icon={<MessageCircle size={17} />}
+                eyebrow="WhatsApp"
                 label={siteConfig.phone}
                 external
               />
               <ContactLink
-                href={siteConfig.instagramUrl}
-                icon={<Instagram size={13} />}
-                label={siteConfig.instagramHandle}
-                external
+                href={`mailto:${siteConfig.email}`}
+                icon={<Mail size={17} />}
+                eyebrow="Email"
+                label={siteConfig.email}
+                wide
               />
             </address>
           </div>
 
-          <div className="md:pb-1">
-            <p className="max-w-xl text-[0.9rem] leading-7 text-foreground/45 md:leading-8">
-              Available for murals, plein air painting, fine art commissions,
-              live painting workshops, exhibitions, and collaborative cultural
-              projects.
-            </p>
+          <form
+            onSubmit={openEmail}
+            className="border-t border-white/12 pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0"
+          >
+            <div className="flex items-end justify-between gap-6">
+              <div>
+                <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-accent">
+                  Start a project
+                </p>
+                <h3 className="mt-3 font-serif text-[clamp(2rem,3.5vw,3.4rem)] font-light leading-none">
+                  What&apos;s on your mind?
+                </h3>
+              </div>
+              <span className="hidden font-mono text-[8px] tracking-[0.2em] text-white/22 sm:block">
+                01 — 02
+              </span>
+            </div>
 
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="group mt-8 inline-flex min-h-14 items-center gap-8 border border-foreground/20 px-8 font-mono text-[9px] uppercase tracking-[0.25em] text-foreground/80 transition-all hover:border-accent hover:bg-accent hover:text-background"
+            <label className="mt-8 block">
+              <span className="mb-3 block font-mono text-[8px] uppercase tracking-[0.25em] text-white/38">
+                Your message
+              </span>
+              <textarea
+                value={message}
+                onChange={(event) => setMessage(event.target.value)}
+                placeholder="Tell me about the idea, place, or artwork..."
+                rows={5}
+                className="w-full resize-none rounded-[1.4rem] border border-white/18 bg-white/[0.025] px-5 py-4 text-sm leading-7 text-white outline-none transition-colors placeholder:text-white/22 focus:border-accent/75"
+              />
+            </label>
+
+            <label className="mt-5 block">
+              <span className="mb-3 block font-mono text-[8px] uppercase tracking-[0.25em] text-white/38">
+                Your email
+              </span>
+              <input
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder="you@example.com"
+                required
+                className="h-14 w-full rounded-full border border-white/18 bg-white/[0.025] px-5 text-sm text-white outline-none transition-colors placeholder:text-white/22 focus:border-accent/75"
+              />
+            </label>
+
+            <button
+              type="submit"
+              className="group mt-6 flex min-h-14 w-full items-center justify-between rounded-full bg-[#f0ece4] px-6 font-mono text-[9px] uppercase tracking-[0.24em] text-[#111318] transition-colors hover:bg-accent"
             >
-              Get in touch
-              <ArrowUpRight
-                size={13}
+              Open email & send inquiry
+              <Send
+                size={14}
                 className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
               />
-            </a>
-          </div>
+            </button>
+
+            <p className="mt-4 text-[0.7rem] leading-5 text-white/25">
+              The button opens your email application with the message already
+              prepared. You remain in control before sending it.
+            </p>
+          </form>
         </div>
 
-        <div className="flex flex-col justify-between gap-5 border-t border-foreground/15 pt-7 sm:flex-row sm:items-center">
-          <span className="uppercase font-serif text-[1.1rem] tracking-[0.2em] text-foreground/22">
+        <div className="mt-12 flex flex-col justify-between gap-4 border-t border-white/12 pt-6 sm:flex-row sm:items-center">
+          <span className="font-serif text-[1rem] uppercase tracking-[0.2em] text-white/28">
             {siteConfig.shortName}
           </span>
-          <span className="font-mono text-[7px] uppercase tracking-[0.2em] text-foreground/20">
-            Portfolio — Murals / Painting / Events / Plein Air
+          <span className="font-mono text-[7px] uppercase tracking-[0.2em] text-white/20">
+            Portfolio · Fine Art / Props & Scenic
           </span>
         </div>
       </div>
@@ -80,25 +157,42 @@ export function SiteFooter() {
 function ContactLink({
   href,
   icon,
+  eyebrow,
   label,
   external = false,
+  wide = false,
 }: {
   href: string;
   icon: React.ReactNode;
+  eyebrow: string;
   label: string;
   external?: boolean;
+  wide?: boolean;
 }) {
   return (
     <a
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className="group flex max-w-full items-center gap-4 font-mono text-[9px] tracking-[0.18em] text-foreground/58 transition-colors hover:text-accent sm:text-[10px]"
+      className={`group flex min-w-0 items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.025] p-4 transition-colors hover:border-accent/55 hover:bg-white/[0.045] ${
+        wide ? "sm:col-span-2" : ""
+      }`}
     >
-      <span className="shrink-0 text-foreground/50 transition-colors group-hover:text-accent">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 text-white/55 transition-colors group-hover:border-accent/55 group-hover:text-accent">
         {icon}
       </span>
-      <span className="break-all">{label}</span>
+      <span className="min-w-0">
+        <span className="block font-mono text-[7px] uppercase tracking-[0.24em] text-white/28">
+          {eyebrow}
+        </span>
+        <span className="mt-1 block truncate text-[0.78rem] text-white/65 sm:text-[0.84rem]">
+          {label}
+        </span>
+      </span>
+      <ArrowUpRight
+        size={12}
+        className="ml-auto shrink-0 text-white/20 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+      />
     </a>
   );
 }
