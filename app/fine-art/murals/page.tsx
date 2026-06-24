@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
@@ -10,50 +9,57 @@ export const metadata: Metadata = {
     "Immersive murals and hand-painted architectural surfaces by Oleksandr Nazarchuk.",
 };
 
-const murals = [
+const muralStories = [
   {
-    src: "/images/fineart/Murals/img-8119-web.jpg",
-    alt: "Large narrative mural installed in an interior",
-    className:
-      "md:col-span-7 md:col-start-1 aspect-[4/3] md:-rotate-[1.2deg]",
+    src: "/images/MURALS-ART%20NUVOU2.png",
+    alt: "Art Nouveau-inspired mural of a woman surrounded by flowers",
+    title: "Art Nouveau-inspired mural for a private home.",
+    text: "I painted this indoor mural to bring the elegant, organic feel of the Art Nouveau movement right into a home. It’s heavily inspired by those classic late-19th-century paintings of nature and nymphs. I wanted the character—with her flowing red hair and soft drapery—to look completely at peace, surrounded by water lilies and bright yellow irises. By framing the piece with those classic stylized curves, it acts almost like a decorative window, bringing a calm, artistic, and cozy vibe to the entire room.",
+    imageClass: "aspect-[3/5]",
   },
   {
-    src: "/images/fineart/Murals/img-8115-web.jpg",
-    alt: "Expressive character detail painted within a mural",
-    className:
-      "md:col-span-4 md:col-start-9 md:mt-40 aspect-[3/4] md:rotate-[2deg]",
+    src: "/images/mural1.png",
+    alt: "Cosmic mural for the Artists’ Gym at La Perle Theater",
+    title: "Mural for the Artists’ Gym at La Perle Theater (Dubai).",
+    text: "This piece was specifically designed for the training facility where the show’s world-class acrobats and performers prepare. The mural pays tribute to the intense physical dedication behind the stage magic. The central character, a classic theatrical clown, lifts a golden dumbbell glowing with its own light, transforming the daily grind of strength training into a mystical, performative act. Set against a dynamic cosmic backdrop, the artwork seamlessly connects extreme athletic discipline with the universe of fantasy that these artists bring to life every single night.",
+    imageClass: "aspect-[4/3]",
   },
   {
-    src: "/images/fineart/Murals/img-8116-web.jpg",
-    alt: "Close detail of expressive mural brushwork",
-    className:
-      "md:col-span-4 md:col-start-2 md:-mt-20 aspect-[3/4] md:rotate-[1.3deg]",
+    src: "/images/mural2.png",
+    alt: "God of War mural in a gaming room",
+    title: "God of War mural for a gaming room.",
+    text: "I painted this one for a gaming fan who wanted to bring the epic world of God of War into their setup. The mural captures Kratos and Atreus ready for battle, surrounded by enemies and the cold Norse landscape. I used a really bold, high-contrast color palette—mixing intense fiery oranges with deep blues and purples—to match the raw energy and action of the game. It was a ton of work getting the details of Kratos’ Leviathan Axe and Atreus’ bow right, but it completely transforms the room into the ultimate gaming sanctuary.",
+    imageClass: "aspect-[4/5]",
   },
   {
     src: "/images/fineart/Murals/img-8630-web.jpg",
-    alt: "Ornamental blue mask mural painted on a wall",
-    className:
-      "md:col-span-6 md:col-start-7 md:mt-24 aspect-[4/3] md:-rotate-[1deg]",
+    alt: "Blue Japanese Hannya mask mural",
+    title: "Japanese Hannya Mask Mural.",
+    text: "For this project, I wanted to paint a modern, stylized take on the traditional Japanese Hannya mask. Instead of using the classic red colors, I went for a striking cool-toned palette with deep blues, teals, and purples to give it a fresh, glowing effect. Painting only a partial, cropped view of the mask allowed me to play with the negative space of the wall and create a much bolder, more mysterious focal point for the room. It was a really fun piece to work on, especially blending those smooth gradients on the face and horns.",
+    imageClass: "aspect-[3/4]",
   },
   {
-    src: "/images/fineart/Murals/photo-output-web.jpg",
-    alt: "Decorative female figure mural on a narrow wall",
-    className:
-      "md:col-span-5 md:col-start-1 md:-mt-12 aspect-[3/4] md:-rotate-[1.5deg]",
+    src: "/images/mural4.png",
+    alt: "Vertical fantasy mural inspired by Sky: Children of the Light",
+    title: 'Mural inspired by the game "Sky: Children of the Light".',
+    text: "This vertical mural is a tribute to the beautiful and whimsical indie game Sky on PS4. I wanted to capture that signature magical, dreamlike atmosphere, so I focused on a cool, moody color palette dominated by deep blues and teals, contrasted with the warm, glowing lights from the house windows and the lantern. Adding the tiny silhouette of the caped wanderer on the path really brings out that sense of quiet exploration and wonder that makes the game so unique. It was a great challenge adapting this fantasy landscape to fit perfectly onto a narrow, vertical wall section.",
+    imageClass: "aspect-[1/3]",
+    maxWidthClass: "max-w-[220px]",
   },
   {
-    src: "/images/fineart/Murals/IMG_3278.jpg",
-    alt: "Fantasy mural installed on an architectural panel",
-    className:
-      "md:col-span-4 md:col-start-8 md:mt-40 aspect-[2/3] md:rotate-[2.2deg]",
+    src: "/images/mural3.png",
+    alt: "Psychedelic anatomical mural inspired by the band Tool",
+    title: "Mural inspired by the band Tool.",
+    text: "This indoor mural is a massive shoutout to the psychedelic, mystical artwork of the progressive metal band Tool. I wanted to dive into that deep, mind-expanding vibe, so I painted a stylized, otherworldly head that opens up into a glowing cosmic brain or consciousness. I used a trippy color mix—contrasting deep blues and teals on the metallic face skin with intense, fiery oranges and reds for the energy exploding from the top. It was awesome playing around with these surreal anatomical details to capture the band’s iconic aesthetic right onto the wall.",
+    imageClass: "aspect-[3/4]",
   },
-];
-
-const process = [
-  ["01", "Listen", "The space, atmosphere, and story establish the direction."],
-  ["02", "Imagine", "References become a composition shaped for the architecture."],
-  ["03", "Build", "Drawing, color, texture, and illusion accumulate by hand."],
-  ["04", "Transform", "The finished image changes how the space is experienced."],
+  {
+    src: "/images/MURALS-ART%20NUVOU1.png",
+    alt: "Art Nouveau triptych mural for a natural dye workshop",
+    title: "Triptych mural for a natural dye workshop.",
+    text: "I painted this three-panel mural for a workshop space where the owner creates beautiful natural textiles and dyes. The design is heavily inspired by Art Nouveau, using those classic, elegant outlines and flowing lines to showcase different botanical elements like water lilies, reeds, and wild flora. I chose a warm, earthy color palette to directly reflect the organic pigments and natural tones used in the studio itself. Creating the mural as a triptych of arched panels turned the wall into a set of artistic windows, making the whole workspace feel deeply connected to nature and traditional craft.",
+    imageClass: "aspect-[4/5]",
+  },
 ];
 
 export default function MuralsPage() {
@@ -113,136 +119,40 @@ export default function MuralsPage() {
 
       <section
         id="murals"
-        className="relative overflow-hidden bg-[#d9d0bd] py-28 text-[#17140f] md:py-40"
+        className="border-y border-white/8 bg-[#1b1e22] text-foreground"
       >
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.12]"
-          style={{
-            backgroundImage:
-              "radial-gradient(rgba(23,20,15,.6) .55px, transparent .55px)",
-            backgroundSize: "8px 8px",
-          }}
-        />
-        <div className="pointer-events-none absolute left-1/2 top-[19rem] -translate-x-1/2 select-none font-serif text-[28vw] font-light leading-none tracking-[-0.07em] text-black/[0.035]">
-          MURALS
-        </div>
-
-        <div className="relative mx-auto max-w-[1500px] px-5 sm:px-8">
-          <div className="grid gap-12 md:grid-cols-[0.48fr_1fr]">
-            <p className="font-mono text-[9px] uppercase tracking-[0.34em] text-accent">
-              Murals · Selected works
-            </p>
-            <div>
-              <h2
-                style={{
-                  fontFamily: "'Cormorant Infant', serif",
-                  fontSize: "clamp(3rem, 7vw, 6.4rem)",
-                  fontWeight: 300,
-                  lineHeight: 0.92,
-                }}
-              >
-                Painting stories at the scale of architecture.
-              </h2>
-                <p className="mt-9 max-w-2xl border-l border-[#806522]/55 pl-6 text-[0.9rem] leading-8 text-black/52">
-                Narrative scenes, expressive figures, ornament, and illusion
-                belong to one practice: transforming surfaces through color,
-                rhythm, and atmosphere.
-              </p>
-            </div>
-          </div>
-
-          <div className="relative mt-28 grid gap-8 md:grid-cols-12 md:gap-7">
-            {murals.map((mural, index) => (
-              <figure
-                key={mural.src}
-                className={`group relative bg-[#eee7d8] p-2.5 shadow-[0_32px_80px_rgba(55,42,22,0.2)] sm:p-3 ${mural.className}`}
-              >
-                <div className="relative h-full overflow-hidden bg-[#bdb39f]">
-                  <Image
-                    src={mural.src}
-                    alt={mural.alt}
-                    fill
-                    sizes="(max-width: 767px) 100vw, 58vw"
-                    className="object-cover transition-transform duration-1000 group-hover:scale-[1.035]"
-                  />
-                </div>
-                <figcaption className="absolute -bottom-7 left-1 flex gap-4 font-mono text-[7px] uppercase tracking-[0.2em] text-black/42">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <span>Painted surface</span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-          <div className="mt-28 flex justify-end">
-            <p className="max-w-sm border-t border-black/20 pt-5 font-mono text-[8px] uppercase leading-6 tracking-[0.2em] text-black/38">
-              Narrative · figure · ornament · illusion
-              <br />
-              One continuous body of mural work
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-foreground/10 bg-[#0d0d0d]">
-        <div className="mx-auto grid max-w-7xl gap-14 px-5 py-28 sm:px-8 md:grid-cols-[0.7fr_1fr] md:py-36">
-          <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.32em] text-accent">
-              From surface to atmosphere
-            </p>
-            <h2
-              className="mt-5 max-w-md"
-              style={{
-                fontFamily: "'Cormorant Infant', serif",
-                fontSize: "clamp(3rem, 7vw, 6rem)",
-                fontWeight: 300,
-                lineHeight: 0.9,
-              }}
+        <div className="mx-auto max-w-[1180px] px-5 sm:px-8 lg:px-12">
+          {muralStories.map((mural, index) => (
+            <article
+              key={mural.title}
+              className={`grid gap-7 py-12 md:grid-cols-[minmax(190px,0.58fr)_minmax(0,1.45fr)] md:items-center md:gap-12 md:py-14 lg:gap-16 ${
+                index > 0 ? "border-t border-white/12" : ""
+              }`}
             >
-              The process is part of the art.
-            </h2>
-          </div>
-          <div className="grid sm:grid-cols-2">
-            {process.map(([number, title, text]) => (
-              <article
-                key={number}
-                className="min-h-56 border-t border-foreground/15 py-7 sm:px-7 sm:odd:border-r"
+              <figure
+                className={`relative mx-auto w-full overflow-hidden bg-black/20 ${
+                  mural.maxWidthClass ?? "max-w-[290px]"
+                } ${mural.imageClass}`}
               >
-                <span className="font-mono text-[9px] tracking-[0.25em] text-accent">
-                  {number}
-                </span>
-                <h3 className="mt-8 font-serif text-3xl">{title}</h3>
-                <p className="mt-3 max-w-xs text-xs leading-6 text-foreground/42">
-                  {text}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+                <Image
+                  src={mural.src}
+                  alt={mural.alt}
+                  fill
+                  sizes="(max-width: 767px) 78vw, 290px"
+                  className="object-contain"
+                />
+              </figure>
 
-      <section className="relative isolate flex min-h-[70svh] items-center overflow-hidden px-5 py-28 text-center sm:px-8">
-        <Image
-          src="/images/fineart/Murals/img-3843-web.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="-z-20 object-cover opacity-35"
-        />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(8,8,8,0.28),#080808_72%)]" />
-        <div className="mx-auto max-w-4xl">
-          <p className="font-mono text-[9px] uppercase tracking-[0.35em] text-accent">
-            Have a wall in mind?
-          </p>
-          <h2 className="mt-6 font-serif text-[clamp(3.5rem,9vw,8rem)] font-light leading-[0.86]">
-            Let&apos;s transform the space.
-          </h2>
-          <Link
-            href="/contact"
-            className="group mt-10 inline-flex items-center gap-3 rounded-full border border-foreground/25 px-7 py-4 font-mono text-[9px] uppercase tracking-[0.24em] transition-all hover:border-accent hover:bg-accent hover:text-background"
-          >
-            Start a conversation
-            <ArrowUpRight size={13} />
-          </Link>
+              <div className="max-w-[640px]">
+                <p className="font-sans text-[0.78rem] font-medium leading-5 text-white sm:text-[0.84rem]">
+                  {mural.title}
+                </p>
+                <p className="mt-2 text-[0.88rem] leading-[1.62] text-white/82 sm:text-[0.94rem]">
+                  {mural.text}
+                </p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
     </main>
