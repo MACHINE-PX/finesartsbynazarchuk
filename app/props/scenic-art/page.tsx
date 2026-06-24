@@ -79,6 +79,36 @@ const props = [
     className:
       "lg:col-start-7 lg:col-span-3 lg:row-start-4 lg:row-span-3",
   },
+  {
+    file: "props1.jpeg",
+    alt: "Handcrafted fantasy prop axe",
+    className:
+      "lg:col-start-1 lg:col-span-3 lg:row-start-7 lg:row-span-4",
+  },
+  {
+    file: "props2.jpeg",
+    alt: "Handcrafted scenic prop",
+    className:
+      "lg:col-start-4 lg:col-span-3 lg:row-start-7 lg:row-span-4",
+  },
+  {
+    file: "props3.jpeg",
+    alt: "Handcrafted scenic prop",
+    className:
+      "lg:col-start-7 lg:col-span-3 lg:row-start-7 lg:row-span-4",
+  },
+  {
+    file: "props4.jpeg",
+    alt: "Handcrafted fantasy prop blade",
+    className:
+      "lg:col-start-10 lg:col-span-3 lg:row-start-7 lg:row-span-4",
+  },
+  {
+    file: "props5.jpeg",
+    alt: "Handcrafted aged revolver prop",
+    className:
+      "lg:col-start-1 lg:col-span-3 lg:row-start-11 lg:row-span-4",
+  },
 ];
 
 const archive = [
