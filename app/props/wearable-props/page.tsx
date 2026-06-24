@@ -102,15 +102,15 @@ const processImages = [
 
 const videos = [
   {
-    file: "cyborg headpiece (male version).MOV",
+    file: "cyborg-headpiece-male-1-web.mp4",
     poster: "cyborg headpiece.JPG",
   },
   {
-    file: "cyborg headpiece (male version)(1).MOV",
+    file: "cyborg-headpiece-male-2-web.mp4",
     poster: "cyborg headpiece(1).JPG",
   },
   {
-    file: "cyborg headpiece (male version)(2).MOV",
+    file: "cyborg-headpiece-male-3-web.mp4",
     poster: "cyborgs headpieces(male flyers).JPG",
   },
 ];
@@ -242,7 +242,7 @@ export default function WearablePropsPage() {
               preload="auto"
               aria-label={`Cyborg headpiece video ${index + 1}`}
             >
-              <source src={wearable(video.file)} type="video/quicktime" />
+              <source src={wearable(video.file)} type="video/mp4" />
               Your browser does not support this video format.
             </video>
           ))}

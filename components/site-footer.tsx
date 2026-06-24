@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  ArrowUp,
   ArrowUpRight,
   Instagram,
   Mail,
@@ -29,6 +30,10 @@ export function SiteFooter() {
     window.location.href = `mailto:${siteConfig.email}?subject=${encodeURIComponent(
       subject,
     )}&body=${encodeURIComponent(body)}`;
+  }
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   return (
@@ -141,13 +146,22 @@ export function SiteFooter() {
           </form>
         </div>
 
-        <div className="mt-12 flex flex-col justify-between gap-4 border-t border-white/12 pt-6 sm:flex-row sm:items-center">
+        <div className="mt-12 flex flex-col justify-between gap-5 border-t border-white/12 pt-6 sm:flex-row sm:items-center">
           <span className="font-serif text-[1rem] uppercase tracking-[0.2em] text-white/28">
             {siteConfig.shortName}
           </span>
-          <span className="font-mono text-[7px] uppercase tracking-[0.2em] text-white/20">
-            Portfolio · Fine Art / Props & Scenic
-          </span>
+          <div className="flex flex-wrap items-center gap-5">
+            <span className="font-mono text-[7px] uppercase tracking-[0.2em] text-white/20">
+              Portfolio · Fine Art / Props & Scenic
+            </span>
+            <button
+              type="button"
+              onClick={scrollToTop}
+              className="inline-flex min-h-11 items-center gap-3 rounded-full border border-accent bg-accent px-5 font-mono text-[9px] font-medium uppercase tracking-[0.18em] text-[#111318] transition-colors hover:border-white hover:bg-white"
+            >
+              Back to top <ArrowUp size={14} />
+            </button>
+          </div>
         </div>
       </div>
     </footer>
