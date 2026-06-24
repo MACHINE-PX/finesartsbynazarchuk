@@ -79,19 +79,42 @@
     font-family: "Inter", sans-serif;
   }
 
-  main h1,
-  main h2,
-  main h3,
+  main h1 {
+    max-width: 100%;
+    font-size: clamp(2.25rem, 7vw, 5.25rem) !important;
+    line-height: 0.9 !important;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  main h2 {
+    max-width: 100%;
+    font-size: clamp(1.9rem, 5.5vw, 4.5rem) !important;
+    line-height: 0.94 !important;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  main h3 {
+    max-width: 100%;
+    font-size: clamp(1.55rem, 4vw, 3.25rem) !important;
+    line-height: 1 !important;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
   main h4,
   main h5,
   main h6 {
-    /* User-requested global heading size */
-    font-size: 6.2rem !important;
-    line-height: 0.9 !important;
+    max-width: 100%;
+    font-size: clamp(1.2rem, 3vw, 2.25rem) !important;
+    line-height: 1.05 !important;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
   }
 
   .heading-comma {
-    font-size: 5.5rem !important;
+    font-size: clamp(2rem, 5vw, 4.5rem) !important;
     line-height: 0.82;
     display: inline-block;
     vertical-align: baseline;
@@ -147,10 +170,10 @@
 
 .home-hero-title {
   max-width: 100%;
-  font-size: clamp(2.15rem, 8.5vw, 5.4rem) !important;
-  line-height: 0.88 !important;
-  letter-spacing: clamp(0.01em, 0.5vw, 0.04em) !important;
-  overflow-wrap: normal;
+  font-size: clamp(1.8rem, 6vw, 4.5rem) !important;
+  line-height: 0.92 !important;
+  letter-spacing: clamp(0, 0.35vw, 0.03em) !important;
+  overflow-wrap: anywhere;
   text-wrap: balance;
 }
 
@@ -167,32 +190,10 @@
     word-spacing: 0.03em !important;
   }
 
-  /* Slightly loosen serif display headings */
-  .font-serif {
-    letter-spacing: 0.01em !important;
-    /* Reduce font-size a bit on small screens so headings don't feel cramped */
-    font-size: 0.85em !important;
-  }
-
-  /* Reduce comma size on small screens to avoid visual crowding */
   .heading-comma {
-    font-size: 2.4rem !important;
+    font-size: clamp(1.7rem, 7vw, 2.4rem) !important;
     line-height: 0.8 !important;
     vertical-align: baseline;
-  }
-
-  /* Targeted smaller heading sizes on phones */
-  main h1 {
-    font-size: clamp(2.2rem, 8vw, 4.2rem) !important;
-  }
-  main h2 {
-    font-size: clamp(1.9rem, 7.5vw, 3.6rem) !important;
-  }
-  main h3,
-  main h4,
-  main h5,
-  main h6 {
-    font-size: clamp(1.4rem, 6.5vw, 2.6rem) !important;
   }
 }
 
