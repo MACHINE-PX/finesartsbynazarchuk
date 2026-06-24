@@ -36,7 +36,9 @@ export default function FineArtPage() {
             <br />
             murals,
             <br />
-            plein air.
+            plein air,
+            <br />
+            and events.
           </h1>
           <p className="mt-9 max-w-lg border-l border-accent/45 pl-6 text-[0.95rem] leading-[1.8] text-foreground/60">
             A curated view of Oleksandr&apos;s fine art practice, from direct
@@ -52,7 +54,7 @@ export default function FineArtPage() {
         </div>
 
         <div className="relative min-h-[620px]">
-          <div className="absolute left-[3%] top-[4%] aspect-[4/3] w-[67%] -rotate-2 bg-secondary p-2 shadow-2xl">
+          <div className="absolute left-[3%] top-[4%] aspect-[4/3] w-[58%] -rotate-2 bg-secondary p-2 shadow-2xl">
             <div className="relative h-full overflow-hidden">
               <Image
                 src="/images/fineart/Paintings/FullSizeRender%202.jpg"
@@ -63,13 +65,35 @@ export default function FineArtPage() {
               />
             </div>
           </div>
-          <div className="absolute bottom-[3%] right-[3%] aspect-[3/4] w-[43%] rotate-3 bg-secondary p-2 shadow-2xl">
+          <div className="absolute right-[4%] top-[8%] aspect-[3/4] w-[35%] rotate-3 bg-secondary p-2 shadow-2xl">
             <div className="relative h-full overflow-hidden">
               <Image
-                src="/images/fineart/Paintings/img-1216-web.jpg"
-                alt="Expressive portrait painting by Oleksandr Nazarchuk"
+                src="/images/fineart/Murals/img-8115-web.jpg"
+                alt="Mural by Oleksandr Nazarchuk"
                 fill
-                sizes="34vw"
+                sizes="28vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+          <div className="absolute bottom-[6%] left-[13%] aspect-[3/4] w-[27%] rotate-2 bg-secondary p-2 shadow-2xl">
+            <div className="relative h-full overflow-hidden">
+              <Image
+                src="/images/PLEINAIR8.png"
+                alt="Plein air painting by Oleksandr Nazarchuk"
+                fill
+                sizes="27vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+          <div className="absolute bottom-[3%] right-[5%] aspect-[4/3] w-[46%] -rotate-2 bg-secondary p-2 shadow-2xl">
+            <div className="relative h-full overflow-hidden">
+              <Image
+                src="/images/fineart/EVENTS/Exhibitions/img-4378-web.jpg"
+                alt="Fine art event featuring Oleksandr Nazarchuk"
+                fill
+                sizes="36vw"
                 className="object-cover"
               />
             </div>
@@ -100,7 +124,10 @@ export default function FineArtPage() {
         subtitle="Painted outside"
         description="Light changes, weather moves, and the painting has to answer in the moment. Outdoor studies made directly before the landscape."
         href="/fine-art/plein-air"
-        images={[]}
+        images={[
+          "/images/PLEINAIR12.png",
+          "/images/PLEINAIR14.png",
+        ]}
         tone="paper"
         reverse
       />
@@ -193,11 +220,27 @@ function FineArtSection({
           </Link>
         </div>
 
-        <div className={`grid grid-cols-3 items-end gap-3 border-t border-white/20 pt-5 sm:max-w-lg ${reverse ? "lg:order-1" : ""}`}>
+        <div
+          className={`grid items-end gap-3 border-t pt-5 ${
+            images.length === 2
+              ? "grid-cols-[1.08fr_0.82fr] border-black/15 sm:max-w-md"
+              : "grid-cols-3 border-white/20 sm:max-w-lg"
+          } ${reverse ? "lg:order-1" : ""}`}
+        >
           {images.map((image, index) => (
             <div
               key={image}
-              className={`relative overflow-hidden bg-white/10 ${index === 1 ? "aspect-square" : "aspect-[3/4]"}`}
+              className={`relative overflow-hidden shadow-[0_20px_55px_rgba(45,35,20,0.16)] ${
+                paper ? "bg-black/10" : "bg-white/10"
+              } ${
+                images.length === 2
+                  ? index === 0
+                    ? "aspect-[4/3]"
+                    : "aspect-square"
+                  : index === 1
+                    ? "aspect-square"
+                    : "aspect-[3/4]"
+              }`}
             >
               <Image src={image} alt="" fill sizes="180px" className="object-cover" />
             </div>
