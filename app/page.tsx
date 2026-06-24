@@ -41,13 +41,10 @@ export default function Home() {
 
         <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-5xl flex-col items-center justify-end px-4 pb-[14vh] pt-28 text-center sm:px-6 sm:pb-[8vh]">
           <h1
-            className="uppercase"
+            className="home-hero-title uppercase"
             style={{
               fontFamily: "'Cormorant Infant', serif",
-              fontSize: "clamp(2rem, 13vw, 5.4rem)",
               fontWeight: 300,
-              lineHeight: 0.88,
-              letterSpacing: "0.04em",
             }}
           >
             {siteConfig.name}
