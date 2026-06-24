@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
+import { HoverVideo } from "@/components/hover-video";
 
 export const metadata: Metadata = { title: "Wearable Props | Oleksandr Nazarchuk" };
 
@@ -68,7 +69,7 @@ const works = [
   },
   {
     file: "cyborg headpiece (1).JPG",
-    title: "Cyborg Profile",
+    title: "Female Cyborg Headpiece",
     type: "Wearable sculpture",
   },
 ];
@@ -230,21 +231,12 @@ export default function WearablePropsPage() {
         </h2>
         <div className="mt-14 grid gap-5 lg:grid-cols-3">
           {videos.map((video, index) => (
-            <video
+            <HoverVideo
               key={video.file}
-              className="aspect-[9/16] w-full bg-black object-cover"
+              src={wearable(video.file)}
               poster={wearable(video.poster)}
-              autoPlay
-              muted
-              loop
-              controls
-              playsInline
-              preload="auto"
-              aria-label={`Cyborg headpiece video ${index + 1}`}
-            >
-              <source src={wearable(video.file)} type="video/mp4" />
-              Your browser does not support this video format.
-            </video>
+              label={`Cyborg headpiece video ${index + 1}`}
+            />
           ))}
         </div>
       </section>
