@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -32,6 +32,15 @@ export default function RootLayout({
         <HeadingComma />
         {children}
         <SiteFooter />
+        <a
+          href="#"
+          className="back-to-top-global"
+          aria-label="Back to top"
+          title="Back to top"
+        >
+          <span aria-hidden="true">↑</span>
+          TOP
+        </a>
       </body>
     </html>
   );

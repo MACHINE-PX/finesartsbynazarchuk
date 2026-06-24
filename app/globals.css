@@ -207,3 +207,41 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+.back-to-top-global {
+  position: fixed !important;
+  left: 110px !important;
+  right: auto !important;
+  bottom: 24px !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: auto !important;
+  min-width: 96px !important;
+  height: 56px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 9px !important;
+  box-sizing: border-box !important;
+  border: 2px solid #ffffff !important;
+  border-radius: 999px !important;
+  background: #f2b84b !important;
+  color: #080808 !important;
+  padding: 0 20px !important;
+  font-family: "Space Mono", monospace !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.12em !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.55) !important;
+  transform: none !important;
+  pointer-events: auto !important;
+}
+
+.back-to-top-global:hover {
+  background: #ffffff !important;
+  color: #080808 !important;
+}

@@ -13,10 +13,12 @@ const root =
 const scenic = (file: string) =>
   `${root}/Scenic%20Art%20%26%20Faux%20finishes/${file}`;
 const sculpture = (file: string) => `${root}/Sculptures/${file}`;
+const wearable = (file: string) =>
+  `${root}/Wearable%20props/${encodeURIComponent(file)}`;
 
 export default function PropsPage() {
   return (
-    <main className="overflow-hidden bg-[#0a0908] text-[#eee9df]">
+    <main id="page-top" className="overflow-hidden bg-[#0a0908] text-[#eee9df]">
       <SiteHeader />
 
       <section className="mx-auto grid min-h-[88svh] max-w-[1500px] gap-14 px-5 py-24 sm:px-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
@@ -77,12 +79,22 @@ export default function PropsPage() {
       />
 
       <section className="relative border-y border-white/10 px-5 py-28 sm:px-8 md:py-40">
-        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.06]" />
+        <div className="absolute inset-0">
+          <Image
+            src={wearable("foto for album cover wearable props.PNG")}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-black/68" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/55 to-black/35" />
+        </div>
         <div className="relative mx-auto grid max-w-7xl gap-12 md:grid-cols-[0.45fr_1fr] md:items-end">
           <div>
             <span className="font-mono text-[9px] text-[#c39165]">03</span>
             <p className="mt-4 font-mono text-[8px] uppercase tracking-[0.24em] text-white/30">
-              Archive ready
+              Wearable archive
             </p>
           </div>
           <div>
@@ -92,8 +104,8 @@ export default function PropsPage() {
               <span className="italic">Props</span>
             </h2>
             <p className="mt-8 max-w-xl text-[0.9rem] leading-8 text-white/42">
-              A future archive for masks, costume objects, and forms designed
-              around the moving body. The source folder is currently empty.
+              Masks, headpieces, costume objects, and character-driven forms
+              designed around movement and the performing body.
             </p>
             <Link href="/props/wearable-props" className="group mt-9 inline-flex items-center gap-3 border border-white/20 px-7 py-4 font-mono text-[9px] uppercase tracking-[0.22em] hover:border-[#c39165] hover:bg-[#c39165] hover:text-black">
               View wearable props <ArrowUpRight size={13} />
