@@ -109,6 +109,12 @@ const props = [
     className:
       "lg:col-start-1 lg:col-span-3 lg:row-start-11 lg:row-span-4",
   },
+  {
+    file: "props6.jpeg",
+    alt: "Handcrafted fantasy skull prop",
+    className:
+      "lg:col-start-4 lg:col-span-3 lg:row-start-11 lg:row-span-4",
+  },
 ];
 
 const archive = [
