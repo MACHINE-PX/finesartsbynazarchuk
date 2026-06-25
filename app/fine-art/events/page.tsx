@@ -180,13 +180,15 @@ export default function EventsPage() {
 
             <div className="grid grid-cols-2 gap-3 sm:gap-5">
               <div className="relative col-span-2 aspect-[16/10] overflow-hidden bg-white/5">
-                <Image
-                  src={eventImage(folders.aom, "img-2018-2-web.jpg")}
-                  alt="Live painting setup among motorcycles"
-                  fill
-                  sizes="(max-width: 1023px) 100vw, 65vw"
-                  className="object-cover"
-                />
+                <HoverFrame>
+                  <Image
+                    src={eventImage(folders.aom, "img-2018-2-web.jpg")}
+                    alt="Live painting setup among motorcycles"
+                    fill
+                    sizes="(max-width: 1023px) 100vw, 65vw"
+                    className="object-cover"
+                  />
+                </HoverFrame>
                 <Stamp>LIVE PAINTING / AOM</Stamp>
               </div>
               {[
@@ -201,13 +203,15 @@ export default function EventsPage() {
                     index % 2 === 0 ? "aspect-[3/4]" : "mt-12 aspect-[3/4]"
                   }`}
                 >
-                  <Image
-                    src={eventImage(folders.aom, file)}
-                    alt={alt}
-                    fill
-                    sizes="(max-width: 1023px) 50vw, 32vw"
-                    className="object-cover"
-                  />
+                  <HoverFrame>
+                    <Image
+                      src={eventImage(folders.aom, file)}
+                      alt={alt}
+                      fill
+                      sizes="(max-width: 1023px) 50vw, 32vw"
+                      className="object-cover"
+                    />
+                  </HoverFrame>
                 </div>
               ))}
             </div>
@@ -279,7 +283,7 @@ export default function EventsPage() {
                 alt="Artist presenting a painted helmet"
                 fill
                 sizes="(max-width: 1023px) 100vw, 58vw"
-                className="object-cover"
+                className="object-cover object-[center_18%]"
               />
             </div>
             <div className="absolute -bottom-14 right-[-2%] aspect-square w-[34%] overflow-hidden border-4 border-[#080808] bg-white/5 shadow-2xl">
@@ -488,6 +492,20 @@ function ArchiveThumb({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="relative aspect-[3/4] overflow-hidden bg-white/5">
       <Image src={src} alt={alt} fill sizes="180px" className="object-cover" />
+    </div>
+  );
+}
+
+function HoverFrame({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="group relative h-full w-full">
+      {children}
+      <div className="pointer-events-none absolute inset-3 z-10">
+        <span className="absolute left-0 top-0 h-px w-0 bg-[#f2c94c] transition-all duration-300 group-hover:w-full" />
+        <span className="absolute right-0 top-0 h-0 w-px bg-[#f2c94c] transition-all duration-300 group-hover:h-full" />
+        <span className="absolute bottom-0 right-0 h-px w-0 bg-[#f2c94c] transition-all duration-300 group-hover:w-full" />
+        <span className="absolute bottom-0 left-0 h-0 w-px bg-[#f2c94c] transition-all duration-300 group-hover:h-full" />
+      </div>
     </div>
   );
 }
