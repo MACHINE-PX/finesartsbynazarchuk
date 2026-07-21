@@ -15,102 +15,136 @@ const scenic = (file: string) => `${base}/${encodeURIComponent(file)}`;
 const props = [
   {
     file: "food-props-banana-web.jpg",
+    title: "Banana Food Prop",
+    type: "Food prop",
     alt: "Food prop banana",
     className:
       "lg:col-start-1 lg:col-span-2 lg:row-start-1 lg:row-span-3",
   },
   {
     file: "cabaret-mask-1-web.jpg",
+    title: "Cabaret Mask 01",
+    type: "Mask",
     alt: "Cabaret mask",
     className:
       "lg:col-start-3 lg:col-span-1 lg:row-start-1 lg:row-span-2",
   },
   {
     file: "cabaret-mask-2-web.jpg",
+    title: "Cabaret Mask 02",
+    type: "Mask",
     alt: "Cabaret mask",
     className:
       "lg:col-start-3 lg:col-span-1 lg:row-start-3 lg:row-span-1",
   },
   {
     file: "food-prop-capsicum-web.jpg",
+    title: "Capsicum Food Prop",
+    type: "Food prop",
     alt: "Food prop capsicum",
     className:
       "lg:col-start-4 lg:col-span-2 lg:row-start-1 lg:row-span-3",
   },
   {
     file: "antique-key-web.jpg",
+    title: "Antique Key",
+    type: "EVA foam finish",
     alt: "Antique key made from EVA foam with faux finish",
     className:
       "lg:col-start-6 lg:col-span-2 lg:row-start-1 lg:row-span-3",
   },
   {
     file: "food-props-avocado-web.jpg",
+    title: "Avocado Food Prop",
+    type: "Food prop",
     alt: "Food prop avocado",
     className:
       "lg:col-start-8 lg:col-span-2 lg:row-start-1 lg:row-span-3",
   },
   {
     file: "magic-book-988-web.jpg",
+    title: "Magic Book",
+    type: "EVA foam / LED",
     alt: "Magic book made from EVA foam, air dry clay, and LED",
     className:
       "lg:col-start-10 lg:col-span-3 lg:row-start-1 lg:row-span-6",
   },
   {
     file: "son-of-the-sun-1-web.jpg",
+    title: "Son of the Sun 01",
+    type: "Foam mask",
     alt: "Son of the Sun mask made from expanding foam",
     className:
       "lg:col-start-1 lg:col-span-2 lg:row-start-4 lg:row-span-3",
   },
   {
     file: "padlock-web.jpg",
+    title: "Padlock",
+    type: "EVA foam finish",
     alt: "Padlock made from EVA foam with faux finish",
     className:
       "lg:col-start-3 lg:col-span-2 lg:row-start-4 lg:row-span-3",
   },
   {
     file: "son-of-the-sun-2-web.jpg",
+    title: "Son of the Sun 02",
+    type: "Foam mask",
     alt: "Son of the Sun mask made from expanding foam",
     className:
       "lg:col-start-5 lg:col-span-2 lg:row-start-4 lg:row-span-3",
   },
   {
     file: "son-of-the-sun-3-web.jpg",
+    title: "Son of the Sun 03",
+    type: "Foam mask",
     alt: "Son of the Sun mask made from expanding foam",
     className:
       "lg:col-start-7 lg:col-span-3 lg:row-start-4 lg:row-span-3",
   },
   {
     file: "props1.jpeg",
+    title: "Fantasy Axe",
+    type: "Hand prop",
     alt: "Handcrafted fantasy prop axe",
     className:
       "lg:col-start-1 lg:col-span-3 lg:row-start-7 lg:row-span-4",
   },
   {
     file: "props2.jpeg",
+    title: "Scenic Prop Study 01",
+    type: "Hand prop",
     alt: "Handcrafted scenic prop",
     className:
       "lg:col-start-4 lg:col-span-3 lg:row-start-7 lg:row-span-4",
   },
   {
     file: "props3.jpeg",
+    title: "Scenic Prop Study 02",
+    type: "Hand prop",
     alt: "Handcrafted scenic prop",
     className:
       "lg:col-start-7 lg:col-span-3 lg:row-start-7 lg:row-span-4",
   },
   {
     file: "props4.jpeg",
+    title: "Fantasy Blade",
+    type: "Hand prop",
     alt: "Handcrafted fantasy prop blade",
     className:
       "lg:col-start-10 lg:col-span-3 lg:row-start-7 lg:row-span-4",
   },
   {
     file: "props5.jpeg",
+    title: "Aged Revolver",
+    type: "Hand prop",
     alt: "Handcrafted aged revolver prop",
     className:
       "lg:col-start-1 lg:col-span-3 lg:row-start-11 lg:row-span-4",
   },
   {
     file: "props6.jpeg",
+    title: "Fantasy Skull",
+    type: "Hand prop",
     alt: "Handcrafted fantasy skull prop",
     className:
       "lg:col-start-4 lg:col-span-3 lg:row-start-11 lg:row-span-4",
@@ -178,7 +212,7 @@ export default function ScenicArtPage() {
                 key={prop.file}
                 className={`group col-span-1 row-span-3 overflow-hidden bg-[#e8ddca] p-1.5 shadow-[0_22px_55px_rgba(0,0,0,.35)] sm:col-span-2 sm:p-2 ${prop.className}`}
               >
-                <div className="relative h-full overflow-hidden">
+                <div className="relative h-[calc(100%-44px)] overflow-hidden">
                   <Image
                     src={scenic(prop.file)}
                     alt={prop.alt}
@@ -187,6 +221,12 @@ export default function ScenicArtPage() {
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                   />
                 </div>
+                <figcaption className="flex min-h-11 items-start justify-between gap-3 px-1 pb-1 pt-3 font-mono uppercase tracking-[0.16em] text-black/46">
+                  <span className="text-[8px] leading-4">{prop.title}</span>
+                  <span className="max-w-[42%] text-right text-[7px] leading-4">
+                    {prop.type}
+                  </span>
+                </figcaption>
               </figure>
             ))}
           </div>
