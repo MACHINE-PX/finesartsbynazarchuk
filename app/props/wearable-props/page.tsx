@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { AdminManagedMedia } from "@/components/admin-managed-media";
 import { SiteHeader } from "@/components/site-header";
 import { HoverVideo } from "@/components/hover-video";
 
@@ -240,6 +241,8 @@ export default function WearablePropsPage() {
           ))}
         </div>
       </section>
+
+      <AdminManagedMedia section="Wearable Props" />
 
       <section className="border-t border-white/10 px-5 py-24 text-center sm:px-8">
         <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-[#d5aa79]">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AdminManagedMedia } from "@/components/admin-managed-media";
 import { PleinAirWheel } from "@/components/plein-air-wheel";
 import { SiteHeader } from "@/components/site-header";
 import { pleinAirGallery } from "@/lib/portfolio-data";
@@ -48,6 +49,7 @@ export default function PleinAirPage() {
       </section>
 
       <PleinAirWheel works={pleinAirGallery.works} />
+      <AdminManagedMedia section="Plein Air" tone="paper" />
     </main>
   );
 }

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import { PaintingsGallery, type PaintingItem } from "@/components/paintings-gallery";
 import { SiteHeader } from "@/components/site-header";
+import { AdminManagedMedia } from "@/components/admin-managed-media";
 
 export const metadata: Metadata = {
   title: "Paintings | Oleksandr Nazarchuk",
@@ -252,6 +253,8 @@ export default function PaintingsPage() {
 
         <PaintingsGallery paintings={paintings} />
       </section>
+
+      <AdminManagedMedia section="Paintings" />
     </main>
   );
 }

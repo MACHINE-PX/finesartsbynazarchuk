@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { AdminManagedMedia } from "@/components/admin-managed-media";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = { title: "Sculptures | Oleksandr Nazarchuk" };
@@ -135,6 +136,8 @@ export default function SculpturesPage() {
           <Link href="/contact" className="mt-9 inline-flex items-center gap-3 border border-white/20 px-7 py-4 font-mono text-[9px] uppercase tracking-[0.22em] hover:border-[#bd815b] hover:bg-[#bd815b] hover:text-black">Discuss an object <ArrowUpRight size={13} /></Link>
         </div>
       </section>
+
+      <AdminManagedMedia section="Sculptures" />
     </main>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowDown } from "lucide-react";
+import { AdminManagedMedia } from "@/components/admin-managed-media";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
@@ -155,6 +156,8 @@ export default function MuralsPage() {
           ))}
         </div>
       </section>
+
+      <AdminManagedMedia section="Murals" />
     </main>
   );
 }

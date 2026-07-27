@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { AdminManagedMedia } from "@/components/admin-managed-media";
 import { SiteHeader } from "@/components/site-header";
 import { aboutSubtitle, aboutText, siteConfig } from "@/lib/portfolio-data";
 
@@ -58,6 +59,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <AdminManagedMedia section="About" />
     </main>
   );
 }

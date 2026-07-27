@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Film, Images, Play } from "lucide-react";
+import { AdminManagedMedia } from "@/components/admin-managed-media";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
@@ -404,9 +405,11 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {eventGroups.map((group, index) => (
+      {eventGroups.map((group) => (
         <EventSection key={group.title} group={group} />
       ))}
+
+      <AdminManagedMedia section="Events" />
 
       <section className="border-t border-[#c99762]/30 px-5 py-28 text-center sm:px-8 md:py-36">
         <div className="mx-auto max-w-4xl">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { AdminManagedMedia } from "@/components/admin-managed-media";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
@@ -355,6 +356,8 @@ export default function ScenicArtPage() {
           </div>
         </div>
       </section>
+
+      <AdminManagedMedia section="Scenic Art, Faux Finishes & Props" />
 
       <section className="border-t border-white/10 px-5 py-28 text-center sm:px-8">
         <h2 className="mx-auto max-w-4xl font-serif text-[clamp(3.2rem,8vw,7rem)] font-light leading-[0.85]">
