@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowDown } from "lucide-react";
-import { PaintingsGallery } from "@/components/paintings-gallery";
+import { PaintingsGallery, type PaintingItem } from "@/components/paintings-gallery";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
@@ -13,44 +13,175 @@ export const metadata: Metadata = {
 const paintingPath = (file: string) =>
   `/images/fineart/Paintings/${encodeURIComponent(file)}`;
 
-const paintings = [
-  "IMG_4681.jpg",
-  "IMG_2436.jpg",
-  "IMG_3260.jpg",
-  "IMG_4537.jpg",
-  "FullSizeRender 2.jpg",
-  "FullSizeRender.JPG",
-  "IMG_0426.jpg",
-  "IMG_0622.jpg",
-  "IMG_1101.JPG",
-  "IMG_1345.JPG",
-  "IMG_1397.jpg",
-  "IMG_1406.jpg",
-  "IMG_2018.JPG",
-  "IMG_4195.jpg",
-  "IMG_4196.jpg",
-  "IMG_4197.jpg",
-  "IMG_4198.jpg",
-  "IMG_4199.jpg",
-  "IMG_4206.jpg",
-  "IMG_4210.jpg",
-  "IMG_4211.jpg",
-  "img-1207-web.jpg",
-  "img-1213-web.jpg",
-  "img-1216-web.jpg",
-  "img-1218-web.jpg",
-  "img-2858-web.jpg",
-  "img-3038-web.jpg",
-  "Untitled_Artwork 6.jpg",
-];
-
-const portraitFiles = [
-  "IMG_3260.jpg",
-  "IMG_4199.jpg",
-  "IMG_4537.jpg",
-  "img-1207-web.jpg",
-  "img-1216-web.jpg",
-  "img-1218-web.jpg",
+const paintings: PaintingItem[] = [
+  {
+    file: "IMG_4681.jpg",
+    title: "Motorcycle Study",
+    group: "Selected paintings",
+    format: "portrait",
+  },
+  {
+    file: "IMG_2436.jpg",
+    title: "Merchants Weighing Pearl",
+    group: "Selected paintings",
+    format: "portrait",
+  },
+  {
+    file: "IMG_3260.jpg",
+    title: "Stage Composition",
+    group: "Selected paintings",
+    format: "portrait",
+  },
+  {
+    file: "IMG_4537.jpg",
+    title: "Musician Study",
+    group: "Selected paintings",
+    format: "portrait",
+  },
+  {
+    file: "FullSizeRender 2.jpg",
+    title: "Elder Portrait",
+    group: "Portraits",
+    format: "portrait",
+  },
+  {
+    file: "IMG_1397.jpg",
+    title: "Bridge and Sky",
+    group: "Portraits",
+    format: "landscape",
+  },
+  {
+    file: "FullSizeRender.JPG",
+    title: "Elder Portrait Process",
+    group: "Portraits",
+    format: "landscape",
+  },
+  {
+    file: "img-1207-web.jpg",
+    title: "Expressive Portrait",
+    group: "Portraits",
+    format: "portrait",
+  },
+  {
+    file: "img-1216-web.jpg",
+    title: "Circular Portrait",
+    group: "Portraits",
+    format: "square",
+  },
+  {
+    file: "img-1218-web.jpg",
+    title: "Red Figure Study",
+    group: "Portraits",
+    format: "portrait",
+  },
+  {
+    file: "IMG_4199.jpg",
+    title: "Painted Face",
+    group: "Portraits",
+    format: "portrait",
+  },
+  {
+    file: "IMG_0426.jpg",
+    title: "Sunset Water Study",
+    group: "Landscapes",
+    format: "landscape",
+  },
+  {
+    file: "IMG_0622.jpg",
+    title: "Distant City",
+    group: "Landscapes",
+    format: "landscape",
+  },
+  {
+    file: "IMG_1345.JPG",
+    title: "Warm City Wall",
+    group: "Landscapes",
+    format: "portrait",
+  },
+  {
+    file: "IMG_4195.jpg",
+    title: "Red City Study",
+    group: "Landscapes",
+    format: "portrait",
+  },
+  {
+    file: "IMG_4196.jpg",
+    title: "Interior Nocturne",
+    group: "Landscapes",
+    format: "portrait",
+  },
+  {
+    file: "IMG_4197.jpg",
+    title: "Coastal Color Field",
+    group: "Landscapes",
+    format: "landscape",
+  },
+  {
+    file: "IMG_4198.jpg",
+    title: "Open Field",
+    group: "Landscapes",
+    format: "landscape",
+  },
+  {
+    file: "IMG_4206.jpg",
+    title: "Pink City",
+    group: "Landscapes",
+    format: "portrait",
+  },
+  {
+    file: "IMG_4210.jpg",
+    title: "Night Window",
+    group: "Landscapes",
+    format: "portrait",
+  },
+  {
+    file: "IMG_4211.jpg",
+    title: "Fish Under Moon",
+    group: "Landscapes",
+    format: "portrait",
+  },
+  {
+    file: "IMG_1101.JPG",
+    title: "Studio Easel",
+    group: "Framed & in progress",
+    format: "portrait",
+  },
+  {
+    file: "IMG_1406.jpg",
+    title: "Drawing Process",
+    group: "Framed & in progress",
+    format: "landscape",
+  },
+  {
+    file: "IMG_2018.JPG",
+    title: "Framed Sunset",
+    group: "Framed & in progress",
+    format: "landscape",
+  },
+  {
+    file: "img-1213-web.jpg",
+    title: "Framed City",
+    group: "Framed & in progress",
+    format: "square",
+  },
+  {
+    file: "img-2858-web.jpg",
+    title: "Galaxy Painting",
+    group: "Framed & in progress",
+    format: "landscape",
+  },
+  {
+    file: "img-3038-web.jpg",
+    title: "Red Machine Study",
+    group: "Framed & in progress",
+    format: "landscape",
+  },
+  {
+    file: "Untitled_Artwork 6.jpg",
+    title: "Framed Street Scene",
+    group: "Framed & in progress",
+    format: "portrait",
+  },
 ];
 
 export default function PaintingsPage() {
@@ -102,7 +233,7 @@ export default function PaintingsPage() {
 
       <section
         id="paintings-grid"
-        className="mx-auto max-w-[1600px] px-4 py-24 sm:px-7 md:py-36 lg:px-10"
+        className="mx-auto max-w-[1450px] px-4 py-24 sm:px-7 md:py-32 lg:px-10"
       >
         <header className="mb-12 flex flex-col justify-between gap-7 border-b border-white/14 pb-7 sm:flex-row sm:items-end md:mb-16">
           <div>
@@ -119,10 +250,7 @@ export default function PaintingsPage() {
           </p>
         </header>
 
-        <PaintingsGallery
-          paintings={paintings}
-          portraitFiles={portraitFiles}
-        />
+        <PaintingsGallery paintings={paintings} />
       </section>
     </main>
   );

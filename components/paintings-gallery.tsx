@@ -3,75 +3,96 @@ import Image from "next/image";
 const paintingPath = (file: string) =>
   `/images/fineart/Paintings/${encodeURIComponent(file)}`;
 
+export type PaintingItem = {
+  file: string;
+  title: string;
+  group: "Selected paintings" | "Portraits" | "Landscapes" | "Framed & in progress";
+  format?: "portrait" | "landscape" | "square";
+};
+
 export function PaintingsGallery({
   paintings,
-  portraitFiles,
 }: {
-  paintings: string[];
-  portraitFiles: string[];
+  paintings: PaintingItem[];
 }) {
-  const portraits = new Set(portraitFiles);
+  const groups: PaintingItem["group"][] = [
+    "Selected paintings",
+    "Portraits",
+    "Landscapes",
+    "Framed & in progress",
+  ];
 
   return (
-    <>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
-        {paintings.slice(0, 4).map((file, index) => (
-          <PaintingCard
-            key={file}
-            file={file}
-            index={index}
-            featured
-            portrait={portraits.has(file)}
-          />
-        ))}
-      </div>
+    <div className="space-y-16 md:space-y-20">
+      {groups.map((group) => {
+        const groupPaintings = paintings.filter((painting) => painting.group === group);
 
-      <div className="mt-5 columns-1 gap-4 sm:columns-2 sm:gap-5 lg:columns-3 xl:columns-4">
-        {paintings.slice(4).map((file, index) => (
-          <PaintingCard
-            key={file}
-            file={file}
-            index={index + 4}
-            portrait={portraits.has(file)}
-          />
-        ))}
-      </div>
-    </>
+        return (
+          <section key={group}>
+            <div className="mb-6 flex items-end justify-between gap-6 border-b border-white/10 pb-4">
+              <h3 className="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light">
+                {group}
+              </h3>
+              <span className="font-mono text-[7px] uppercase tracking-[0.2em] text-white/28">
+                {groupPaintings.length} works
+              </span>
+            </div>
+            <div className={`grid grid-cols-1 gap-4 sm:grid-cols-2 ${groupGridClass(group)}`}>
+              {groupPaintings.map((painting, index) => (
+                <PaintingCard
+                  key={painting.file}
+                  painting={painting}
+                  index={index}
+                />
+              ))}
+            </div>
+          </section>
+        );
+      })}
+    </div>
   );
 }
 
+function groupGridClass(group: PaintingItem["group"]) {
+  if (group === "Selected paintings") {
+    return "lg:grid-cols-4";
+  }
+
+  if (group === "Framed & in progress") {
+    return "md:grid-cols-4 xl:grid-cols-7";
+  }
+
+  return "lg:grid-cols-4 xl:grid-cols-5";
+}
+
 function PaintingCard({
-  file,
+  painting,
   index,
-  portrait,
-  featured = false,
 }: {
-  file: string;
+  painting: PaintingItem;
   index: number;
-  portrait: boolean;
-  featured?: boolean;
 }) {
   return (
-    <figure
-      className={`relative break-inside-avoid bg-[#151411] p-2.5 shadow-[0_22px_65px_rgba(0,0,0,0.3)] sm:p-3 ${
-        featured ? "" : "mb-4 sm:mb-5"
-      }`}
-    >
+    <figure className="relative bg-[#151411] p-2.5 shadow-[0_18px_45px_rgba(0,0,0,0.24)] sm:p-3">
       <div
         className={`relative block w-full overflow-hidden bg-white/5 ${
-          featured ? "aspect-[3/4]" : portrait ? "aspect-[3/4]" : "aspect-square"
+          painting.format === "landscape"
+            ? "aspect-[4/3]"
+            : painting.format === "square"
+              ? "aspect-square"
+              : "aspect-[4/5]"
         }`}
       >
         <Image
-          src={paintingPath(file)}
-          alt={`Painting ${index + 1} by Oleksandr Nazarchuk`}
+          src={paintingPath(painting.file)}
+          alt={`${painting.title} by Oleksandr Nazarchuk`}
           fill
-          sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw"
-          className="object-cover"
+          sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 25vw, 20vw"
+          className="object-contain"
         />
       </div>
-      <figcaption className="flex items-center justify-between gap-3 px-1 pb-1 pt-3 font-mono text-[7px] uppercase tracking-[0.18em] text-white/28">
-        <span>Painting {String(index + 1).padStart(2, "0")}</span>
+      <figcaption className="flex items-start justify-between gap-3 px-1 pb-1 pt-3 font-mono text-[7px] uppercase tracking-[0.16em] text-white/32">
+        <span className="max-w-[68%] leading-4">{painting.title}</span>
         <span>Oleksandr Nazarchuk</span>
       </figcaption>
     </figure>
