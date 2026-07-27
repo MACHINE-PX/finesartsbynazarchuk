@@ -13,11 +13,6 @@ const wearable = (file: string) => `${root}/${encodeURIComponent(file)}`;
 
 const works = [
   {
-    file: "ritual zombie mask.jpg",
-    title: "Ritual Zombie Mask",
-    type: "Mask",
-  },
-  {
     file: "cyborg headpiece.JPG",
     title: "Cyborg Headpiece",
     type: "Wearable sculpture",
@@ -71,6 +66,11 @@ const works = [
     file: "cyborg headpiece (1).JPG",
     title: "Female Cyborg Headpiece",
     type: "Wearable sculpture",
+  },
+  {
+    file: "ritual zombie mask.jpg",
+    title: "Ritual Zombie Mask",
+    type: "Mask",
   },
 ];
 

@@ -39,6 +39,23 @@ export default function AboutPage() {
           >
             {aboutText}
           </p>
+          <div className="mt-10 max-w-2xl border-t border-foreground/12 pt-7 text-[0.92rem] leading-7 text-foreground/72">
+            <h2 className="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light leading-none">
+              When I&apos;m Not Creating Art...
+            </h2>
+            <p className="mt-5">
+              <strong className="text-foreground">The Rhythm:</strong> Music
+              is my second favorite thing to do. As a self-taught musician, I
+              express my rhythm on the drums and am currently expanding my
+              skills by learning to play the bass.
+            </p>
+            <p className="mt-4">
+              <strong className="text-foreground">The Movement:</strong>{" "}
+              Staying active is a huge part of my lifestyle. I&apos;ve been
+              riding and practicing BMX since university, and it remains my
+              go-to sport and passion during my free time.
+            </p>
+          </div>
         </div>
       </section>
     </main>

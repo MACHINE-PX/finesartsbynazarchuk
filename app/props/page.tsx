@@ -59,8 +59,8 @@ export default function PropsPage() {
 
       <Discipline
         number="01"
-        title="Scenic Art"
-        italic="& Faux Finishes"
+        title="Scenic Art,"
+        italic="Faux Finishes & Props"
         href="/props/scenic-art"
         description="A cabinet of patinas, aged wood, oxidized metal, mosaics, and hand-built material illusions."
         image={scenic("IMG_3701.JPG")}

@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
-  title: "Scenic Art & Faux Finishes | Oleksandr Nazarchuk",
+  title: "Scenic Art, Faux Finishes & Props | Oleksandr Nazarchuk",
 };
 
 const base =
@@ -169,8 +169,11 @@ export default function ScenicArtPage() {
             Props & Scenic · Material archive
           </p>
           <h1 className="mt-7 max-w-3xl font-serif font-light tracking-[-0.045em]">
-            Scenic Art{" "}
-            <span className="italic text-[#c99762]">& Faux Finishes</span>
+            Scenic Art,
+            <br />
+            <span className="italic text-[#c99762]">
+              Faux Finishes & Props
+            </span>
           </h1>
           <p className="mt-9 max-w-lg border-l border-[#7ec5b2]/45 pl-6 text-[0.9rem] leading-8 text-white/48">
             Wood becomes aged timber. Paint becomes oxidized metal. New
