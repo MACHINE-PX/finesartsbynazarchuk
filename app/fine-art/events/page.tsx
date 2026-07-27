@@ -23,6 +23,7 @@ type EventGroup = {
   title: string;
   eyebrow: string;
   description: string;
+  details?: string[];
   folder: string;
   tone: "dark" | "paper";
   media: EventMedia[];
@@ -38,6 +39,11 @@ const eventGroups: EventGroup[] = [
     eyebrow: "Art Competition",
     description:
       "Competition documentation around the painting process, presentation, and public recognition of the work.",
+    details: [
+      "Inspired by an early twentieth-century historical photograph, this work reflects on the era of pearl diving as a foundation of the cultural memory of the Arabian Gulf.",
+      "The quiet interaction between the two figures symbolizes knowledge, trust, and respect for the natural rhythm that shaped the coastal communities of Sharjah long before modern times.",
+      "Through gesture, materiality, and the stillness of the scene, the artist explores the spirit of Sharjah as a legacy of manual labor, intergenerational transmission of knowledge, and a profound connection to the sea and to time.",
+    ],
     folder: "Art Competition  - The Spirit of Sharjah",
     tone: "paper",
     media: [
@@ -71,28 +77,32 @@ const eventGroups: EventGroup[] = [
         featured: true,
       },
       {
-        file: "img-2010-web.jpg",
-        alt: "Artist painting at the motorcycle event",
-      },
-      {
         file: "img-2012-web.jpg",
         alt: "Painting station beside motorcycles",
       },
       {
-        file: "img-2017-web.jpg",
-        alt: "Art of Motorcycle event documentation",
+        file: "253465d3-aa21-4ec0-880b-cd2125732b2c-2-web.jpg",
+        alt: "Art of Motorcycle event display",
       },
       {
         file: "img-9197-2-web.jpg",
         alt: "Motorcycle event artwork and audience moment",
       },
       {
-        file: "img-9198-web.jpg",
-        alt: "Artist painting live at night",
-      },
-      {
         file: "img-9221-web.jpg",
         alt: "Art of Motorcycle exhibition detail",
+      },
+      {
+        file: "img-2017-web.jpg",
+        alt: "Art of Motorcycle event documentation",
+      },
+      {
+        file: "img-2010-web.jpg",
+        alt: "Artist painting at the motorcycle event",
+      },
+      {
+        file: "img-9198-web.jpg",
+        alt: "Artist painting live at night",
       },
       {
         file: "img-9269-web.jpg",
@@ -101,10 +111,6 @@ const eventGroups: EventGroup[] = [
       {
         file: "img-9280-web.jpg",
         alt: "Artist holding a canvas during Art of Motorcycle",
-      },
-      {
-        file: "253465d3-aa21-4ec0-880b-cd2125732b2c-2-web.jpg",
-        alt: "Art of Motorcycle event display",
       },
     ],
   },
@@ -186,10 +192,13 @@ const eventGroups: EventGroup[] = [
   },
   {
     number: "05",
-    title: "MasterClass UAS",
+    title: "MasterClass University Of Arts Sharjah",
     eyebrow: "Workshop",
     description:
       "Masterclass documentation from the Fairytale Mural project with second-year UAS students.",
+    details: [
+      "An exploration of scale and imagination. In this project, students mastered composition, color theory, and atmosphere to bring a large-scale painting to life, blending visual references into a captivating fairy-tale aesthetic.",
+    ],
     folder: "MasterClass UAS",
     tone: "paper",
     media: [
@@ -214,6 +223,11 @@ const eventGroups: EventGroup[] = [
     eyebrow: "Stage Design",
     description:
       "Canvases and documentation connected to World Stage Design and the performance world of La Perle.",
+    details: [
+      "Scenic Design & Art Direction | World Stage Design Exhibition",
+      "Representing La Perle Dubai, the city's leading and world-renowned theater, at World Stage Design, the premier global festival for performance designers organized by OISTAT.",
+      "I was fully responsible for the entire pavilion build, executing everything from the structural scenic setup and montage to all custom artwork and scenic paintings for the exhibition stand.",
+    ],
     folder: "World Stage Design",
     tone: "dark",
     media: [
@@ -248,9 +262,30 @@ const eventGroups: EventGroup[] = [
       },
     ],
   },
+  {
+    number: "07",
+    title: "Creative Genius Award",
+    eyebrow: "Award",
+    description:
+      "Award recognition celebrating creative work and artistic contribution.",
+    folder: "AWARD - CREATIVE GENIUS AWARD",
+    tone: "paper",
+    media: [
+      {
+        file: "Captura de pantalla 2026-07-27 140657.png",
+        alt: "Creative Genius Award trophy for Oleksandr Nazarchuk",
+        featured: true,
+      },
+      {
+        file: "Captura de pantalla 2026-07-27 140805.png",
+        alt: "Creative Genius Award presentation for Oleksandr Nazarchuk",
+      },
+    ],
+  },
 ];
 
-const hero = eventGroups[1].media[5];
+const heroGroup = eventGroups[3];
+const hero = heroGroup.media[0];
 const totalAssets = eventGroups.reduce((count, group) => count + group.media.length, 0);
 const videoCount = eventGroups.reduce(
   (count, group) => count + group.media.filter((media) => media.type === "video").length,
@@ -263,27 +298,27 @@ export default function EventsPage() {
       <section className="relative min-h-[100svh]">
         <SiteHeader overlay />
         <Image
-          src={eventPath(eventGroups[1].folder, hero.file)}
+          src={eventPath(heroGroup.folder, hero.file)}
           alt={hero.alt}
           fill
           priority
           sizes="100vw"
           className="object-cover"
-          style={{ objectPosition: "center 36%" }}
+          style={{ objectPosition: "42% 18%" }}
         />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.94)_0%,rgba(8,8,8,0.22)_58%,rgba(8,8,8,0.76)_100%)]" />
+        <div className="absolute inset-0 bg-black/48" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.92)_0%,rgba(8,8,8,0.38)_52%,rgba(8,8,8,0.8)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-[#080808] to-transparent" />
 
         <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1500px] flex-col justify-between px-5 pb-10 pt-28 sm:px-8 lg:px-12">
           <div className="flex items-center justify-between border-b border-white/25 pb-4 font-mono text-[8px] uppercase tracking-[0.28em] text-white/60">
             <span>Fine Art / Events Archive</span>
-            <span className="text-[#ff5538]">EVENTS folder only</span>
+            <span className="text-[#c99762]">EVENTS folder only</span>
           </div>
 
           <div className="py-16">
-            <div className="mb-5 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[0.35em] text-[#ff5538]">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-[#ff5538]" />
+            <div className="mb-5 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[0.35em] text-[#c99762]">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-[#c99762]" />
               Images / Video
             </div>
             <h1
@@ -306,18 +341,18 @@ export default function EventsPage() {
           <div className="grid gap-5 border-t border-white/25 pt-5 sm:grid-cols-[1fr_auto] sm:items-end">
             <div className="flex flex-wrap gap-x-7 gap-y-3 font-mono text-[7px] uppercase tracking-[0.2em] text-white/45">
               <span className="inline-flex items-center gap-2">
-                <Images size={12} className="text-[#ff5538]" />
+                <Images size={12} className="text-[#c99762]" />
                 {totalAssets - videoCount} images
               </span>
               <span className="inline-flex items-center gap-2">
-                <Film size={12} className="text-[#ff5538]" />
+                <Film size={12} className="text-[#c99762]" />
                 {videoCount} videos
               </span>
               <span>{eventGroups.length} event groups</span>
             </div>
             <a
               href="#events-grid"
-              className="inline-flex items-center gap-3 font-mono text-[8px] uppercase tracking-[0.24em] text-white/55 hover:text-[#ff5538]"
+              className="inline-flex items-center gap-3 font-mono text-[8px] uppercase tracking-[0.24em] text-white/55 hover:text-[#c99762]"
             >
               Open archive <ArrowDown size={12} />
             </a>
@@ -330,27 +365,40 @@ export default function EventsPage() {
         className="mx-auto grid max-w-[1500px] gap-12 px-5 py-28 sm:px-8 md:grid-cols-[0.36fr_1fr] md:py-36"
       >
         <div>
-          <p className="font-mono text-[9px] uppercase tracking-[0.34em] text-[#ff5538]">
+          <p className="font-mono text-[9px] uppercase tracking-[0.34em] text-[#c99762]">
             Organized by folder
           </p>
-          <h2 className="event-display mt-7">One archive, six chapters.</h2>
+          <h2 className="event-display mt-7">
+            One archive, {eventGroups.length} chapters.
+          </h2>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {eventGroups.map((group) => (
             <a
               key={group.number}
               href={`#${group.number}-${group.title.toLowerCase().replaceAll(" ", "-")}`}
-              className="group border border-white/12 p-5 transition-colors hover:border-[#ff5538]/80"
+              className="group border border-white/12 bg-white/[0.02] p-3 transition-colors hover:border-[#c99762]/80"
             >
-              <span className="font-mono text-[8px] uppercase tracking-[0.25em] text-[#ff5538]">
-                {group.number}
-              </span>
-              <span className="mt-10 block font-mono text-[8px] uppercase tracking-[0.2em] text-white/45">
-                {group.eyebrow}
-              </span>
-              <span className="mt-3 block text-2xl transition-colors group-hover:text-[#ff5538]">
-                {group.title}
-              </span>
+              <div className="relative aspect-[4/3] overflow-hidden bg-black/30">
+                <Image
+                  src={eventPath(group.folder, group.media[0].file)}
+                  alt={group.media[0].alt}
+                  fill
+                  sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              </div>
+              <div className="p-3">
+                <span className="font-mono text-[8px] uppercase tracking-[0.25em] text-[#c99762]">
+                  {group.number}
+                </span>
+                <span className="mt-5 block font-mono text-[8px] uppercase tracking-[0.2em] text-white/45">
+                  {group.eyebrow}
+                </span>
+                <span className="mt-3 block text-xl transition-colors group-hover:text-[#c99762]">
+                  {group.title}
+                </span>
+              </div>
             </a>
           ))}
         </div>
@@ -360,15 +408,15 @@ export default function EventsPage() {
         <EventSection key={group.title} group={group} />
       ))}
 
-      <section className="border-t border-[#ff5538]/30 px-5 py-28 text-center sm:px-8 md:py-36">
+      <section className="border-t border-[#c99762]/30 px-5 py-28 text-center sm:px-8 md:py-36">
         <div className="mx-auto max-w-4xl">
-          <p className="font-mono text-[9px] uppercase tracking-[0.35em] text-[#ff5538]">
+          <p className="font-mono text-[9px] uppercase tracking-[0.35em] text-[#c99762]">
             Exhibitions / workshops / collaborations
           </p>
           <h2 className="event-display mt-7">Make the next moment live.</h2>
           <Link
             href="/contact"
-            className="group mt-10 inline-flex items-center gap-3 rounded-full border border-white/25 px-7 py-4 font-mono text-[9px] uppercase tracking-[0.24em] transition-all hover:border-[#ff5538] hover:bg-[#ff5538] hover:text-black"
+            className="group mt-10 inline-flex items-center gap-3 rounded-full border border-white/25 px-7 py-4 font-mono text-[9px] uppercase tracking-[0.24em] transition-all hover:border-[#c99762] hover:bg-[#c99762] hover:text-black"
           >
             Plan an event
             <ArrowUpRight
@@ -387,6 +435,7 @@ function EventSection({ group }: { group: EventGroup }) {
   const supporting = group.media.filter((media) => media !== featured);
   const mediaItems = [featured, ...supporting];
   const dark = group.tone === "dark";
+  const motorcycle = group.title === "Art of Motorcycle";
   const id = `${group.number}-${group.title.toLowerCase().replaceAll(" ", "-")}`;
 
   return (
@@ -396,16 +445,16 @@ function EventSection({ group }: { group: EventGroup }) {
         dark ? "bg-[#0d0b0a] text-[#f3eee4]" : "bg-[#eee8dd] text-[#17130f]"
       }`}
     >
-      <div className="mx-auto max-w-[1640px] px-5 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-10">
         <div
-          className={`grid gap-8 border-b pb-8 md:grid-cols-[0.32fr_1fr] md:items-end md:gap-14 lg:pb-10 ${
+          className={`grid gap-8 border-b pb-8 md:grid-cols-[0.24fr_1fr] md:items-end md:gap-14 lg:pb-10 ${
             dark ? "border-white/12" : "border-black/15"
           }`}
         >
           <div>
             <ActLabel number={group.number} label={group.eyebrow} dark={!dark} />
           </div>
-          <div className="grid gap-7 lg:grid-cols-[1fr_0.42fr] lg:items-end">
+          <div className="grid gap-7 lg:grid-cols-[1fr_0.48fr] lg:items-end">
             <h2 className="event-display">{group.title}</h2>
             <p
               className={`max-w-md text-[0.9rem] leading-8 ${
@@ -427,16 +476,44 @@ function EventSection({ group }: { group: EventGroup }) {
           {group.media.length} assets / {group.folder}
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-12 xl:gap-8">
+        {group.details ? (
+          <div
+            className={`mx-auto mt-10 max-w-5xl space-y-5 text-[1rem] leading-8 ${
+              dark ? "text-white/62" : "text-black/68"
+            }`}
+          >
+            {group.details.map((detail, index) =>
+              index === 0 && group.number === "06" ? (
+                <p key={detail} className="font-semibold">
+                  {detail}
+                </p>
+              ) : (
+                <p key={detail}>{detail}</p>
+              ),
+            )}
+          </div>
+        ) : null}
+
+        <div
+          className={
+            motorcycle
+              ? "mx-auto mt-12 grid max-w-[1280px] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-12 lg:gap-7"
+              : "mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-6"
+          }
+        >
           {mediaItems.map((media, index) => (
             <div
               key={`${group.title}-${media.file}`}
-              className={`relative overflow-hidden bg-black/10 shadow-xl shadow-black/10 ${mediaTileClass(
-                media,
-                index,
-              )}`}
+              className={`relative overflow-hidden bg-black/10 shadow-xl shadow-black/10 ${
+                motorcycle ? motorcycleTileClass(index) : mediaTileClass(media)
+              }`}
             >
-              <MediaFrame group={group} media={media} priority={index === 0 && group.number === "01"} />
+              <MediaFrame
+                group={group}
+                media={media}
+                priority={index === 0 && group.number === "01"}
+                fit={motorcycle ? "cover" : "contain"}
+              />
               {index === 0 ? (
                 <Stamp dark={!dark}>
                   {media.type === "video" ? "Video" : "Featured"}
@@ -450,46 +527,41 @@ function EventSection({ group }: { group: EventGroup }) {
   );
 }
 
-function mediaTileClass(media: EventMedia, index: number) {
+function motorcycleTileClass(index: number) {
+  const classes = [
+    "aspect-[4/5] lg:col-span-4",
+    "aspect-[4/5] lg:col-span-4",
+    "aspect-[4/5] lg:col-span-4",
+    "aspect-[4/5] lg:col-span-4",
+    "aspect-[4/5] lg:col-span-4",
+    "aspect-[4/5] lg:col-span-4",
+    "aspect-[4/5] lg:col-span-4",
+    "aspect-[4/5] lg:col-span-4",
+    "aspect-[4/5] lg:col-span-4",
+    "aspect-[4/5] lg:col-span-4",
+  ];
+
+  return classes[index] ?? "aspect-[4/5] lg:col-span-4";
+}
+
+function mediaTileClass(media: EventMedia) {
   if (media.type === "video") {
-    return "aspect-video sm:col-span-2 lg:col-span-6";
+    return "aspect-video";
   }
 
-  if (index === 0) {
-    return "aspect-[4/3] sm:col-span-2 lg:col-span-7 lg:row-span-2";
-  }
-
-  if (index === 1) {
-    return "aspect-[4/3] lg:col-span-5";
-  }
-
-  if (index === 2) {
-    return "aspect-[4/3] lg:col-span-5";
-  }
-
-  if (index % 6 === 3) {
-    return "aspect-[4/3] sm:col-span-2 lg:col-span-6";
-  }
-
-  if (index % 6 === 4) {
-    return "aspect-[4/3] lg:col-span-3";
-  }
-
-  if (index % 6 === 5) {
-    return "aspect-[4/3] lg:col-span-3";
-  }
-
-  return "aspect-[4/3] sm:col-span-2 lg:col-span-6";
+  return "aspect-[4/3]";
 }
 
 function MediaFrame({
   group,
   media,
   priority = false,
+  fit = "contain",
 }: {
   group: EventGroup;
   media: EventMedia;
   priority?: boolean;
+  fit?: "contain" | "cover";
 }) {
   if (media.type === "video") {
     return (
@@ -498,12 +570,15 @@ function MediaFrame({
           src={eventPath(group.folder, media.file)}
           poster={media.poster ? eventPath(group.folder, media.poster) : undefined}
           controls
+          autoPlay
+          muted
+          loop
           playsInline
           preload="metadata"
           aria-label={media.alt}
-          className="h-full w-full object-cover"
+          className={`h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`}
         />
-        <div className="pointer-events-none absolute left-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#ff5538] text-black">
+        <div className="pointer-events-none absolute left-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#c99762] text-black">
           <Play size={14} fill="currentColor" />
         </div>
       </div>
@@ -516,8 +591,10 @@ function MediaFrame({
       alt={media.alt}
       fill
       priority={priority}
-      sizes="(max-width: 767px) 100vw, (max-width: 1279px) 70vw, 55vw"
-      className="object-cover transition-transform duration-500 hover:scale-[1.03]"
+      sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
+      className={`transition-transform duration-500 hover:scale-[1.015] ${
+        fit === "cover" ? "object-cover" : "object-contain"
+      }`}
     />
   );
 }
@@ -537,7 +614,7 @@ function ActLabel({
         dark ? "text-black/55" : "text-white/48"
       }`}
     >
-      <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#ff5538] text-[#e63d24]">
+      <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#c99762] text-[#b47a3d]">
         {number}
       </span>
       {label}
@@ -548,8 +625,8 @@ function ActLabel({
 function Stamp({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (
     <span
-      className={`absolute right-4 top-4 border-2 border-[#ff5538] px-4 py-2 font-mono text-[8px] uppercase tracking-[0.22em] ${
-        dark ? "bg-[#eee8dd] text-[#d83720]" : "bg-[#0d0b0a]/72 text-[#ff5538]"
+      className={`absolute right-4 top-4 border-2 border-[#c99762] px-4 py-2 font-mono text-[8px] uppercase tracking-[0.22em] ${
+        dark ? "bg-[#eee8dd] text-[#9b6732]" : "bg-[#0d0b0a]/72 text-[#c99762]"
       }`}
     >
       {children}
