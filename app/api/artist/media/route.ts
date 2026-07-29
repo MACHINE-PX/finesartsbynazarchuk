@@ -73,6 +73,7 @@ export async function POST(request: Request) {
     filename: saved.filename,
     order: nextOrder,
     createdAt: new Date().toISOString(),
+    source: "upload",
   };
 
   await writeAdminMedia([...items, item]);

@@ -9,7 +9,7 @@ export async function AdminManagedMedia({
   tone?: "dark" | "paper";
 }) {
   const items = (await readAdminMedia())
-    .filter((item) => item.section === section)
+    .filter((item) => item.section === section && item.source !== "site")
     .sort((left, right) => left.order - right.order);
 
   if (items.length === 0) {

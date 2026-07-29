@@ -244,6 +244,9 @@ export function ArtistAdminDashboard({ initialItems, sections }: Props) {
                       {item.kind === "video" ? <Video size={11} /> : <ImageIcon size={11} />}
                       {item.kind}
                     </span>
+                    <span className="absolute bottom-2 left-2 bg-black/65 px-2 py-1 font-mono text-[7px] uppercase tracking-[0.15em] text-white/72">
+                      {item.source === "site" ? "site" : "upload"}
+                    </span>
                   </div>
 
                   <div className="grid gap-4 md:grid-cols-2">
