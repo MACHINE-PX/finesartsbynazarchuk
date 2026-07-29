@@ -20,8 +20,14 @@ export type AdminMediaItem = {
 };
 
 const SESSION_COOKIE = "artist_admin_session";
-const uploadRoot = path.join(process.cwd(), "public", "uploads", "artist-media");
-const dataRoot = path.join(process.cwd(), "data");
+const isVercel = Boolean(process.env.VERCEL);
+const runtimeRoot = isVercel
+  ? path.join("/tmp", "artist-admin")
+  : process.cwd();
+const uploadRoot = isVercel
+  ? path.join(runtimeRoot, "uploads", "artist-media")
+  : path.join(process.cwd(), "public", "uploads", "artist-media");
+const dataRoot = isVercel ? path.join(runtimeRoot, "data") : path.join(process.cwd(), "data");
 const mediaDataFile = path.join(dataRoot, "artist-media.json");
 
 export const adminSections = [
@@ -75,8 +81,10 @@ function seededItem(
   };
 }
 
+type SeedEntry = [title: string, src: string, kind?: AdminMediaKind];
+
 function seededMedia() {
-  const sections: Record<string, { title: string; src: string; kind?: AdminMediaKind }[]> = {
+  const sections: Record<string, SeedEntry[]> = {
     Paintings: [
       ["Motorcycle Study", publicImage("fineart", "Paintings", "IMG_4681.jpg")],
       ["Merchants Weighing Pearl", publicImage("fineart", "Paintings", "IMG_2436.jpg")],
@@ -90,7 +98,7 @@ function seededMedia() {
       ["Studio Easel", publicImage("fineart", "Paintings", "IMG_1101.JPG")],
       ["Galaxy Painting", publicImage("fineart", "Paintings", "img-2858-web.jpg")],
       ["Courtyard Video", publicImage("fineart", "Paintings", "sashko-courtyard-web.m4v"), "video"],
-    ].map(([title, src, kind]) => ({ title, src, kind: kind as AdminMediaKind | undefined })),
+    ],
     Murals: [
       ["Art Nouveau Mural", "/images/MURALS-ART%20NUVOU2.png"],
       ["Artists' Gym Mural", "/images/mural1.png"],
@@ -98,7 +106,7 @@ function seededMedia() {
       ["Japanese Hannya Mask Mural", publicImage("fineart", "Murals", "img-8630-web.jpg")],
       ["Sky Inspired Mural", "/images/mural4.png"],
       ["Tool Inspired Mural", "/images/mural3.png"],
-    ].map(([title, src]) => ({ title, src })),
+    ],
     "Plein Air": [
       ["Plein Air Video", "/video-plein-air.mp4", "video"],
       ["Plein Air 01", "/images/PLEINAIR/img-4197-web.jpg"],
@@ -106,7 +114,7 @@ function seededMedia() {
       ["Plein Air 03", "/images/PLEINAIR/img-4200-web.jpg"],
       ["Plein Air 04", "/images/PLEINAIR/img-4206-web.jpg"],
       ["Plein Air 05", "/images/PLEINAIR/img-4400-web.jpg"],
-    ].map(([title, src, kind]) => ({ title, src, kind: kind as AdminMediaKind | undefined })),
+    ],
     Events: [
       ["Helmet Competition", eventImage("Helmet Copetition", "ea3cf8d3-7d31-4bb9-9337-dccb17b81b31-3-web.jpg")],
       ["Spirit of Sharjah", eventImage("Art Competition  - The Spirit of Sharjah", "img-2436-web.jpg")],
@@ -116,7 +124,7 @@ function seededMedia() {
       ["World Stage Design", eventImage("World Stage Design", "91058fbf-2ede-4bff-ae6a-ec7620d59897-web.jpg")],
       ["Creative Genius Award", eventImage("AWARD - CREATIVE GENIUS AWARD", "Captura de pantalla 2026-07-27 140657.png")],
       ["Helmet Video", eventImage("Helmet Copetition", "IMG_1600.MOV"), "video"],
-    ].map(([title, src, kind]) => ({ title, src, kind: kind as AdminMediaKind | undefined })),
+    ],
     "Scenic Art, Faux Finishes & Props": [
       ["Banana Food Prop", propsImage("Scenic Art & Faux finishes", "food-props-banana-web.jpg")],
       ["Cabaret Mask", propsImage("Scenic Art & Faux finishes", "cabaret-mask-1-web.jpg")],
@@ -124,14 +132,14 @@ function seededMedia() {
       ["Antique Key", propsImage("Scenic Art & Faux finishes", "antique-key-web.jpg")],
       ["Fantasy Axe", propsImage("Scenic Art & Faux finishes", "props1.jpeg")],
       ["Aged Revolver", propsImage("Scenic Art & Faux finishes", "props5.jpeg")],
-    ].map(([title, src]) => ({ title, src })),
+    ],
     Sculptures: [
       ["Decorating the Sculpture", propsImage("Sculptures", "decorating-sculpture-1-web.jpg")],
       ["Graveyard Mask", propsImage("Sculptures", "graveyard-mask-web.jpg")],
       ["Spirit in a Mirror", propsImage("Sculptures", "spirit-in-a-mirror-web.jpg")],
       ["Space Explorer Patina", propsImage("Sculptures", "space-explorer-patina-web.jpg")],
       ["Sculpture Detail Video", propsImage("Sculptures", "sculpture-detail-web.mp4"), "video"],
-    ].map(([title, src, kind]) => ({ title, src, kind: kind as AdminMediaKind | undefined })),
+    ],
     "Wearable Props": [
       ["Cyborg Headpiece", propsImage("Wearable props", "cyborg headpiece.JPG")],
       ["Bungee Headpiece", propsImage("Wearable props", "Bungee Headpiece 2.PNG")],
@@ -139,16 +147,16 @@ function seededMedia() {
       ["Guard Headpiece", propsImage("Wearable props", "Guard headpiece.JPG")],
       ["Ritual Zombie Mask", propsImage("Wearable props", "ritual zombie mask.jpg")],
       ["Cyborg Headpiece Video", propsImage("Wearable props", "cyborg-headpiece-male-1-web.mp4"), "video"],
-    ].map(([title, src, kind]) => ({ title, src, kind: kind as AdminMediaKind | undefined })),
+    ],
     About: [
       ["Artist Portrait", "/images/aboutme-web.jpg"],
       ["Home Portrait", "/images/who-i-am-home-web.jpg"],
-    ].map(([title, src]) => ({ title, src })),
+    ],
   };
 
   return Object.entries(sections).flatMap(([section, items]) =>
-    items.map((item, order) =>
-      seededItem(section, item.title, item.src, order, item.kind),
+    items.map(([title, src, kind], order) =>
+      seededItem(section, title, src, order, kind),
     ),
   );
 }
@@ -222,8 +230,6 @@ async function ensureStorage() {
 }
 
 export async function readAdminMedia(): Promise<AdminMediaItem[]> {
-  await ensureStorage();
-
   try {
     const file = await readFile(mediaDataFile, "utf8");
     const items = JSON.parse(file) as AdminMediaItem[];
@@ -261,6 +267,12 @@ export async function saveUploadedMedia(file: File, section: string) {
 
   return {
     filename,
-    src: `/uploads/artist-media/${sectionSlug || "general"}/${filename}`,
+    src: isVercel
+      ? `/api/artist/uploaded/${sectionSlug || "general"}/${filename}`
+      : `/uploads/artist-media/${sectionSlug || "general"}/${filename}`,
   };
+}
+
+export function uploadedMediaPath(section: string, filename: string) {
+  return path.join(uploadRoot, section, filename);
 }
