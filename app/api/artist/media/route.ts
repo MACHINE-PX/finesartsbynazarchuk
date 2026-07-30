@@ -41,6 +41,7 @@ export async function POST(request: Request) {
   const formData = await request.formData();
   const file = formData.get("file");
   const section = String(formData.get("section") || "Events");
+  const collection = String(formData.get("collection") || "General").trim() || "General";
   const title = String(formData.get("title") || "").trim();
 
   if (!(file instanceof File)) {
@@ -61,12 +62,14 @@ export async function POST(request: Request) {
       -1,
       ...items
         .filter((item) => item.section === section)
+        .filter((item) => item.collection === collection)
         .map((item) => item.order),
     ) + 1;
 
   const item: AdminMediaItem = {
     id: crypto.randomUUID(),
     section,
+    collection,
     title: title || file.name.replace(/\.[^.]+$/, ""),
     kind: mediaKind(file),
     src: saved.src,
@@ -90,8 +93,14 @@ export async function PATCH(request: Request) {
         id?: string;
         title?: string;
         section?: string;
+        collection?: string;
         order?: number;
         items?: { id: string; order: number }[];
+        renameCollection?: {
+          section: string;
+          from: string;
+          to: string;
+        };
       }
     | null;
 
@@ -100,6 +109,28 @@ export async function PATCH(request: Request) {
   }
 
   const items = await readAdminMedia();
+
+  if (body.renameCollection) {
+    const from = body.renameCollection.from.trim();
+    const to = body.renameCollection.to.trim();
+
+    if (!from || !to) {
+      return NextResponse.json(
+        { error: "Collection names are required." },
+        { status: 400 },
+      );
+    }
+
+    const nextItems = items.map((item) =>
+      item.section === body.renameCollection?.section && item.collection === from
+        ? { ...item, collection: to }
+        : item,
+    );
+
+    await writeAdminMedia(nextItems);
+    return NextResponse.json({ items: nextItems });
+  }
+
   const orderUpdates = new Map(
     body.items?.map((item) => [item.id, item.order]) ?? [],
   );
@@ -117,6 +148,7 @@ export async function PATCH(request: Request) {
       ...item,
       title: body.title?.trim() || item.title,
       section: body.section || item.section,
+      collection: body.collection?.trim() || item.collection,
       order: typeof body.order === "number" ? body.order : item.order,
     };
   });

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { AdminMediaItem } from "@/lib/artist-admin";
 import { readAdminMedia } from "@/lib/artist-admin";
 
 export async function AdminManagedMedia({
@@ -17,6 +18,13 @@ export async function AdminManagedMedia({
   }
 
   const paper = tone === "paper";
+  const groupedItems = Array.from(
+    items.reduce((groups, item) => {
+      const collection = item.collection || "General";
+      groups.set(collection, [...(groups.get(collection) ?? []), item]);
+      return groups;
+    }, new Map<string, AdminMediaItem[]>()),
+  );
 
   return (
     <section
@@ -51,39 +59,62 @@ export async function AdminManagedMedia({
           </span>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((item) => (
-            <figure
-              key={item.id}
-              className={paper ? "bg-[#ede5d7] p-2" : "bg-[#151411] p-2"}
-            >
-              <div className="relative aspect-[4/3] overflow-hidden bg-black/10">
-                {item.kind === "video" ? (
-                  <video
-                    src={item.src}
-                    className="h-full w-full object-contain"
-                    controls
-                    playsInline
-                    preload="metadata"
-                  />
-                ) : (
-                  <Image
-                    src={item.src}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                    className="object-contain"
-                  />
-                )}
-              </div>
-              <figcaption
-                className={`px-1 pb-1 pt-3 font-mono text-[7px] uppercase tracking-[0.16em] ${
-                  paper ? "text-black/42" : "text-white/32"
+        <div className="space-y-14">
+          {groupedItems.map(([collection, collectionItems]) => (
+            <section key={collection}>
+              <div
+                className={`mb-5 flex items-end justify-between gap-4 border-b pb-4 ${
+                  paper ? "border-black/12" : "border-white/10"
                 }`}
               >
-                {item.title}
-              </figcaption>
-            </figure>
+                <h3 className="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light">
+                  {collection}
+                </h3>
+                <span
+                  className={`font-mono text-[7px] uppercase tracking-[0.2em] ${
+                    paper ? "text-black/35" : "text-white/28"
+                  }`}
+                >
+                  {collectionItems.length} assets
+                </span>
+              </div>
+
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {collectionItems.map((item) => (
+                  <figure
+                    key={item.id}
+                    className={paper ? "bg-[#ede5d7] p-2" : "bg-[#151411] p-2"}
+                  >
+                    <div className="relative aspect-[4/3] overflow-hidden bg-black/10">
+                      {item.kind === "video" ? (
+                        <video
+                          src={item.src}
+                          className="h-full w-full object-contain"
+                          controls
+                          playsInline
+                          preload="metadata"
+                        />
+                      ) : (
+                        <Image
+                          src={item.src}
+                          alt={item.title}
+                          fill
+                          sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                          className="object-contain"
+                        />
+                      )}
+                    </div>
+                    <figcaption
+                      className={`px-1 pb-1 pt-3 font-mono text-[7px] uppercase tracking-[0.16em] ${
+                        paper ? "text-black/42" : "text-white/32"
+                      }`}
+                    >
+                      {item.title}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </section>
           ))}
         </div>
       </div>

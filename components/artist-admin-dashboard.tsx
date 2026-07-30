@@ -1,11 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowDown,
   ArrowUp,
   Image as ImageIcon,
+  Layers3,
   LogOut,
+  Plus,
   Save,
   Trash2,
   Upload,
@@ -21,18 +23,119 @@ type Props = {
 export function ArtistAdminDashboard({ initialItems, sections }: Props) {
   const [items, setItems] = useState(initialItems);
   const [activeSection, setActiveSection] = useState(sections[0]);
+  const [activeCollection, setActiveCollection] = useState("General");
+  const [localCollections, setLocalCollections] = useState<Record<string, string[]>>({});
+  const [collectionDraft, setCollectionDraft] = useState("");
+  const [newCollection, setNewCollection] = useState("");
   const [title, setTitle] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const collections = useMemo(() => {
+    const names = [
+      ...items
+        .filter((item) => item.section === activeSection)
+        .map((item) => item.collection || "General"),
+      ...(localCollections[activeSection] ?? []),
+    ];
+
+    return Array.from(new Set(names)).sort((left, right) =>
+      left.localeCompare(right),
+    );
+  }, [activeSection, items, localCollections]);
+
+  useEffect(() => {
+    if (collections.length === 0) {
+      setActiveCollection("General");
+      setCollectionDraft("General");
+      return;
+    }
+
+    if (!collections.includes(activeCollection)) {
+      setActiveCollection(collections[0]);
+      setCollectionDraft(collections[0]);
+    }
+  }, [activeCollection, collections]);
+
+  useEffect(() => {
+    setCollectionDraft(activeCollection);
+  }, [activeCollection]);
+
   const visibleItems = useMemo(
     () =>
       items
         .filter((item) => item.section === activeSection)
+        .filter((item) => (item.collection || "General") === activeCollection)
         .sort((left, right) => left.order - right.order),
-    [activeSection, items],
+    [activeCollection, activeSection, items],
   );
+
+  function rememberCollection(section: string, collection: string) {
+    setLocalCollections((current) => {
+      const next = new Set([...(current[section] ?? []), collection]);
+      return { ...current, [section]: Array.from(next) };
+    });
+  }
+
+  function createCollection() {
+    const value = newCollection.trim();
+
+    if (!value) {
+      setMessage("Escribe el nombre de la nueva seccion interna.");
+      return;
+    }
+
+    rememberCollection(activeSection, value);
+    setActiveCollection(value);
+    setNewCollection("");
+    setMessage("Seccion interna lista. Ahora puedes subir contenido ahi.");
+  }
+
+  async function renameActiveCollection() {
+    const nextName = collectionDraft.trim();
+
+    if (!nextName || nextName === activeCollection) {
+      return;
+    }
+
+    const oldName = activeCollection;
+
+    setItems((current) =>
+      current.map((item) =>
+        item.section === activeSection && item.collection === oldName
+          ? { ...item, collection: nextName }
+          : item,
+      ),
+    );
+    setLocalCollections((current) => ({
+      ...current,
+      [activeSection]: (current[activeSection] ?? []).map((name) =>
+        name === oldName ? nextName : name,
+      ),
+    }));
+    setActiveCollection(nextName);
+
+    const response = await fetch("/api/artist/media", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        renameCollection: {
+          section: activeSection,
+          from: oldName,
+          to: nextName,
+        },
+      }),
+    });
+    const data = await response.json();
+
+    if (response.ok) {
+      setItems(data.items);
+      setMessage("Titulo de la seccion actualizado.");
+    } else {
+      setMessage(data.error || "No se pudo renombrar la seccion.");
+    }
+  }
 
   async function uploadMedia(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -45,6 +148,7 @@ export function ArtistAdminDashboard({ initialItems, sections }: Props) {
     const formData = new FormData();
     formData.set("file", file);
     formData.set("section", activeSection);
+    formData.set("collection", activeCollection);
     formData.set("title", title);
 
     setLoading(true);
@@ -63,6 +167,7 @@ export function ArtistAdminDashboard({ initialItems, sections }: Props) {
       return;
     }
 
+    rememberCollection(activeSection, activeCollection);
     setItems((current) => [...current, data.item]);
     setTitle("");
     setFile(null);
@@ -84,6 +189,7 @@ export function ArtistAdminDashboard({ initialItems, sections }: Props) {
         id: item.id,
         title: nextItem.title,
         section: nextItem.section,
+        collection: nextItem.collection,
         order: nextItem.order,
       }),
     });
@@ -116,12 +222,17 @@ export function ArtistAdminDashboard({ initialItems, sections }: Props) {
     });
   }
 
-  async function deleteItem(id: string) {
+  async function deleteItem(item: AdminMediaItem) {
+    if (item.source === "site") {
+      setMessage("Las imagenes originales del sitio se pueden editar y ordenar, pero no eliminar desde este panel.");
+      return;
+    }
+
     const confirmed = window.confirm("Quieres eliminar este item del panel?");
     if (!confirmed) return;
 
-    setItems((current) => current.filter((item) => item.id !== id));
-    await fetch(`/api/artist/media?id=${encodeURIComponent(id)}`, {
+    setItems((current) => current.filter((entry) => entry.id !== item.id));
+    await fetch(`/api/artist/media?id=${encodeURIComponent(item.id)}`, {
       method: "DELETE",
     });
   }
@@ -173,6 +284,70 @@ export function ArtistAdminDashboard({ initialItems, sections }: Props) {
         </aside>
 
         <section>
+          <div className="mb-5 border border-white/12 bg-[#11100e] p-5">
+            <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+              <div>
+                <p className="inline-flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.24em] text-[#c99762]">
+                  <Layers3 size={13} />
+                  Secciones internas
+                </p>
+                <h2 className="mt-2 font-serif text-3xl font-light">
+                  {activeSection}
+                </h2>
+              </div>
+
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <input
+                  value={newCollection}
+                  onChange={(event) => setNewCollection(event.target.value)}
+                  className="min-w-0 border border-white/12 bg-black/25 px-4 py-3 text-sm outline-none focus:border-[#c99762]"
+                  placeholder="Nueva seccion interna"
+                />
+                <button
+                  type="button"
+                  onClick={createCollection}
+                  className="inline-flex items-center justify-center gap-2 border border-white/15 px-4 py-3 font-mono text-[8px] uppercase tracking-[0.2em] hover:border-[#c99762] hover:text-[#c99762]"
+                >
+                  <Plus size={14} />
+                  Add section
+                </button>
+              </div>
+            </div>
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              {collections.map((collection) => (
+                <button
+                  key={collection}
+                  onClick={() => setActiveCollection(collection)}
+                  className={`border px-3 py-2 text-left font-mono text-[8px] uppercase tracking-[0.18em] transition-colors ${
+                    activeCollection === collection
+                      ? "border-[#c99762] bg-[#c99762] text-black"
+                      : "border-white/12 text-white/52 hover:border-[#c99762]"
+                  }`}
+                >
+                  {collection}
+                </button>
+              ))}
+            </div>
+
+            <div className="mt-5 grid gap-3 md:grid-cols-[1fr_auto]">
+              <input
+                value={collectionDraft}
+                onChange={(event) => setCollectionDraft(event.target.value)}
+                className="border border-white/12 bg-black/25 px-4 py-3 text-sm outline-none focus:border-[#c99762]"
+                placeholder="Titulo de esta seccion"
+              />
+              <button
+                type="button"
+                onClick={renameActiveCollection}
+                className="inline-flex items-center justify-center gap-2 border border-white/15 px-4 py-3 font-mono text-[8px] uppercase tracking-[0.2em] hover:border-[#c99762] hover:text-[#c99762]"
+              >
+                <Save size={14} />
+                Rename
+              </button>
+            </div>
+          </div>
+
           <form
             onSubmit={uploadMedia}
             className="grid gap-4 border border-white/12 bg-[#11100e] p-5 md:grid-cols-[1fr_1fr_auto] md:items-end"
@@ -191,7 +366,7 @@ export function ArtistAdminDashboard({ initialItems, sections }: Props) {
 
             <label>
               <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-white/42">
-                Imagen o video
+                Imagen o video en {activeCollection}
               </span>
               <input
                 onChange={(event) => setFile(event.target.files?.[0] ?? null)}
@@ -271,7 +446,25 @@ export function ArtistAdminDashboard({ initialItems, sections }: Props) {
                     </label>
                     <label>
                       <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-white/35">
-                        Seccion
+                        Seccion interna
+                      </span>
+                      <select
+                        value={item.collection}
+                        onChange={(event) =>
+                          updateItem(item, { collection: event.target.value })
+                        }
+                        className="mt-2 w-full border border-white/12 bg-black/25 px-3 py-2 text-sm outline-none focus:border-[#c99762]"
+                      >
+                        {collections.map((collection) => (
+                          <option key={collection} value={collection}>
+                            {collection}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label>
+                      <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-white/35">
+                        Pagina
                       </span>
                       <select
                         value={item.section}
@@ -287,7 +480,7 @@ export function ArtistAdminDashboard({ initialItems, sections }: Props) {
                         ))}
                       </select>
                     </label>
-                    <p className="font-mono text-[7px] uppercase tracking-[0.16em] text-white/30 md:col-span-2">
+                    <p className="self-end font-mono text-[7px] uppercase tracking-[0.16em] text-white/30">
                       Order {index + 1} / {item.filename}
                     </p>
                   </div>
@@ -315,7 +508,7 @@ export function ArtistAdminDashboard({ initialItems, sections }: Props) {
                       <Save size={15} />
                     </button>
                     <button
-                      onClick={() => deleteItem(item.id)}
+                      onClick={() => deleteItem(item)}
                       className="flex h-10 w-10 items-center justify-center border border-white/12 hover:border-[#c99762] hover:text-[#c99762]"
                       title="Delete"
                     >
