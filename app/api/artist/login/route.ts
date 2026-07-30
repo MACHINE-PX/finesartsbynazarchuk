@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createAdminSession, verifyAdminCredentials } from "@/lib/artist-admin";
+import { createAdminSession, verifyAdminCredentials } from "@/lib/artist-auth";
 
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => null)) as

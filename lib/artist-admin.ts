@@ -1,10 +1,8 @@
 import "server-only";
 
-import { cookies } from "next/headers";
-import { createHmac, timingSafeEqual } from "node:crypto";
-import type { Dirent } from "node:fs";
-import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { siteMediaManifest } from "@/lib/site-media-manifest";
 
 export type AdminMediaKind = "image" | "video";
 
@@ -21,9 +19,7 @@ export type AdminMediaItem = {
   source?: "site" | "upload";
 };
 
-const SESSION_COOKIE = "artist_admin_session";
 const DEFAULT_COLLECTION = "General";
-const MEDIA_EXTENSIONS = /\.(jpe?g|png|webp|gif|mp4|mov|m4v)$/i;
 const isVercel = Boolean(process.env.VERCEL);
 const runtimeRoot = isVercel
   ? path.join("/tmp", "artist-admin")
@@ -64,33 +60,6 @@ function propsImage(folder: string, file: string) {
   );
 }
 
-function titleFromFilename(file: string) {
-  return decodeURIComponent(file)
-    .replace(/\.[^.]+$/, "")
-    .replace(/[-_]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim()
-    .replace(/\b\w/g, (letter) => letter.toUpperCase());
-}
-
-function mediaKindFromFilename(file: string): AdminMediaKind {
-  return /\.(mp4|mov|m4v)$/i.test(file) ? "video" : "image";
-}
-
-function collectionFromEventFolder(folder: string) {
-  const names: Record<string, string> = {
-    "Art Competition  - The Spirit of Sharjah": "The Spirit of Sharjah",
-    "ART OF MOTOCYCLE (AOM) - EVENT": "Art of Motorcycle",
-    "Helmet Copetition": "Helmet Competition",
-    "MasterClass UAS": "MasterClass University Of Arts Sharjah",
-    "World Stage Design": "World Stage Design",
-    "AWARD - CREATIVE GENIUS AWARD": "Creative Genius Award",
-    Exhibitions: "Exhibitions",
-  };
-
-  return names[folder] || titleFromFilename(folder);
-}
-
 function slug(value: string) {
   return value
     .toLowerCase()
@@ -129,66 +98,7 @@ type SeedEntry = [
   collection?: string,
 ];
 
-async function listPublicMedia(
-  section: string,
-  collection: string,
-  publicParts: string[],
-  startOrder: number,
-) {
-  const root = path.join(process.cwd(), "public", ...publicParts);
-  const media: AdminMediaItem[] = [];
-
-  async function walk(current: string, relativeParts: string[] = []) {
-    let entries: Dirent[];
-
-    try {
-      entries = await readdir(current, { withFileTypes: true });
-    } catch {
-      return;
-    }
-
-    for (const entry of entries.sort((left, right) =>
-      left.name.localeCompare(right.name),
-    )) {
-      const absolute = path.join(current, entry.name);
-      const nextRelativeParts = [...relativeParts, entry.name];
-
-      if (entry.isDirectory()) {
-        await walk(absolute, nextRelativeParts);
-        continue;
-      }
-
-      if (!MEDIA_EXTENSIONS.test(entry.name)) {
-        continue;
-      }
-
-      const itemCollection =
-        publicParts.at(-1) === "EVENTS" && nextRelativeParts.length > 1
-          ? collectionFromEventFolder(nextRelativeParts[0])
-          : collection;
-      const src = `/${["images", ...publicParts.slice(1), ...nextRelativeParts]
-        .map(encodeURIComponent)
-        .join("/")}`;
-      const order = startOrder + media.length;
-
-      media.push(
-        seededItem(
-          section,
-          titleFromFilename(entry.name),
-          src,
-          order,
-          mediaKindFromFilename(entry.name),
-          itemCollection,
-        ),
-      );
-    }
-  }
-
-  await walk(root);
-  return media;
-}
-
-async function seededMedia() {
+function seededMedia() {
   const sections: Record<string, SeedEntry[]> = {
     Paintings: [
       [
@@ -361,48 +271,16 @@ async function seededMedia() {
     ),
   );
 
-  const scanned = (
-    await Promise.all([
-      listPublicMedia("Paintings", "Additional paintings", ["images", "fineart", "Paintings"], 1000),
-      listPublicMedia("Murals", "Additional murals", ["images", "fineart", "Murals"], 1000),
-      listPublicMedia("Plein Air", "Field archive", ["images", "PLEINAIR"], 1000),
-      listPublicMedia("Plein Air", "Additional plein air", ["images", "fineart", "PLEIN AIR"], 2000),
-      listPublicMedia("Events", "Events", ["images", "fineart", "EVENTS"], 1000),
-      listPublicMedia(
-        "Scenic Art, Faux Finishes & Props",
-        "Scenic props",
-        [
-          "images",
-          "Props & Scenic -20260619T114546Z-3-001",
-          "Props & Scenic",
-          "Scenic Art & Faux finishes",
-        ],
-        1000,
-      ),
-      listPublicMedia(
-        "Sculptures",
-        "Sculpture studies",
-        [
-          "images",
-          "Props & Scenic -20260619T114546Z-3-001",
-          "Props & Scenic",
-          "Sculptures",
-        ],
-        1000,
-      ),
-      listPublicMedia(
-        "Wearable Props",
-        "Wearable archive",
-        [
-          "images",
-          "Props & Scenic -20260619T114546Z-3-001",
-          "Props & Scenic",
-          "Wearable props",
-        ],
-        1000,
-      ),
-    ])
-  ).flat();
+  const scanned = siteMediaManifest.map((entry) =>
+    seededItem(
+      entry.section,
+      entry.title,
+      entry.src,
+      entry.order,
+      entry.kind,
+      entry.collection,
+    ),
+  );
 
   return mergeMedia(manual, scanned);
 }
@@ -449,76 +327,13 @@ function mergeStoredMedia(seed: AdminMediaItem[], stored: AdminMediaItem[]) {
   return Array.from(byKey.values());
 }
 
-function adminUser() {
-  return process.env.ARTIST_ADMIN_USER || "artist";
-}
-
-function adminPassword() {
-  return process.env.ARTIST_ADMIN_PASSWORD || "Nazarchuk2026!";
-}
-
-function sessionSecret() {
-  return process.env.ARTIST_ADMIN_SECRET || "change-this-secret-before-publishing";
-}
-
-function sign(value: string) {
-  return createHmac("sha256", sessionSecret()).update(value).digest("hex");
-}
-
-function sessionValue() {
-  const user = adminUser();
-  return `${user}.${sign(user)}`;
-}
-
-function constantTimeEqual(left: string, right: string) {
-  const leftBuffer = Buffer.from(left);
-  const rightBuffer = Buffer.from(right);
-
-  if (leftBuffer.length !== rightBuffer.length) {
-    return false;
-  }
-
-  return timingSafeEqual(leftBuffer, rightBuffer);
-}
-
-export function verifyAdminCredentials(username: string, password: string) {
-  return (
-    constantTimeEqual(username, adminUser()) &&
-    constantTimeEqual(password, adminPassword())
-  );
-}
-
-export async function createAdminSession() {
-  const cookieStore = await cookies();
-
-  cookieStore.set(SESSION_COOKIE, sessionValue(), {
-    httpOnly: true,
-    sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
-    path: "/",
-    maxAge: 60 * 60 * 24 * 7,
-  });
-}
-
-export async function clearAdminSession() {
-  const cookieStore = await cookies();
-  cookieStore.delete(SESSION_COOKIE);
-}
-
-export async function isAdminAuthenticated() {
-  const cookieStore = await cookies();
-  const value = cookieStore.get(SESSION_COOKIE)?.value;
-
-  return Boolean(value && constantTimeEqual(value, sessionValue()));
-}
-
 async function ensureStorage() {
   await mkdir(uploadRoot, { recursive: true });
   await mkdir(dataRoot, { recursive: true });
 }
 
 export async function readAdminMedia(): Promise<AdminMediaItem[]> {
-  const seed = await seededMedia();
+  const seed = seededMedia();
 
   try {
     const file = await readFile(mediaDataFile, "utf8");

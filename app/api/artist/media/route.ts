@@ -2,11 +2,11 @@ import { NextResponse } from "next/server";
 import {
   type AdminMediaItem,
   adminSections,
-  isAdminAuthenticated,
   readAdminMedia,
   saveUploadedMedia,
   writeAdminMedia,
 } from "@/lib/artist-admin";
+import { isAdminAuthenticated } from "@/lib/artist-auth";
 
 function mediaKind(file: File) {
   if (file.type.startsWith("video/")) {

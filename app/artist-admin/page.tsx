@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { ArtistAdminDashboard } from "@/components/artist-admin-dashboard";
-import {
-  adminSections,
-  isAdminAuthenticated,
-  readAdminMedia,
-} from "@/lib/artist-admin";
+import { adminSections, readAdminMedia } from "@/lib/artist-admin";
+import { isAdminAuthenticated } from "@/lib/artist-auth";
 
 export const metadata: Metadata = {
   title: "Artist Admin | Oleksandr Nazarchuk",
